@@ -1,4 +1,73 @@
 
 
+---------------avantage de faire appel ou choisir une agence de voyage ---------------
+Les agences web : personnalisation et accompagnement. Convient à ceux qui veulent prendre le temps d’organiser eux-mêmes leurs vacances pour avoir un séjour personnalisé, tout en bénéficiant de conseils et d’un suivi sur place.
+
+
+
+
+
+
+tables de la base de données -------------
+
+utilisateurs (
+circuits (5 circuits maximum - centrafrique , cameroun  , congo et Gabon et Tchad)
+
+
+reservations (nombre de personne concerné par une reservation = seul en couple ou en famille)
+vol
+hotel ou motel
+
+
+
+-----------------------------------------
+
+
+utilisateur reserve un circuit qui contient un vol  aller et retour et une reservation d'hotel 
+utilisateur reserve un circuit qui contient un vol  aller et retour 
+utilisateur reserve un circuit qui contient une reservation d'hotel  seul 
+
+informer sur le site sur  les moyens de transports locaux et sur les bureaux ou agences touristique sur place
+
+
+
 
 ----------------pour la fabrication du logo -----turbologo.com
+
+
+
+
+
+
+
+
+------------------definition agence de voyage
+
+
+Une agence de voyages est une entreprise commerciale qui compose et vend des offres de voyages à ses clients. Elle joue le rôle d'intermédiaire et/ou d'agrégateur de services entre les clients et les différents prestataires sur le marché du tourisme : compagnies aériennes, hôteliers, loueurs de voiture, compagnies d'assurances, etc
+
+
+-------------------explication
+
+
+Les opérateurs du tourisme sont les acteurs de ce secteur économique, organisés en filière. 
+
+Une agence de voyages est une entreprise qui commercialise des prestations de services et des produits de voyages, de séjours, de croisières et de loisirs. Elle joue le rôle d'intermédiaire et/ou d'agrégateur de services entre les clients et les différents prestataires sur le marché du tourisme : compagnies aériennes, hôteliers, loueurs de voiture, compagnies d'assurances, etc. À la différence du voyagiste  ou tour-opérateur, l'agence ne fait que revendre les produits des prestataires. Elle fait office d'intermédiaire entre le tour-opérateur et le touriste en vendant des circuits et des séjours, percevant au passage une commission. Elle n'est donc pas rétribuée par le client mais directement par ses fournisseurs. Les agences de voyage proposent des séjours soit à destination de l'étranger, soit dans le pays où elles sont implantées (agences réceptives).
+
+La profession de voyagiste est ancienne, elle a été inaugurée par Thomas Cook en 1841. Un voyagiste (terme recommandé en France et au Canada) ou tour-opérateur (de l'anglais Tour Operator) est un assembleur, entreprise chargée d'organiser des séjours touristiques en réunissant plusieurs prestations de différents fournisseurs (compagnies aériennes, hôteliers, autocaristes, restaurateurs, guides etc.) à des prix négociés et en les vendant à un prix tout compris sous forme de "forfait" ou de "package". Il affrète les avions et les places charters ou négocie les tarifs auprès des compagnies régulières, à la différence de l'agence de voyages qui fait de la revente.
+
+La frontière entre distributeur et assembleur tend à s'estomper, du fait notamment des pratiques nées du e-tourisme, de l'Internet, du "forfait ou package dynamique" permettant à un client de composer, sur le site du prestataire, un voyage sur-mesure, à la carte, comme pourrait le proposer un agent de voyage.
+
+
+
+
+
+
+
+
+
+---Pages à propos peut contenir les infos 
+
+--L'agence de voyages remplit le rôle de conseil en s'assurant ou en avertissant des formalités nécessaires à l'entrée dans un pays
+
+

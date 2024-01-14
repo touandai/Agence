@@ -11,15 +11,28 @@
     <link rel="stylesheet" href="index.css">
     <script src="bootstrap.bundle.min.js"></script>
 </head>
-
 <body>
 
 
-<header> 
+<header class="container"> 
+<div>
+    <img src="images/logo21.png" alt="logo"/>
 
-
-
+    <div>
+        <ul>
+            <li><a href="">Accueil</a></li>
+            <li><a href="">Accueil</a></li>
+            <li><a href="">Accueil</a></li>
+            <li><a href="">Accueil</a></li>
+            <li><a href="">Accueil</a></li>
+            <li><a href="">Accueil</a></li>
+        </ul>
+</div>
 </header>
+
+
+
+
 
 
 </body>

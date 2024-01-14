@@ -1,0 +1,11 @@
+html,
+body
+{
+    margin: 0px;
+    padding:0px;
+    font-family: Verdana Pro Light;
+}
+.text-center
+{
+    text-align: center;
+}
