@@ -1,5 +1,109 @@
 
 
+
+
+
+-------------Accueil
+
+carousel photo animé
+courte description 
+bar de recherche
+
+-------------RUBRIQUE DESTINATIONS
+
+preciser le continent
+
+puis mentionner les 4 pays destinations  
+Le Cameroun , regorge de paysages que vous ne verrez nulle part ailleurs, ses habitants sont d’une hospitalité légendaire, et sa culture conserve des traditions séculaires, qui lui donnent une identité riche et passionnante
+
+
+CONGO La meilleure période pour voyage au Congo est l'été, de juin à début septembre, pendant laquelle vous profiterez de la saison sèche et de températures chaudes mais supportables.
+
+
+gabon Situé à l’ouest de l’Afrique, le Gabon est encore peu connu des touristes, malgré ses richesses naturelles comme sa forêt équatoriale très préservée où vivent des animaux rares (dont les gorilles) et des espèces végétales très variées. Vous pourrez y découvrir 13 parcs nationaux, comme celui de la Lopé avec ses forêts et ses savanes, celui de Pongara et ses mangroves, ou celui de la Waka parsemé de montagnes.
+
+-------------RUBRIQUE SEJOURS
+
+indiquer comment se Faire aider sur place par un bureau local ou guide touristique 
+
+puis indiquer les moyens d hebergement pour chaque ville concernée 
+
+QUELQUES PHOTO ET TEXTE DESCRIPTIF 
+HOTEL / MOTEL OU PRIVE
+
+
+-------------Galerie photos
+
+animation photo clic ou automatique acommpagné de petits textes
+
+-------------liens utiles 
+
+toutes informations sur le tourisme en Afrique , moyen de sejour zone dangereus ect 
+
+-----------contact
+
+TYPE CONTACT DANS LE FORMULAIRE RECLAMATION OU INFORMATION ---- LIST CHOIX 
+
+NOM 
+REFERENCE CLIENT SI RECLA CHAMP NON OBLIGATOIRE
+EMAIL
+PAYS
+MESSAGE 
+ 
+
+
+
+
+
+-----------CIRCUIT ET BON PLANS
+
+SOUS MENU CONTENANT 1 CHOIX PAR PAYS 
+
+INDIQUER CHAQUE CHOIX ET SON DETAIL 
+
+
+----------- RUBRIQUE RESERVATIONS 
+
+elements formulaire 
+
+Destination 
+Date de départ
+choix circuit = reservation vol + hebergement ou sans + nombre de personnes 
+
+6 circuits possibles
+
+reservation vol  + 1 personne
+reservation vol  + couple 
+reservation vol  + famille ou groupe = forfait 
+reservation vol  + hotel motel + 1 personne
+reservation vol  + hotel/motel + + couple 
+reservation vol  +  famille ou groupe = forfait 
+
+
+
+tables bases de donnees
+
+civilité (de la personne qui reserve)
+
+nom
+prenom
+email
+Téléphone 
+quartier/ville ou pas de residence
+destination
+date
+circuit choix à faire 
+textarea : laisser un message
+
+
+lien CGV vers un fichier pdf en dessous 
+exemple : Téléchargez nos conditions de vente
+
+
+
+
+
+
 ---------------avantage de faire appel ou choisir une agence de voyage ---------------
 Les agences web : personnalisation et accompagnement. Convient à ceux qui veulent prendre le temps d’organiser eux-mêmes leurs vacances pour avoir un séjour personnalisé, tout en bénéficiant de conseils et d’un suivi sur place.
 

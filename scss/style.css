@@ -1,6 +1,177 @@
 html,
 body {
   margin: 0px;
-  padding: 0px;
+  padding:0px;
   font-family: "Lato", sans-serif;
 }/*# sourceMappingURL=style.css.map */
+/*header*/
+.entete {
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  padding: 20px;
+  font-weight: bold;
+  color: #0C273D;
+}
+.logo {
+  background-color:  #0C273D;
+}
+img{
+max-width: 180px;
+height: auto;
+}
+
+/*header-2-nav-bar*/
+#menu{
+    font-weight: bolder;
+    margin-bottom:100px;
+}
+/*nav-bar recherche*/
+#recherche{
+  margin-bottom: 50px;
+  background-image:url("images/.banniere.png");
+  background-size: cover;  
+  background-repeat:no-repeat;
+}
+#form{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+  
+}
+.btn-primary {
+  background-color: #0C273D;
+}
+.text-centre {
+  text-align: center;
+  font-weight: bold;
+
+}
+/*Page centrale / Accueil*/
+main, .content{
+   margin-top: 20px;
+   padding:10px;
+}
+/*articles*/
+article{
+  justify-content: center;
+  padding:10px;
+
+  
+}
+.infos{
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  padding:0px;
+
+}
+#info{
+  padding: 10px;
+  background-color: #0C273D;
+  color:#FFFEF1;
+  border:5px solid;
+  border-radius:15px;
+}
+.ancre{
+    text-decoration: none;  
+    color:#FFFEF1;
+
+}
+/*carouselle*/
+#caroussel{
+  width: 375px;
+  height: 230px;
+  padding:0px;
+  overflow: hidden;
+  border: 2px solid #2C5E2E;
+  border-radius: 5px;
+}
+.images{
+  display: flex;  
+  animation-duration:30s;
+  animation-direction: alternate;
+  animation-name: imagesAnimee;
+  animation-iteration-count: infinite;
+}
+
+@keyframes imagesAnimee{
+      0%{
+        transform: translateX(0);
+       }
+      20%{
+        transform:translatex(-350px);
+       }
+      40%{
+        transform:translateX(-700px);
+       }
+      60%{
+        transform:translateX(-1050px);
+       }
+      80%{
+        transform: translate(-1350px);
+       }
+       100%{
+        transform: translateX(0);
+       }
+}
+.section
+{
+  display: flex;
+  margin-top: 20px;
+  background-color: #0C273D;
+  color:#FFFEF1;
+}
+#aside{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  padding:10px;
+}
+/*footer*/
+.footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  background-color: #0C273D;
+  padding:30px;
+  
+}
+footer a {
+  text-decoration: none;
+  color:#FFFEF1;
+  font-size:larger;
+  font-weight: bolder;
+
+}
+.element
+{
+  border: 1px solid;
+  border-radius: 10px;
+  padding:10px;
+}
+em{
+  font-size: larger;
+  font-weight: bold;
+  color:#2C5E2E;
+}
+b{
+  color: #0C273D;
+}
+/*externe :first-child::before {
+  content: "\0020 \2302";
+}
+*/
+
+@media screen and (max-width:768px) {
+
+  }
+  
+
+@media screen and (max-width:350px) {
+footer{
+  flex-direction:colum;
+}
+
+}
