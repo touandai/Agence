@@ -1,3 +1,12 @@
+<?php
+$Title='Avis clients, Afrique Centrale Découverte';
+
+include 'include-frontend/header.php';
+
+
+?>
+
+<main>
 
 <div class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         
@@ -24,5 +33,9 @@
             </form> 
          </div>
 
-<?php 
-include 'footer.php';
+</main>
+
+<?php
+include 'include-frontend/footer.php';
+
+?>

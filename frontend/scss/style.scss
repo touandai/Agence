@@ -1,0 +1,218 @@
+
+$primary: #0C273D;
+$secondary: #FFFEF1;
+$tertio: #0b2020;
+$nature: #2C5E2E;
+$autre2: #54D0ED;
+
+@mixin page-formulaire{
+        display: flex;
+        justify-content: center;    
+}
+@mixin formulaire {
+    margin:10px;
+    padding:10px;
+    legend{
+        color:#0b2020;
+        font-weight: bolder
+    }
+ }
+
+html,
+body {
+    margin: 0px;
+    padding:0px;
+    font-family: 'Lato', sans-serif;
+}
+ /*header-1-entete*/
+.entete {
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    padding: 20px;
+    font-weight: bold;
+    color: $autre2;
+        img{
+            max-width: 160px;
+            height: auto;
+           }
+  }
+  /*header-2-nav-bar*/
+  header{
+    margin-bottom: 100px;
+       nav{
+          #menu{
+            font-weight: bolder;
+          }
+       }
+  }
+  img{
+    max-width: 160px;
+    height: auto;
+    }
+  /*nav-bar recherche*/
+section {
+    background-image: url("images/banniere.png");
+    background-size: cover;  
+    background-repeat:no-repeat;
+    #form-recherche{
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+        padding: 10px;
+        
+      }
+}
+  /*Page principale / Accueil*/
+main{
+    .content{
+        margin-top: 20px;
+        padding:10px;
+    }
+    article{
+        justify-content: center;
+        padding:10px;
+    
+      }
+}
+  /*articles*/
+  .infos{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    padding:0px;
+  
+  }
+  #info{
+    padding: 10px;
+    background-color: $primary;
+    color:$secondary;
+    border:5px solid;
+    border-radius:15px;
+  }
+
+  /*carouselle*/
+  #caroussel{
+    width: 375px;
+    height: 230px;
+    padding:0px;
+    overflow: hidden;
+    border: 1px solid;
+    border-radius: 5px;
+  }
+  .images{
+    display: flex;  
+    animation-duration:30s;
+    animation-direction: alternate;
+    animation-name: imagesAnimee;
+    animation-iteration-count: infinite;
+  }
+  @keyframes imagesAnimee{
+        0%{
+          transform: translateX(0);
+         }
+        20%{
+          transform:translatex(-350px);
+         }
+        40%{
+          transform:translateX(-700px);
+         }
+        60%{
+          transform:translateX(-1050px);
+         }
+        80%{
+          transform: translate(-1350px);
+         }
+         100%{
+          transform: translateX(0);
+         }
+  }
+  section{
+         .section{
+            display: flex;
+            margin-top: 20px;
+            background-color:$primary;
+            color:$secondary;
+         }
+  }
+
+  /*footer*/
+
+.footer{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    background-color:$primary;
+    padding:30px;
+}
+footer a{
+  text-decoration: none;
+  color:$secondary;
+  font-size:larger;
+  font-weight: bolder;
+}
+.element
+  {
+    border: 1px solid;
+    border-radius: 10px;
+    padding:10px;
+}
+
+/* autres class*/
+
+.btn-primary {
+    background-color:$primary;
+        }
+.text-centre {       
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+        }
+.titre{
+    text-align: center;
+ }
+.ancre{
+    text-decoration: none;  
+    color:$secondary;
+    }
+em{
+    font-size: larger;
+    font-weight: bold;
+    color:$nature;
+}
+ b{
+    color: $primary;
+    }
+/*
+    a:first-child::before) {
+        content: "\0020 \2302";
+      }
+*/
+
+/*pages formulaire inscription-espace-client-contact-*/
+.connexion .inscription .contact{
+      margin-top: 30px;
+      padding:10px;
+}
+
+section{
+  @include page-formulaire;
+}
+
+form{
+  @include formulaire;
+  
+}
+
+/* Média queries*/
+
+@media screen and (max-width:768px) {
+  
+    }
+  
+@media screen and (max-width:350px) {
+  footer{
+    flex-direction:colum;
+  }
+  
+  }

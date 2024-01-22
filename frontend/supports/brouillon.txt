@@ -1,6 +1,9 @@
+<a href="www.fantastic-africa.com">Je m'informe</a>
+<a href="https://fr.wikipedia.org/wiki/Tourisme_en_Afrique">Tourisme en Afrique</a>
 
-
-
+  background-image: url("afrique-centrale-decouverte/images/banniere.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 
 
 -------------Accueil
