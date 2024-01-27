@@ -4,14 +4,28 @@
 $Title='Espace Client,Afrique Centrale Découverte';
 
 include 'include-frontend/header.php';
+/*
+if(array_key_exists('connexion',$_POST['connexion'])){
 
+    
+}
+    //Récupérer les données du formulaire de connexion
 
+    $email = htmlspecialchars($_POST['email']);
+    $password = htmlspecialchars ($_POST['password']);
 
+    //verifier si l'email existe en base
 
+    $query = "SELECT * FROM user WHERE email = :email";
+    $verifEmail = $pdo->prepare($query);
+    $verifEmail->bindParam(':email', $email);
+    $verifEmail->execute();
+    */
 ?>
 
-    <h1 class="text-center">Accéder / Créer mon Compte</h1>
 
+    <h1 class="text-center"><b>Accéder ou Créer mon Compte</b></h1>
+    <br>
      <main class="container connexion">
 
         <section>
@@ -45,6 +59,7 @@ include 'include-frontend/header.php';
                             <button class="btn btn-primary" name="connexion" type="submit" id="connexion">Connexion</button>
                             Nouveau? <a href="inscription.php"> Inscrivez-vous d'abord!</a>
                             <p style = color:red; id="erreur">
+                            <br><b>Mot de pass oublié?</b><span>Réinitialiser mot de pass.</span> 
 
                 </fieldset>
             </form> 
@@ -53,7 +68,12 @@ include 'include-frontend/header.php';
 
 <!--footer-->
 
-<?php include 'include-frontend/footer.php'; ?> 
+<?php 
+
+include 'include-frontend/footer.php'; 
+
+
+?> 
           
      
 

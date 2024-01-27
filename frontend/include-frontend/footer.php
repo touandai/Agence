@@ -4,7 +4,7 @@
     
     <div class="col" >
         <p class="text-centre"><b>Les derniers avis de nos clients</b></p><br>
-
+        <a href="avis.php">laissez un avis Test</a>
     </div>
     <div class="col reseaux-sociaux">
         <div>
@@ -15,24 +15,32 @@
                                 <a href="#"><a href=""><img src="images/whatapps.png" alt="whatapps"/></a>        <a href="#"><img src="images/twiter.png" alt="twiter" /></a>
                                       <a href="#"><img src="images/tiktok.png" alt="tiktok"/></a>       
             </pre>
-        </div>    
+        </div> 
+
     </div>
 </aside>
 
-<section>
-
 <footer class="container-fluid footer">
-            <div class="element">
-                <a class="element" href="politique.html">Politiques de confidentialité </a>
-            </div>
-            <div class="element">
-                <a class="element" href="cgv.html">CGV</a>
-            </div>
-            <div class="element">
-                <a class="element" href="contact.php">Contact</a>
-            </div>
-            <div class="element">
-                <a class="element" href="https://cemac.int/">Je m'informe sur la région</a>
-            </div>
+    <div class="row">
+        <div class="col">
+            <a href="contact.php">Contact</a>       
+        </div>
+        <div class="col">
+            <h4 class="text-center ancre">Nos horaires d'ouverture</h4>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+             <a  class="ancre" href="politique.html">Politiques de confidentialité </a>
+        </div>
+        <div class="col">
+             <a  class="ancre" href="cgv.html">CGV</a>
+        </div>
+        <div class="col">
+            <p class="ancre">Du lundi au samedi de : 7h30 - 12h00 et de : 13h00 - 17:00</b></p>  
+        </div>
+    </div>
 </footer>
-</section>
+

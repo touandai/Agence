@@ -10,29 +10,31 @@ include 'include-frontend/header.php';
         <div id="form-recherche" class="container input-group">
              <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Destination" aria-label="Search">
-                <input class="form-control me-2" type="search" placeholder="Depart" aria-label="Search">
+                <input class="form-control me-2" type="search" placeholder="Date Depart" aria-label="Search">
                 <input class="form-control me-2" type="search" placeholder="Circuits" aria-label="Search">
-                <button class="btn btn-primary" type="submit">Recherche</button>
+                <button class="btn btn-secondary" type="submit">Recherche</button>
              </form>
         </div>
 </section>
-
+        
 
 
 <main class="container content">
  
 
     <article class="container text-center main p-4">
-                <h1 class="text-center text-primary">Des voyages à petits prix! </h1>
+                <h1 class="titre">Des voyages à petits prix! </h1>
                 <br><br>
         <div class="row row-cols-2 align-items-center"> 
+
             <div id="info" class="col">
-                <h1>De belles natures à découvrir!</h1>
+
+                <h2>De belles natures à découvrir!</h2>
                 <br>
                 <div id="lien-galerie">
                     <a class="ancre" href="galerie.html">
                         <dl>
-                        <dt>Chûte de Boali, Péninsule de Bakassi ...<br></dt>
+                        <dt>Chûte de Boali, Péninsule de Bakassi ...<br><br><br></dt>
                         <dd><span>La faune vous reserve beaucoup de surprises.<br> 
                         Accéder à la galérie photos pour visiter quelques lieux.</span></dd>
                     </a>    
@@ -52,7 +54,7 @@ include 'include-frontend/header.php';
     </article>
 
     <article class="container main p-4"> 
-                <h1 class="text-center text-primary">A PROPOS </h1>
+                <h1 class="text-center title">A Propos </h1>
                 <br><br><br>
             <div class="row row-cols-2">
                 <div class="col">

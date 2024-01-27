@@ -20,12 +20,19 @@ body {
   height: auto;
 }
 
+#logo {
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 5px;
+}
+
 /*header-2-nav-bar*/
 header {
   margin-bottom: 100px;
 }
-header nav #menu {
-  font-weight: bolder;
+
+#menu {
+  font-weight: bold;
 }
 
 img {
@@ -34,16 +41,17 @@ img {
 }
 
 /*nav-bar recherche*/
-section {
-  background-image: url("images/banniere.png");
+#recherche {
+  background-image: url("../images/banniere.png");
   background-size: cover;
   background-repeat: no-repeat;
+  margin-bottom: 10px;
 }
+
 section #form-recherche {
   display: flex;
   justify-content: center;
-  margin: 10px;
-  padding: 10px;
+  padding: 50px;
 }
 
 /*Page principale / Accueil*/
@@ -57,16 +65,9 @@ main article {
 }
 
 /*articles*/
-.infos {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  padding: 0px;
-}
-
 #info {
   padding: 10px;
-  background-color: #0C273D;
+  background-color: #2C5E2E;
   color: #FFFEF1;
   border: 5px solid;
   border-radius: 15px;
@@ -119,11 +120,9 @@ section .section {
 
 /*footer*/
 .footer {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-around;
+  margin-top: 10px;
+  padding: 50px;
   background-color: #0C273D;
-  padding: 30px;
 }
 
 footer a {
@@ -134,14 +133,18 @@ footer a {
 }
 
 .element {
-  border: 1px solid;
-  border-radius: 10px;
-  padding: 10px;
+  color: #54D0ED;
+  padding: 5px;
 }
 
 /* autres class*/
 .btn-primary {
   background-color: #0C273D;
+}
+
+.btn-secondary {
+  background-color: #2C5E2E;
+  color: #FFFEF1;
 }
 
 .text-centre {
@@ -152,10 +155,10 @@ footer a {
 
 .titre {
   text-align: center;
+  color: #0C273D;
 }
 
 .ancre {
-  text-decoration: none;
   color: #FFFEF1;
 }
 
@@ -174,10 +177,32 @@ b {
         content: "\0020 \2302";
       }
 */
+/*pages galérie*/
+.galerie {
+  background-image: url("../images/img.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 20px;
+}
+
+/*pages destination*/
+.aside {
+  display: flex;
+  justify-content: center;
+}
+
 /*pages formulaire inscription-espace-client-contact-*/
 .connexion .inscription .contact {
   margin-top: 30px;
   padding: 10px;
+}
+
+/*pages avis*/
+section, .avis {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 section {
@@ -195,8 +220,8 @@ form legend {
 }
 
 /* Média queries*/
-@media screen and (max-width: 350px) {
-  footer {
-    flex-direction: colum;
+@media screen and (max-width: 400px) {
+  #form-recherche {
+    flex-direction: column;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -5,7 +5,7 @@ include 'include-frontend/header.php';
 
 ?>
 
-<h1 class="text-center">Formulaire d'inscription</h1>
+<h1 class="text-center"><b>Formulaire d'inscription</b></h1>
 
 <main class="container inscription">
 

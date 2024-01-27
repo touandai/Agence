@@ -5,7 +5,7 @@ include 'include-frontend/header.php';
 
 ?>
 
-<h1 class="text-center">Contactez l'agence ?</h1>
+<h1 class="text-center"><b>Contactez l'agence ?</b></h1>
 
 
 <main class="container contact">
@@ -17,17 +17,19 @@ include 'include-frontend/header.php';
                  <legend>Pour toutes vos question, vous pouvez nous envoyer votre message</legend>   
 
                    <div class="mb-3">
-                        <label class="form-label">Civilité : *</label>
-                        <select class="form-control" name="civilite" id="civilite">
-                                <option value="">-- civilite --</option>
-                                <option value="1">Monsieur</option>
-                                <option value="2">Madame</option>
+
+                        <label class="form-label">Type demande : *</label>
+                        <select class="form-control" name="motif" id="motif">
+                                <option value="0">-- Veuillez renseigner le type de votre demande --</option>
+                                <option value="1">Informations</option>
+                                <option value="2">Reclamation</option>
                         </select>    
                         <?php
-                        if(isset($_GET['civilite']) && ($_GET['civilite']==1)){
-                        echo '<strong> Veuillez indiquer votre civilité </strong>';
+                        if(isset($_GET['motif']) && ($_GET['motif']==1)){
+                        echo '<strong> Veuillez indiquer le motif </strong>';
                         }
                         ?>
+
                     </div>
 
                     <div class="mb-3">
@@ -38,9 +40,20 @@ include 'include-frontend/header.php';
                         echo '<strong> Veuillez saisir votre nom </strong>';
                         }
                         ?>
+
                     <div class="mb-3">
                         <label class="form-label">E-mail: *</label>
                         <input class="form-control" type="email" name="email" id="email" placeholder="monadresse@.....">
+                        <?php
+                        if(isset($_GET['email']) && ($_GET['email']==1)){
+                        echo '<strong> Veuillez indiquer votre civilité </strong>';
+                        }
+                        ?>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Telephone: *</label>
+                        <input class="form-control" type="text" name="telephone" id="telephone" placeholder="+236....">
                         <?php
                         if(isset($_GET['email']) && ($_GET['email']==1)){
                         echo '<strong> Veuillez indiquer votre civilité </strong>';

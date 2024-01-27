@@ -1,6 +1,6 @@
 
 $primary: #0C273D;
-$secondary: #FFFEF1;
+$secondary:#FFFEF1;
 $tertio: #0b2020;
 $nature: #2C5E2E;
 $autre2: #54D0ED;
@@ -17,7 +17,6 @@ $autre2: #54D0ED;
         font-weight: bolder
     }
  }
-
 html,
 body {
     margin: 0px;
@@ -37,32 +36,38 @@ body {
             height: auto;
            }
   }
-  /*header-2-nav-bar*/
-  header{
-    margin-bottom: 100px;
-       nav{
-          #menu{
-            font-weight: bolder;
-          }
-       }
+#logo{
+
+    border:2px solid;
+    border-radius: 10px;
+    padding: 5px;
   }
-  img{
+  /*header-2-nav-bar*/
+header{
+    margin-bottom: 100px;
+  }
+#menu{
+  font-weight: bold;
+}
+
+img{
     max-width: 160px;
     height: auto;
     }
   /*nav-bar recherche*/
-section {
-    background-image: url("images/banniere.png");
+#recherche {
+    background-image: url("../images/banniere.png");
     background-size: cover;  
     background-repeat:no-repeat;
-    #form-recherche{
+    margin-bottom: 10px;
+}    
+
+section  #form-recherche{
         display: flex;
         justify-content: center;
-        margin: 10px;
-        padding: 10px;
-        
+        padding: 50px;
       }
-}
+
   /*Page principale / Accueil*/
 main{
     .content{
@@ -76,16 +81,10 @@ main{
       }
 }
   /*articles*/
-  .infos{
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    padding:0px;
-  
-  }
   #info{
+
     padding: 10px;
-    background-color: $primary;
+    background-color:$nature;
     color:$secondary;
     border:5px solid;
     border-radius:15px;
@@ -127,23 +126,20 @@ main{
           transform: translateX(0);
          }
   }
+
   section{
          .section{
             display: flex;
             margin-top: 20px;
             background-color:$primary;
             color:$secondary;
-         }
+     }
   }
-
   /*footer*/
-
 .footer{
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
+    margin-top: 10px;
+    padding:50px;
     background-color:$primary;
-    padding:30px;
 }
 footer a{
   text-decoration: none;
@@ -153,9 +149,8 @@ footer a{
 }
 .element
   {
-    border: 1px solid;
-    border-radius: 10px;
-    padding:10px;
+    color:#54D0ED;
+    padding:5px;
 }
 
 /* autres class*/
@@ -163,6 +158,11 @@ footer a{
 .btn-primary {
     background-color:$primary;
         }
+.btn-secondary
+        {
+          background-color:$nature;
+          color:$secondary;
+}        
 .text-centre {       
     text-align: center;
     font-weight: bold;
@@ -170,31 +170,54 @@ footer a{
         }
 .titre{
     text-align: center;
+    color: $primary;
  }
 .ancre{
-    text-decoration: none;  
     color:$secondary;
     }
 em{
-    font-size: larger;
+    font-size:larger;
     font-weight: bold;
     color:$nature;
 }
  b{
     color: $primary;
-    }
+
+   }
+
 /*
     a:first-child::before) {
         content: "\0020 \2302";
       }
 */
 
+/*pages galérie*/
+
+.galerie{
+  background-image: url("../images/img.png");
+  background-size: cover;  
+  background-repeat:no-repeat;
+  margin-bottom: 20px;
+}
+/*pages destination*/
+.aside{
+  display: flex;
+  justify-content: center;
+  
+}
+
 /*pages formulaire inscription-espace-client-contact-*/
 .connexion .inscription .contact{
       margin-top: 30px;
       padding:10px;
 }
-
+/*pages avis*/
+section, .avis{
+  display: flex;
+  justify-content: center;
+  margin-top:10px;
+  margin-bottom: 10px;
+}
 section{
   @include page-formulaire;
 }
@@ -203,16 +226,10 @@ form{
   @include formulaire;
   
 }
-
-/* Média queries*/
-
-@media screen and (max-width:768px) {
-  
-    }
-  
-@media screen and (max-width:350px) {
-  footer{
-    flex-direction:colum;
+/* Média queries*/ 
+@media screen and (max-width:400px) {
+   #form-recherche{
+    flex-direction: column;
   }
   
   }

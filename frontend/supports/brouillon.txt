@@ -1,3 +1,81 @@
+ transiter des données à caractère personnel dans une URL telles que identifiants ou mots de passe.
+      <div class="element">
+                <a href="contact.php">Contact</a>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <h4 class="text-centre">Nos horaires d'ouverture</h4>
+                    <p>Du lundi au samedi, le matin de <br>7h30-12h00<b>l'apres-midi de<b>13h00-17:00</p>
+                </div>
+            </div>    
+            <div class="col-4 col-lg-4">
+                <a href="politique.html">Politiques de confidentialité </a>
+            </div>
+
+            <div class="col-4 col-lg-4">
+                <a href="cgv.html">CGV</a>
+            </div>
+            <div class="col-4 col-lg-4 element">
+                <a href="https://cemac.int/">Je m'informe sur la région</a>
+            </div>
+
+------CAMEROUN
+très convoité par 2 Etats voisin , la péninsule de Bakassi est la scène d’un conflit entre le Cameroun et le Nigeria. Le conflit a atteint son apogée en 1993
+
+---------Centrafrique parc Dzanga sangha
+Dzanga sangha est certainement un des plus beaux et des plus sauvages parcs nationaux d'Afrique.
+Le meilleur des voyages en Afrique !
+La saline, les pygmées, les éléphants et toutes les activités proposées sont magnifiques !
+Attention cependant la zone n'est pas totalement sécurisée
+
+
+----------Gabon les plages de Pongara
+
+Votre séjour touristique au Gabon vous conduira dans l'un des 13 parcs nationaux du Gabon. En parcourant ces parcs vous découvrirez les trésors naturels du Gabon notamment les chutes de Koungou, les plages de Pongara.
+
+venez découvrir Pongara.
+
+
+-----------Congo Le port de Loango
+Dans le golfe de Guinée, à cheval sur l'équateur, le Congo s'étend sur 1500 km de long et se divise en 12 départements. C'est l'un des huit états qui composent l'Afrique centrale
+
+Venez découvrir Le port de Loango qui a vu 2 millions d' esclaves africains embarquer pour les Amériques.
+
+
+
+
+un circuit à un tarif = prix vol + prix hebergement
+
+
+données table reservation (date, prix, id client id circuit)
+
+
+
+une reservation concerne un circuit , un circuit correspond à une reservation de vol aller et retour + hebergement ou une reservation de vol aller et retour simple 
+ou une reservation d'hebergement simple 
+
+chaque circuit comporte à l'arrivée de mise à disposition d'information gratuits.
+
+entre circuit et hebergement possibilité d'une relation de plusieurs à plusieurs
+
+CIRCUITS ET VOL ---- Relations dans un vol il peut y avoir plusieurs circuits 
+CIRCUITS ET HEBERGEMENT ---  relation dans un circuit il peut y avoir 
+
+possible qu'il y ait une table type hebergement entre hebergement et sa categorie ou type 
+
+Une réservation pour une programmation donnée de circuit est possible si et seulement si le nombre de places à réserver est inférieur ou égal au nombre de places disponibles de la programmation ; si la programmation est possible, le nombre de places disponibles est alors décrémenté du nombre de places réservées. 
+
+Un circuit peut être programmé 
+ 
+Un Hebergement peut être associé à aucune ou plusieurs circuits
+
+un vol est lié à 1 ou^plusieurs circuits
+
+reserva
+
 <a href="www.fantastic-africa.com">Je m'informe</a>
 <a href="https://fr.wikipedia.org/wiki/Tourisme_en_Afrique">Tourisme en Afrique</a>
 
