@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assets/bootstrap.icons.min.css">
     <link rel="stylesheet" href="assets/bootstrap.min.css">
     <link rel="stylesheet" href="scss/style.css">
-    <link rel="stylesheet" href="index.css">
+    
 </head>
 <body>
 

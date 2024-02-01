@@ -6,7 +6,7 @@ include 'include-frontend/header.php';
 
 ?>
 
-<h1 class="text-center">Nos Circuits </h1>
+<h1 class="text-center"><b>Nos Circuits</b></h1>
 
 
 <main class="container text-center main p-4">

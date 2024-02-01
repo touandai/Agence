@@ -1,0 +1,3 @@
+Comme vous pouvez le constater, le choix du mode influe fortement sur les opérations que nous allons pouvoir réaliser sur le fichier en question.
+
+Par exemple lorsqu’on ouvre un fichier en lecture seulement toute modification de ce fichier est impossible, ce qui n’est pas le cas si on choisit un mode permettant l’écriture dans ce fichier.

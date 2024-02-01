@@ -1,6 +1,9 @@
 <?php
 $Title ="gestion-avis";
 
+require '../include/entete.php';
+
+require '../include/menu-nav.php';
 
 ?>
 

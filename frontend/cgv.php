@@ -4,7 +4,7 @@ include 'include-frontend/header.php';
 
 ?>
 
-
+<h1 class="text-center"><b>Conditions Générales de Ventes</b></h1> 
 
 
 

@@ -1,12 +1,11 @@
 <?php
-/* Démarrage session */
 
+$Title='Dashboard, Afrique Centrale Découverte.';
+/* Démarrage session */
 /*session_start();
 
 
 /* Racine du projet */
-$document_root = "afrique-centrale-decouverte";
-
 
 $page = (isset($_GET['page'])) ? $_GET['page'] : "connexion";
 
@@ -28,8 +27,8 @@ switch($page) {
     break;
    /* connexion */
   case 'connexion';
-  require 'pages/connexion.php';
-  break;
+    require 'espaceadmin.php';
+    break;
   /* Déconnexion */
   case 'deconnexion';
     require 'pages/deconnexion.php';
@@ -37,20 +36,23 @@ switch($page) {
   /* Gestion client*/
   case 'gestion-client':
     require 'pages/gestion-client.php';
-     break;
+    break;
   /* Ajout patients*/
-    case 'gestion-circuit':
-      require 'pages/gestion-circuit.php';
-       break;
+  case 'gestion-circuit':
+    require 'pages/gestion-circuit.php';
+    break;
   /* Avis*/
   case 'avis':
-    require 'pages/avis.php';
+    require 'pages/gestion-avis.php';
     break;
   /* compte client*/
- case 'compte-client':
-    require 'pages/compte-client.php';
-     break;
-     
+  case 'compte-client':
+    require 'pages/gestion-compte-client.php';
+    break;
+ /* galerie */    
+  case 'galerie':
+    require 'pages/galerie.php';
+    break;
 }
 
 

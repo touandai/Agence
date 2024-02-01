@@ -5,7 +5,7 @@ include 'include-frontend/header.php';
 
 ?>
 
-<h1 class="text-center">Nos Destinations</h1>
+<h1 class="text-center"><b>Nos Destinations</b></h1>
 <br><br>
 
 <div><em><p class="text-center element">Nous sommes disponibles 
@@ -13,17 +13,18 @@ include 'include-frontend/header.php';
 
 <main class="container">
 
-    <section class="container text-center main p-4">
+    <section class="container text-center p-4">
         
         <div class="row row-cols-2">     
             
             <div class="col">
                 <img class="img-fluid align-items-center rounded" src="images/bakassi2.png" alt="siege"/> 
             </div>
-            <div class="col">
-                <h3 class="titre">Découvrir la péninsule de Bakassi <em>Cameroun</em></h3>
-             
-                <P>Très convoitée par 2 Etats voisins, la péninsule de Bakassi est la scène d’un 
+            <div class="col border rounded">
+
+                <h3 class="titre">Découvrir la péninsule de <b>Bakassi</b></h3>
+                <h4 class="titre"><em>Cameroun</em></h4>
+                <P class="rounded">Très convoitée par 2 Etats voisins, la péninsule de Bakassi est la scène d’un 
                 conflit entre le <b>Cameroun</b> et le <b>Nigeria.</b>
                 considerée par le gouvernement camerounais comme étant une zone de développement 
                 prioritaire, son sous sol regorge d'importantes ressources naturelles, principalement 
@@ -34,13 +35,15 @@ include 'include-frontend/header.php';
     </section>
 
 
-    <section class="container text-center main p-4">
+    <section class="container text-center p-4">
         
              <div class="row row-cols-2">     
 
-                <div class="col">
-                   <h3 class="titre">Profiter du soleil sur les plages de Pongara <em>Gabon</em></h3>
-                   <P>Votre séjour touristique au Gabon vous conduira dans l'un des 
+                <div class="col border rounded">
+
+                   <h3 class="titre">Profiter du soleil sur les plages de <b>Pongara</b></h3>
+                   <h4 class="titre"><em>Gabon</em></h4>
+                   <P class="rounded">Votre séjour touristique au Gabon vous conduira dans l'un des 
                     <b>13 parcs nationaux du Gabon.</b> En parcourant ces parcs vous découvrirez 
                     les trésors naturels du Gabon notamment les chutes de Koungou, 
                     les plages de Pongara </b> et bien d'autres lieux ...Ne soyez pas les derniers
@@ -58,7 +61,7 @@ include 'include-frontend/header.php';
 </section>
 
 
-    <section class="container text-center main p-4"">
+    <section class="container text-center p-4">
     
     <div class="row row-cols-2">     
         
@@ -66,35 +69,39 @@ include 'include-frontend/header.php';
             <img class="img-fluid align-items-center rounded" src="images/nola.png" alt="siege"/> 
         </div>
         
-        <div class="col">
-                   <h3 class="titre">Nola et Danga-Sangha, Richesses naturelles de <em>Centrafrique</em></h3>
-                   <P><b>Dzanga sangha</b> est certainement un des <b>plus beaux et des plus sauvages parcs 
-                    nationaux d'Afrique.</b>Le meilleur des voyages en Afrique ! La saline, les pygmées, 
+        <div class="col border rounded">
+                   <h3 class="titre">Richesses naturelles de <b>Danga-Sangha</b></h3>
+                   <h4 class="titre"><em>Centrafrique</em></h4>
+                   <P class="rounded"><b>Dzanga sangha</b> est certainement un des <b>plus beaux et des plus sauvages parcs 
+                    nationaux d'Afrique.</b>Le meilleur des voyages en Afrique! La saline, les pygmées, 
                     les éléphants et toutes les activités proposées sont magnifiques !Attention 
-                    cependant la zone n'est pas entièrement sécurisée, faudrait se renseigner davantage
+                    la zone n'est pas entièrement sécurisée, faudrait se renseigner davantage
                     en vous laissant guider surtout au mieux par les autorités et la population locale.
-                    Vous avez cependant, à quelques kilometre pas loin, la forêt de <b>Nola</b>, l'une des plus 
-                    attractives également de <b>Centrafrique.</b></p> 
+                    Vous avez à quelques kilometres, la forêt de <b>Nola</b>, l'une des plus 
+                    <b>attractives également.</b></p> 
                 </div>
                 
             </div>    
 
 </section>
 
-    <section class="container text-center main p-4"">
+    <section class="container text-center p-4">
     
     <div class="row row-cols-2">  
         
-        <div class="col">
-                    <h3 class="titre">Le port de Loango au <em>Congo</em></h3>
-                    <P>Situé dans le golfe de Guinée, à cheval sur l'équateur, <b>le Congo</b> s'étend sur 1500 km 
+        <div class="col border rounded">
+
+                    <h3 class="titre">Le port de <b>Loango</b></h3>
+                    <h4 class="titre"><em>Congo</em></h4>
+                    <P class="rounded">Situé dans le golfe de Guinée, à cheval sur l'équateur, <b>le Congo</b> s'étend sur 1500 km 
                     de long et se divise en 12 départements. C'est l'un des <b>huit états qui composent 
                     l'Afrique centrale.</b> Venez découvrir <b>Le port de Loango</b> qui a vu <b> 2 millions 
-                    d'esclaves africains</b> embarquer pour les Amériques, et profiter surtout de son magnifique paysage naturel.</p> 
+                    d'esclaves africains</b> embarquer pour les Amériques, et profiter surtout de son <b>magnifique 
+                    paysage naturel et sa population très accueillante.</b></p> 
                 </div>
 
                 <div class="col">
-                    <img class="img-fluid align-items-center rounded" src="images/loango.png" alt="siege"/> 
+                    <img class="img-fluid rounded" src="images/loango.png" alt="siege"/> 
                 </div>
         
     </section>

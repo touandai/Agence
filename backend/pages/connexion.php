@@ -12,7 +12,7 @@ try{
     
 
     if($conn){
-        echo 'Vous êtes bien connécté à la base de données';
+       // echo 'Vous êtes bien connécté à la base de données';
     }
 }catch (PDOException $e){
     echo $e->getMessage();
