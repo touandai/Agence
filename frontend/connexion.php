@@ -13,7 +13,7 @@ try{
        //echo 'connexion ok';
     }
 }catch (PDOException $e){
-    echo $e->getMessage();
+    echo 'message erreur de connexion' .$e->getMessage();
 }
 ?>
  

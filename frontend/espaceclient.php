@@ -8,6 +8,7 @@ require 'connexion.php';
 
 
     if(array_key_exists('connexion',$_POST)){
+        
         if(isset($_POST['email']) && empty($_POST['email'])){
             //var_dump($_POST);die;
             header("location:?email=1");
@@ -22,28 +23,25 @@ require 'connexion.php';
 
                 //verifier si l'email existe en base
 
-                $reqSelect= "SELECT * FROM user WHERE email = :email";
+                $reqSelect= 'SELECT * FROM user WHERE email = :email';
                 $verifEmail = $conn -> prepare($reqSelect);
-
                 $verifEmail->bindParam(':email', $email);
-                $connect = $verifEmail->execute();
+                $verifEmail->execute();
 
+                    //données à garder dans mon tableau $_POST//               
+                        $verifEmail -> execute ([
+                        ":email"  =>$_POST['email'],
+                        ":password" =>$_POST['password'],
+                        ]);
 
-                $verifEmail -> execute ([
-                    ":email"  =>$_POST['email'],
-                    ":password" =>$_POST['password'],
-                  ]);
-
-
-                    $user = $verifEmail ->fetch();
+                $user = $verifEmail ->fetch();
                     if(!empty($user)){
-                        $_SESSION['user_data'] = $user; 
-                        //header("location:?connexion=success");
+                        $_SESSION['infos_utilisateur'] = $user; 
                         header("location:?page=tableau-de-bord");
                     }  else{
                         header("location:?erreur=1");
                     }
-                    $echec="ce compte n'existe pas, enregistrer-vous d'abord";
+                    $echec="Ce compte n'existe pas, enregistrer-vous d'abord";
                     if (empty($user)){
                         $_SESSION['echec'] = $echec;
                         header("location:?nouveau=1");

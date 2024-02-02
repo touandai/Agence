@@ -24,7 +24,7 @@ include 'include-frontend/header.php';
                                     <th>Date de retour</th>
                                     <th>prix ttc</th>
                                     <th>photo</th>
-                                    <th>Reservation</th>
+                                    <th>Actions</th>
                                 </tr>
                         </thead>
                         <tbody>
