@@ -58,6 +58,9 @@ section #form-recherche {
 main .content {
   margin-top: 20px;
   padding: 10px;
+  justify-content: center;
+  display: flex;
+  border: 2px solide black;
 }
 main article {
   justify-content: center;
@@ -70,21 +73,20 @@ main article {
   background-color: #2C5E2E;
   color: #FFFEF1;
   border: 5px solid;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 /*carouselle*/
 #caroussel {
-  width: 375px;
-  height: 230px;
   padding: 0px;
   overflow: hidden;
-  border: 1px solid;
+  border: 2px solid;
   border-radius: 5px;
 }
 
 .images {
   display: flex;
+  height: auto;
   animation-duration: 30s;
   animation-direction: alternate;
   animation-name: imagesAnimee;
@@ -198,6 +200,17 @@ div > button, .lien {
   color: red;
 }
 
+/*page circuits*/
+.circuit {
+  display: flex;
+}
+
+.infos-circuit {
+  display: flex;
+  margin: 5px;
+  padding: 5px;
+}
+
 /*pages galérie*/
 /*
 .galerie{
@@ -262,6 +275,18 @@ section, .avis {
   content: "\0020 \2302";
 }
 */
+/*espace admin de l'utilisateur*/
+nav .menu-compte-client {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-deconnexion {
+  display: inline;
+  vertical-align: middle;
+  margin-left: 20px;
+}
+
 section {
   display: flex;
   justify-content: center;
@@ -277,8 +302,14 @@ form legend {
 }
 
 /* Média queries*/
-@media screen and (max-width: 400px) {
-  #form-recherche {
+@media screen and (max-width: 768px) {
+  #caroussel {
+    width: 375px;
+    height: 230px;
+  }
+}
+@media screen and (max-width: 992) {
+  #apropos {
     flex-direction: column;
   }
 }/*# sourceMappingURL=style.css.map */

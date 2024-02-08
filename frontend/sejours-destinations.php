@@ -70,7 +70,7 @@ include 'include-frontend/header.php';
         </div>
         
         <div class="col border rounded">
-                   <h3 class="titre">Richesses naturelles de <b>Danga-Sangha</b></h3>
+                   <h3 class="titre">Richesses naturelles de <b>Dzanga-Sangha</b></h3>
                    <h4 class="titre"><em>Centrafrique</em></h4>
                    <P class="rounded"><b>Dzanga sangha</b> est certainement un des <b>plus beaux et des plus sauvages parcs 
                     nationaux d'Afrique.</b>Le meilleur des voyages en Afrique! La saline, les pygmées, 
@@ -85,7 +85,7 @@ include 'include-frontend/header.php';
 
 </section>
 
-    <section class="container text-center p-4">
+    <section class="container text-center m-auto p-4">
     
     <div class="row row-cols-2">  
         

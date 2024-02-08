@@ -1,8 +1,15 @@
 <?php
 
+$password='romaric1534';
+$passwordhash ='';
 
+var_dump($password);
+var_dump($passwordhash);
+
+
+?>
 //fonction validation donné php
-
+/*
 $motif = valid_donnees($_POST["motif"]);
 $nom = valid_donnees($_POST["nom"]);
 $email = valid_donnees($_POST["email"]);
@@ -15,6 +22,6 @@ function valid_donnees($donnees){
     $donnees = htmlspecialchars($donnees);
     return $donnees;
 }
-?>
+
 
 

@@ -1,4 +1,27 @@
 
+
+----controle saisie php avis 
+
+
+<?php if(isset($_GET['nom']) && ($_GET['nom']==1)){
+echo '<span class="red"> Veuillez indiquer votre nom ! </span>';
+}
+?>
+
+
+<?php if(isset($_GET['note']) && ($_GET['note']==1)){
+echo '<span class="red"> Veuillez choisir une note ! </span>';
+}
+?>
+
+
+<?php if(isset($_GET['commentaire']) && ($_GET['commentaire']==1)){
+echo '<span class="red"> Veuillez saisir votre message ! </span>';
+}
+?>
+
+
+
 ------CAMEROUN
 très convoité par 2 Etats voisin , la péninsule de Bakassi est la scène d’un conflit entre le Cameroun et le Nigeria. Le conflit a atteint son apogée en 1993
 

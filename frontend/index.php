@@ -8,11 +8,11 @@ include 'include-frontend/header.php';
 <section id="recherche" class="container">
 
         <div id="form-recherche" class="container input-group">
-             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Destination" aria-label="Search">
-                <input class="form-control me-2" type="search" placeholder="Date Depart" aria-label="Search">
-                <input class="form-control me-2" type="search" placeholder="Circuits" aria-label="Search">
-                <button class="btn btn-secondary" type="submit">Recherche</button>
+             <form method="POST" action="recherche.php" class="d-flex">
+                <input class="form-control me-2" type="search" name="destination" placeholder="Destination" aria-label="Search">
+                <input class="form-control me-2" type="search" name="date_depart" placeholder="Date Depart" aria-label="Search">
+                <input class="form-control me-2" type="search" name="circuit" placeholder="Type Circuit" aria-label="Search">
+                <button class="btn btn-secondary" type="submit">recherche</button>
              </form>
         </div>
 </section>
@@ -22,10 +22,10 @@ include 'include-frontend/header.php';
 <main class="container content">
  
 
-    <article class="container text-center p-4">
+    <article class="container apropos text-center p-4">
                 <h1 class="titre"><b>Des voyages à petits prix!</b></h1>
                 <br><br>
-        <div class="row row-cols-2"> 
+        <div class="row row-cols-2 border"> 
 
             <div class="col border" id="info">
 
@@ -53,7 +53,7 @@ include 'include-frontend/header.php';
     <article class="container text-center p-4"> 
                 <h2 class="titre"><b>A Propos</b></h2>
                 <br><br>
-            <div class="row row-cols-2">
+            <div class="row row-cols-2 border">
 
                 <div class="col">
                     <img class="img-fluid rounded" src="images/image1.png" alt="siege"/> 

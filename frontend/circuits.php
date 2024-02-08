@@ -2,55 +2,67 @@
 <?php 
 $Title='Circuits, Afrique Centrale Découverte';
 
-include 'include-frontend/header.php';
+require 'include-frontend/header.php';
+
+require 'connexion.php';
 
 ?>
 
 <h1 class="text-center"><b>Nos Circuits</b></h1>
 
 
-<main class="container text-center main p-4">
+<main class="container circuit text-center main p-4">
         
-        <div class="row row-cols-1">     
+        <article class="row row-cols-1">     
             
             <div class="col table-responsive-sm">
-                libellé, destination, date départ, date retour, prix, photo, button reservation
-
+                
                     <table class="table table-striped table-sm table-bordered">
                         <thead class="thead-light">
                                 <tr>
                                     <th>Destination</th>
-                                    <th>Date de départ</th>
-                                    <th>Date de retour</th>
-                                    <th>prix ttc</th>
-                                    <th>photo</th>
+                                    <th>Prix ttc</th>
+                                    <th>Choisir un type</th>
                                     <th>Actions</th>
                                 </tr>
                         </thead>
+
+
                         <tbody>
                             
                         <?php 
 
-                            //$req = "SELECT * FROM Circuits  ORDER BY date_avis ASC ";
-                            //  $tdr = $conn -> query($req);
-                        //$resultat = $tdr -> fetchAll();
+                            $reqaffich = "SELECT 
+                            T1.destination
+                            , T2.prix
+                            , T2.id
+                            , T2.type_circuit 
+                        FROM (
+                            SELECT 
+                                destination
+                                , min (prix) as prix_min
+                            FROM agence.circuits 
+                            group by destination 
+                        ) T1
+                        LEFT JOIN agence.circuits T2 
+                            ON T2.prix = T1.prix_min AND 
+                            T2.destination = T1.destination";
 
-                            /*foreach($resultat as $key => $value) {
+                            $tdr = $conn -> query($reqaffich);
+                            $result = $tdr -> fetchAll();
+
+                            foreach($result as $key => $value) {
                         ?>
                             <tr>
-                                <td><?php echo $value['']; ?></td>
-                                <td><?php echo $value['']; ?></td>
-                                <td><?php echo $value['']; ?></td>
-                                <td><?php echo $value['']; ?></td>
-                                <td><?php echo $value['']; ?></td>
-                                <td><?php echo $value['']; ?></td>
+                                <td><?php echo $value['destination']; ?></td>
+                                <td><?php echo $value['prix']; ?></td>
+                                <td><?php echo $value['type_circuit']; ?></td>
                                 <td>
-                                <a href="?page=avis&action=ajouter&id=<?php echo $value['id']; ?>">Ajouter</a>
-                                <a href="?page=avis&action=supprimer&id=<?php echo $value['id']; ?>">Supprimer</a>
+                                <a href="?page=avis&action=ajouter&id=<?php echo $value['id']; ?>">Reserver</a>
                                 </td>
                             </tr>   
                         <?php
-                            }*/
+                            }
 
                         ?>
                         </tbody>
@@ -58,15 +70,83 @@ include 'include-frontend/header.php';
                     </table>
             </div>
     
+       
+        
+                <?php 
+                  /*  $reqaffich = "SELECT T1.destination, T2.prix, T2.id, T2.type_circuit FROM (
+                    SELECT destination, min (prix) as prix_min FROM agence.circuits group by destination ) T1
+                    LEFT JOIN agence.circuits T2 
+                    ON T2.prix = T1.prix_min AND T2.destination = T1.destination";
 
-           <div class="col">
-                formulaire
+                    $tdr = $conn -> query($reqaffich);
+                    $result = $tdr -> fetchAll();
 
-            DATE DE DÉPART	DATE DE RETOUR	DURÉE	PRIX TTC PAR PERSONNE	PAIEMENT SÉCURISÉ
-            libellé, destination, date départ, date retour, prix, photo, button reservation
-            </div>
+                    foreach($result as $key => $value) {
+                ?>
+                    <?php
+                }
+                 */
+                ?>  
 
-        </div>    
+
+<section class="container circuit">
+    
+    <div class="imagecircuit">
+        <img src="images/afrique2.png"/>
+    </div>
+
+    <div class="infos-circuits">     
+        <div class="titre"><b>Destination</div></b>
+        <div class="titre"><b>Prix ttc</div></b>
+        <div class="titre"><b>Type de circuit</div></b>
+        <div class="titre"><b>Actions</div></b> 
+    </div>
+
+</section>
+
+<section class="container circuit">
+    
+    <div class="imagecircuit">
+        <img src="images/pangara3.png"/>
+    </div>
+
+    <div class="infos-circuits">     
+        <div class="titre"><b>Destination</div></b>
+        <div class="titre"><b>Prix ttc</div></b>
+        <div class="titre"><b>Type de circuit</div></b>
+        <div class="titre"><b>Actions</div></b> 
+    </div>
+
+</section>
+<section class="container circuit">
+    
+    <div class="imagecircuit">
+        <img src="images/nola.png"/>
+    </div>
+
+    <div class="infos-circuits">     
+        <div class="titre"><b>Destination</div></b>
+        <div class="titre"><b>Prix ttc</div></b>
+        <div class="titre"><b>Type de circuit</div></b>
+        <div class="titre"><b>Actions</div></b> 
+    </div>
+
+</section>
+<section class="container circuit">
+    
+    <div class="imagecircuit">
+        <img src="images/img10.png"/>
+    </div>
+
+    <div class="infos-circuits">     
+        <div class="titre"><b>Destination</div></b>
+        <div class="titre"><b>Prix ttc</div></b>
+        <div class="titre"><b>Type de circuit</div></b>
+        <div class="titre"><b>Actions</div></b> 
+    </div>
+
+</section>
+
 
 </main>
 

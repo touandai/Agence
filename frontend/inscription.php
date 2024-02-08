@@ -2,6 +2,7 @@
 $Title='Inscriptions, Afrique Centrale Découverte';
 
 require 'include-frontend/header.php';
+
 require 'connexion.php';
 
 
@@ -67,6 +68,13 @@ if(array_key_exists('envoyer',$_POST)){
                        
             $InsertClient ='INSERT INTO agence.client(civilite, nom, prenom, age, nationalite, telephone, email, mot_de_pass, date_inscription)
             values (:civilite, :nom, :prenom, :age, :nationalite, :telephone, :email, :pwd, :date)';
+
+            /*verification email 
+                $reqSelect = 'SELECT * FROM client WHERE email = :email';
+                $verifEmail = $conn -> prepare($reqSelect);
+                $verifEmail->bindParam(':email', $email);
+                $verifEmail->execute();
+             */   
 
             $reqInsertion = $conn -> prepare ($InsertClient);
             $save = $reqInsertion->execute([
