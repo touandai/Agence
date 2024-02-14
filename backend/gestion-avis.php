@@ -1,9 +1,10 @@
 <?php
 $Title ="gestion-avis";
 
-require '../include/entete.php';
+require 'include/entete.php';
+require 'include/menu-nav.php';
 
-require '../include/menu-nav.php';
+require 'connexion.php';
 
 ?>
 
@@ -27,20 +28,22 @@ require '../include/menu-nav.php';
                     </tr>
             </thead>
             <tbody>
-            <?php 
+               
 
-                $req = "SELECT * FROM  cabinet_diet.avis  ORDER BY date_avis ASC ";
+                <?php
+
+                $reqselect = "SELECT * FROM agence.avis ORDER BY date_avis ASC";
                 
-                $tdr = $conn -> query($req);
-                $resultat = $tdr -> fetchAll();
-
+                $reqselect = $conn -> query ($reqselect);
+                $resultat = $reqselect-> fetchAll();
+       
                 foreach($resultat as $key => $value) {
-            ?>
+               ?>
                 <tr>
                     <td><?php echo $value['id'];?></td>
                     <td><?php echo $value['nom'];?></td>
                     <td><?php echo $value['note'];?></td>
-                    <td><?php echo $value['commentaire'];?></td>
+                    <td><?php echo $value['message'];?></td>
                     <td><?php echo $value['date_avis'];?></td>
 
                     <td col="2">
@@ -67,3 +70,8 @@ require '../include/menu-nav.php';
 
        </table>
 </main>
+
+<?php
+include 'include/footer.php';
+
+?>

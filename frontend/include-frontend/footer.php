@@ -76,17 +76,13 @@ require 'connexion.php';
     <div class="row text-center">
 
         <div class="col p-1">
-             <a  class="" href="cgv.html">Conditions Générales de ventesV</a>
-        </div>
-
-        <div class="col p-1">
-             <a class="" href="avis.php" >Laisser un avis</a>
+             <a  class="" href="cgv.php">Conditions Générales de ventesV</a>
         </div>
   
         <div class="col p-1">
              <a  class="ancre-footer2" href="https://cemac.int/">Cemac</a>
              <a  class="ancre-footer2" href="">Mentions utiles</a>
-             <a  class="ancre-footer2" href="https://www.afrique-tourisme.com/">S'informer utiles</a>
+             <a  class="ancre-footer2" href="https://www.afrique-tourisme.com/">infos utiles</a>
         </div>
 
     </div>  

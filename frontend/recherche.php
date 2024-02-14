@@ -1,10 +1,10 @@
 <?php
 extract($_POST);
 
-require 'connexion.php';
 $Title='Recherche de circuit, Afrique Centrale Découverte.';
+require 'connexion.php';
 
-include 'include-frontend/header.php';
+require 'include-frontend/header.php';
 ?>
 <section id="recherche" class="container">
 
@@ -12,12 +12,15 @@ include 'include-frontend/header.php';
      <form method="POST" action="recherche.php" class="d-flex">
         <input class="form-control me-2" type="search" name="destination" placeholder="Destination" aria-label="Search">
         <input class="form-control me-2" type="search" name="date_depart" placeholder="Date Depart" aria-label="Search">
-        <input class="form-control me-2" type="search" name="circuit" placeholder="Type Circuit" aria-label="Search">
+        <select class="form-control me-2" type="search" name="circuit" aria-label="Search">
+            <option value="">Choisir type Circuit</option>
+            <option value="aller/retour simple">Aller/retour simple</option>
+            <option value="aller/retour simple + hotel">aller/retour simple + hotel</option>
+        </select>
         <button class="btn btn-secondary" type="submit">recherche</button>
      </form>
 </div>
 </section>
-
 
 
 <main class="container content">
@@ -33,6 +36,7 @@ include 'include-frontend/header.php';
    */
 
   $donneesDeRecherche = [];
+  //$result ="Aucun resultat ne correspond à votre recherche";
 
     //echo ' > Ma requete initiale est : ' . $reqRecherche;
 
@@ -43,6 +47,7 @@ include 'include-frontend/header.php';
         $reqRecherche .= " AND UPPER(destination) LIKE :destination";
         $donneesDeRecherche[':destination'] =  "%".strtoupper($destination)."%";
     }
+        
     //echo "<br /> > Ensuite après ma condition 1 : " . $reqRecherche;
 
     /* Seule la date de départ est à renseigner */
@@ -56,6 +61,11 @@ include 'include-frontend/header.php';
         $reqRecherche .= " AND type_circuit = :circuit";
         $donneesDeRecherche[':circuit'] = $circuit;
     }
+    
+    /*if(empty($_POST['destination']) AND empty($date_depart) AND empty($circuit)){
+        echo "<p> $result </p>";
+    }
+    */
 
     //echo "<br /> > Après ma condition 3 : " . $reqRecherche . '<br/>';
     //var_dump($donneesDeRecherche);die;
@@ -70,16 +80,21 @@ include 'include-frontend/header.php';
 
     foreach($result as $key => $value) {
 ?>
-<div style="float: left; margin: 10px;width: 25%; padding: 10px; background: #dddddd;">
-    <div style="font-weight: bold"><?php echo $value['destination']; ?></div>
-    <div><?php echo $value['prix']; ?></div>
+<div style="float: left; margin: 10px;width: 25%; padding: 15px; background: #dddddd;">
+    <div><font color="#2C5E2E"><b>Destination : </b><?php echo $value['destination']; ?></div>
+    <div><b>Date depart : </b><?php echo $value['date_depart']; ?></div><div> 
+    <b>Type Circuit : </b><?php echo $value['type_circuit'];?><br><b>Référence: </b><?php echo $value['id']; ?></font></div>
 </div>
 <?php
     }
 ?>
 <div style="clear: both;"></div>
+<br><br>
 
 </main>
+<aside class="container btn-reservation">
+    <button class="text-centre box"><a id="boutton-reservation" href="reservation.php" style="color:white">Je réserve mon voyage, en indiquant la référence Circuit.</a></button>
+</aside>
 
 
 <?php

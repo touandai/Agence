@@ -1,9 +1,10 @@
 <?php
 $Title ="Galerie photo";
 
-require '../include/entete.php';
+require 'include/entete.php';
+require 'include/menu-nav.php';
 
-require '../include/menu-nav.php';
+require 'connexion.php';
 ?>
 
 
@@ -17,8 +18,7 @@ require '../include/menu-nav.php';
 
 
 
-
-
 <?php
+include 'include/footer.php';
 
-require '../include/footer.php';
+?>

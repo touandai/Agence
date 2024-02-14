@@ -54,20 +54,19 @@ if(array_key_exists('valider',$_POST)){
 
         <section class="" id="dropdownMenuButton" data-toggle="dropdown">
                  
-                <form class="form" method="POST" id="myform" action="">
-                                            
+                <form class="form" method="POST" id="myform" action="">                    
                        <fieldset>
                             <legend>Laissez-nous votre avis</legend>
                          
                                 <div class="p-2">
                                     <label class="form-label" for="name"><b>Pseudo / Nom :*</b></label>
-                                    <input class="form-control" type="text" name="nom" id="name"placeholdered="Martin" maxlength="15"/>
-                                    <span id="erreur1"></span>
+                                    <input class="form-control" type="text" name="nom" id="name" placeholder="Martin" maxlength="12"/>
+                                    <span id="erreur"></span>
                                 </div>
 
                                 <div class="p-2">
                                     <label class="form-label" for="note"><b>Note :*</b></label>
-                                    <input class="form-control" type="number" id="note" min="0" max="10" name="note" placeholder="choisir une note entre 0 et 10"/>
+                                    <input class="form-control" type="number" id="note" min="0" max="10" name="note" placeholder="Choisir entre 0 et 10"/>
                                     <span id="erreur2"></span>                     
                                 </div>
                                 <div class="p-2">
@@ -75,14 +74,12 @@ if(array_key_exists('valider',$_POST)){
                                     <textarea class="form-control"  name="commentaire" id="commentaire" placeholder="votre message ici"></textarea>
                                
                                     <span id="erreur3"></span>
-                               
                                </div>
                                <br>
 
                                <div class="text-center">
                                 <button class="btn btn-secondary" id="valider" name="valider" type="submit">Valider</button>
                                </div>
-                            
                         </fieldset>
                 </form> 
         </section>
@@ -193,21 +190,19 @@ require 'connexion.php';
         let inputNom = document.getElementById('name')
         let inputNote = document.getElementById('note')
         let Commentaire = document.getElementById('commentaire')
-        let myRegex = /^[a-zA-Z-\s]+$/;
+        let myRegex = /^[a-zA-Z]+$/;
 
         if (inputNom.value ==""){
-            let Erreur1 = document.getElementById('erreur1');
-            Erreur1.innerHTML ="Veuillez saisir votre nom";
-            Erreur1.style.color = 'red';
+            let Erreur = document.getElementById('erreur');
+            Erreur.innerHTML ="Veuillez saisir votre nom";
+            Erreur.style.color ='red';
             e.preventDefault();
-        } 
-        //else if (myRegex.test(inputNom.value) = false){
-        //    let Erreur1 = document.getElementById('erreur1');
-        //   Erreur1.innerHTML ="Le nom dois composer uniquement de lettres et tirets";
-        //  Erreur1.style.color = 'red';
-        //    e.preventDefault();
-        //}
-        
+        }else if (myRegex.test(inputNom.value) == false){
+            let Erreur = document.getElementById('erreur');
+            Erreur.innerHTML ="Le nom doit composer que de lettres sans espace ni tiret";
+            Erreur.style.color ='red';
+            e.preventDefault();
+        }        
         if (inputNote.value ==""){
             let Erreur2 = document.getElementById('erreur2');
             Erreur2.innerHTML ="Veuillez choisir une note";
@@ -215,7 +210,6 @@ require 'connexion.php';
 
         e.preventDefault();
         } 
-
         if (Commentaire.value ==""){
             let Erreur3 = document.getElementById('erreur3');
             Erreur3.innerHTML ="Veuillez indiquer votre message";
@@ -223,7 +217,7 @@ require 'connexion.php';
         e.preventDefault();
         }
     }) 
-
+    
 
 </script>
 

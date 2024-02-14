@@ -1,9 +1,9 @@
-
 <?php 
-
+//demarage session // 
+session_start();
 $Title='Espace Client,Afrique Centrale Découverte';
 
-include 'include-frontend/header.php';
+require 'include-frontend/header.php';
 
 require 'connexion.php';
 
@@ -13,58 +13,56 @@ require 'connexion.php';
         //vérification des champs s'ils existent et sont renseignés ou pas 
 
         if(isset($_POST['email']) && empty($_POST['email'])){
-            //var_dump($_POST);die;
-            header("location:?email=1");
-            exit();
+        header("location:?email=1");
+        exit();
         }
         if(isset($_POST['mot_de_pass']) && empty($_POST['mot_de_pass'])){
-                header("location:?password=1");
-             exit();
+        header("location:?pwd=1");
+        exit();
         }
-    
-                //Récupérer les données du formulaire de connexion
+     
+                    $email = $_POST['email'];
+                    $password = $_POST['mot_de_pass'];
 
 
-                //verifier si email et mot de pass existe en base de données
+                    //verifier si email existe en base de données //
 
-                $reqSelect = 'SELECT * FROM agence.client WHERE email = :email AND mot_de_pass = :mot_de_pass';
-                $reqExec = $conn -> prepare($reqSelect);
-                
-                $reqExec-> execute ([
-
-                    ":email"  => $_POST['email'],
-                    ":mot_de_pass" => $_POST['mot_de_pass'],
+                    $reqSelect = 'SELECT * FROM agence.client WHERE email = :email';
                     
-                    ]);
+                    $reqExec = $conn -> prepare($reqSelect);
+                    $reqExec -> bindvalue('email', $email);
+        
+                    $reqExec-> execute ([
+                        ":email"  => $_POST['email'],                 
+                        ]);
 
-                $client = $reqExec ->fetch();
+                    $client = $reqExec ->fetch(PDO::FETCH_ASSOC);
+               
                     
+                     // verification email base données  //
                     if(!empty($client)){
-                        $_SESSION['donnees_client'] = $client; 
-                        header("location:dashbord-user.php");
-                    }  else{
-                        header("location:?erreur=1");
-                    }
-                    $echec="Ce compte n'existe pas, inscrivez-vous d'abord !";
-                    if (empty($client)){
-                        $_SESSION['echec'] = $echec;
-                        header("location:?nouveau=1");
-                        
+                         //client trouvé //
+                         $_SESSION['donnees_client'] = $client;
+                        $passwordhash = $client['mot_de_pass'];
+                        if(password_verify($password, $passwordhash)){
+                            //client trouvé mot de pass correcte
+                            header("location:tableau-de-bord-client.php");
+                        }
+                        else{
+                            //client trouvé Mot de pass incorrect//
+                            header("location:?erreurpassword=1");
+                        }                        
+                    }else{
+                        //l'adresse email ne figure pas en base de données//
+                        header("location:?emailintrouvable=1");
                     }
 
    }
 
 ?>
-    <?php
 
-    if(isset($_SESSION['donnees_client'])) {
-    echo "Bonjour " .$_SESSION['donnees_client']['nom']. ", vous êtes bien connecté.";
-    }
-
-    ?>
-  
-    <h1 class="text-center"><b>Accéder à mon Compte</b></h1>
-    <br>
+<h1 class="text-center"><b>Accéder à mon Compte</b></h1>
+    
     
      <main class="container connexion">
 
@@ -85,22 +83,23 @@ require 'connexion.php';
                             </div>
                             
                             <div class="input-row">
-                            <label class="form-label" for="mot_de_pass"><b>Mot de pass : *</b></label>
-                            <input  class="form-control form-control" type="password" name="mot_de_pass" minlength="8" maxlength="15" placeholder="mot de pass">
+                            <label class="form-label" for="mot_de_pass"><b> Mot de pass : *</b></label>
+                            <input  class="form-control form-control" type="password" name="mot_de_pass" minlength="8" maxlength="15" placeholder="Mot de pass">
                             <?php
-                                if(isset($_GET['mot_de_pass']) && ($_GET['mot_de_pass']==1)){
-                                echo '<span><font color="red">Le mot de pass est obligatoire</font></span>';
+                                if(isset($_GET['pwd']) && ($_GET['pwd']==1)){
+                                echo '<span><font color="red">Veuillez saisir votre mot de pass</font></span>';
+                                }else if (isset($_GET['erreurpassword']) && ($_GET['erreurpassword']==1)){
+                                echo '<span><font color="red">Identifiant ou mot de pass incorrect ! </font></span>';
                                 }
                             ?>                   
                             </div>
                             <br>
 
                             <div class="text-center">
-
                             <button class="btn btn-primary" name="connexion" type="submit">Connexion</button>
                             <br><br>
-                            <?php if(isset($_GET['nouveau']) && ($_GET['nouveau']==1)){
-                            echo "<span><font color='red'>Compte introuvable </font></span>";
+                            <?php if(isset($_GET['emailintrouvable']) && ($_GET['emailintrouvable']==1)){
+                            echo "<span><font color='red'>Ce compte n'existe pas ! </font></span>";
                             }
                             ?>
                             </div>
@@ -109,7 +108,7 @@ require 'connexion.php';
                             <b>Nouveau? </b> <a class="lien" href="inscription.php"> Inscrivez-vous d'abord!</a>
                             <p id="erreur">
                             
-                            <br><b>Mot de pass oublié?</b> Réinitialiser mot de pass.</p>
+                            <br><b>Mot de pass oublié?</b> <a href="modification-password.php">Réinitialiser mot de pass.</a></p>
                             </div>
                 </fieldset>
             </form> 

@@ -18,7 +18,7 @@
 
     /*header et pages entête*/
     header {
-      background:#0b2020;
+      background: #0C273D;
       margin-bottom: 30px;
     }
     .logo {
@@ -40,7 +40,7 @@
       clear: both;
     }
    /*pages connexion*/
-   .connexion {
+   .connexion, .inscription{
     display: flex;
     justify-content: center;
     margin-top: 30px;
@@ -67,7 +67,7 @@
     padding: 10px;
     margin: 5px;
     text-transform: uppercase;
-    background: #0b2020;
+    background: #2C5E2E;
     color: #ffffff;
     font-size: 12px;
   
@@ -115,13 +115,13 @@
     padding: 10px;
   }
   /*page gestion circuits*/
-  #recettes
-  {
+  .circuit {
     display: flex;
-    justify-content:space-between;
+    justify-content:center;
     margin-top: 10px;
-    padding: 20px;
+    padding: 10px;
   }
+
   img{
     max-width: 100%;
     height: auto;  
@@ -143,6 +143,9 @@
   {
     color:red;
   }
+  .red{
+    color: red;
+  }
   p
   {
     color :blue;
@@ -152,8 +155,20 @@
     margin-top: 30px;
     padding:10px;
 }
+form{
+ 
+    padding:15px;
+}
+button{
+     color:#0C273D;
+}
 
 /*confimation validation formulaire*/
 .validation, h1 p{
   color: #2C5E2E;
+  
+}
+.validation{
+  padding: 100px;
+  color:#0C273D;
 }

@@ -44,7 +44,7 @@ body {
   }
   /*header-2-nav-bar*/
 header{
-    margin-bottom: 100px;
+    margin-bottom: 50px;
   }
 #menu{
   font-weight: bold;
@@ -84,6 +84,29 @@ main{
             
       }
 }
+/*formulaire recherche accueil*/
+.box{
+    //position: relative;
+    top: 5px;
+    background:$primary;
+    border: 2px solid $primary;
+    border-radius: 3px;
+    padding: 5px;
+
+  }
+.btn-reservation{
+            display: flex;
+            justify-content: center;
+
+  }
+  /*pages séjours et destinations*/
+
+#nos-destinations{
+  margin-bottom: 50px;
+}
+
+/*pages galérie*/
+
   /*articles*/
   #info{
 
@@ -161,13 +184,11 @@ footer a{
  color:$secondary;
  border: 2px solid;
  border-radius: 5px;
-
 }
-
-/*    */
 .element
   {
     color:$autre2;
+    margin-bottom: 10px;
 }
 /* autres class*/
 
@@ -199,32 +220,36 @@ em{
  b{
     color: $primary;
    }
-
+.span
+{
+  color:$autre2;
+  font-weight: bolder;
+  font-size: larger;
+  font-style: italic;
+ 
+}
 div > button, .lien{
   text-decoration: none;
   color:$primary;
   border: 1px solid;
   padding:2px;
   border-radius: 5px;
-
 }
 .red{
-  color:red;
-  
+  color:red; 
 }
 /*page circuits*/
 .circuit{
   display: flex; 
- 
 }
-
 .infos-circuit{
     display: flex;
     margin: 5px;
     padding: 5px;
-
 }
-
+.sous-titre{
+    font-weight: bolder;    
+}
 /*pages galérie*/
 /*
 .galerie{
@@ -264,12 +289,20 @@ div .carousel-item{
 .aside{
   display: flex;
   justify-content: center;
-  
 }
-/*pages formulaire inscription-espace-client-contact-*/
-.connexion .inscription .contact{
-      margin-top: 30px;
+/*pages formulaire inscription-espace-client-contact-avis*/
+.connexion .inscription .contact .reservation{
+      margin-top: 20px;
       padding:10px;
+}
+/*boutton reservation*/
+#boutton-reservation{
+   text-decoration: none;
+}
+#reservation{
+  padding:20px;
+   border:5px solid $primary;
+   border-radius: 20px;
 }
 /*pages avis*/
 section, .avis{
@@ -287,18 +320,37 @@ section, .avis{
   content: "\0020 \2302";
 }
 */
-/*espace admin de l'utilisateur*/
-nav .menu-compte-client{
-     display: flex;
-     justify-content:center;
+/*espace admin utilisateur*/
+.compteclient{
+  display: flex;
 }
-
+.compteclient a{
+  text-decoration: none;
+  padding: 5px;
+}
+.lien{
+  text-decoration: none;
+}
 .btn-deconnexion{
 display: inline;
 vertical-align: middle;
 margin-left: 20px;
 }
+/* Tableau de bord client */
+#nav-dashboard{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  margin-bottom: 10px;
+  gap:10px;
+}
 
+.menu{
+  padding:5px;
+  border:1px solid;
+  background-color: $autre2;
+  font-weight: bolder;
+}
 section{
   @include page-formulaire;
 }
@@ -313,8 +365,22 @@ form{
       height: 230px;
     }
    }
-   @media screen and (max-width: 992){
+   @media screen and (max-width: 992px){
     #apropos {
       flex-direction: column;
     }
   }
+  @media screen and (max-width: 430px){
+    .box{
+      overflow: hidden;
+    }
+  }
+
+  @media screen and (max-width: 430px){
+    .div-menu-dashboard{
+      display: Block;
+    }
+  }
+
+
+  

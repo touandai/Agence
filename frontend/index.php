@@ -11,7 +11,11 @@ include 'include-frontend/header.php';
              <form method="POST" action="recherche.php" class="d-flex">
                 <input class="form-control me-2" type="search" name="destination" placeholder="Destination" aria-label="Search">
                 <input class="form-control me-2" type="search" name="date_depart" placeholder="Date Depart" aria-label="Search">
-                <input class="form-control me-2" type="search" name="circuit" placeholder="Type Circuit" aria-label="Search">
+                <select class="form-control me-2" type="search" name="circuit" aria-label="Search">
+                        <option value="">Choisir type Circuit</option>
+                        <option value="aller/retour simple">Aller/retour simple</option>
+                        <option value="aller/retour simple + hotel">aller/retour simple + hotel</option>
+                </select>
                 <button class="btn btn-secondary" type="submit">recherche</button>
              </form>
         </div>
@@ -25,7 +29,7 @@ include 'include-frontend/header.php';
     <article class="container apropos text-center p-4">
                 <h1 class="titre"><b>Des voyages à petits prix!</b></h1>
                 <br><br>
-        <div class="row row-cols-2 border"> 
+        <div class="row row-cols-2"> 
 
             <div class="col border" id="info">
 
@@ -53,7 +57,7 @@ include 'include-frontend/header.php';
     <article class="container text-center p-4"> 
                 <h2 class="titre"><b>A Propos</b></h2>
                 <br><br>
-            <div class="row row-cols-2 border">
+            <div class="row row-cols-2">
 
                 <div class="col">
                     <img class="img-fluid rounded" src="images/image1.png" alt="siege"/> 

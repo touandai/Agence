@@ -1,3 +1,3 @@
 <aside class="container aside">
-     <a href="reservation.php"><button class="btn btn-primary text-center">Réservation</button></a>
+     <a href="circuits.php"><button class="btn btn-primary text-center">Nos circuits</button></a>
 </aside>
