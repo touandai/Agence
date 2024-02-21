@@ -41,18 +41,13 @@ if(array_key_exists('envoyer',$_POST)){
             header("location:?pwd=1");
             exit();            
             }
-
          function validation_donnees($donnees){
 
             $donnees = trim($donnees);
             $donnees = stripslashes($donnees);
             $donnees = htmlspecialchars($donnees);
-
             return $donnees;
         }
-
-
-        
             $civilite = validation_donnees($_POST['civilite']);
             $nom = validation_donnees($_POST['nom']);
             $prenom = validation_donnees($_POST['prenom']);
@@ -65,7 +60,6 @@ if(array_key_exists('envoyer',$_POST)){
              // hachage password // 
             $pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
            
-
                 // verification email en base de données //
               
                $verifEmail = 'SELECT * FROM agence.client WHERE email = :email';
@@ -76,8 +70,7 @@ if(array_key_exists('envoyer',$_POST)){
                if($result == true){
                header("location:?existe=1");
                } 
-
-              
+       
                     $InsertClient ='INSERT INTO agence.client(civilite, nom, prenom, age, nationalite, telephone, email, mot_de_pass, date_inscription)
                     values (:civilite, :nom, :prenom, :age, :nationalite, :tel, :email, :pwd, :date)';
 
@@ -218,11 +211,11 @@ if(array_key_exists('envoyer',$_POST)){
                         </div>
 
                         <div class="col">
-                            <label class="form-label"><b>Mot de pass: *</b></label>
+                            <label class="form-label"><b>Mot de passe: *</b></label>
                             <input  class="form-control form-control" type="password" name="pwd" id="password" minlength="8" maxlength="15" id="pwd" placeholder="mot de pass">
                             <?php
                             if(isset($_GET['pwd']) && ($_GET['pwd']==1)){
-                            echo '<span id="erreur5" class="red"> Veuillez enregistrer un mot de pass ! </span>';
+                            echo '<span id="erreur5" class="red"> Veuillez enregistrer un mot de passe ! </span>';
                             }
                             ?>
                         </div>

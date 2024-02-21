@@ -26,11 +26,18 @@ $valider -> execute ([
 <h3 class="text-center">Je renonce à mon voyage et souhaite annuler ma reservation</h3>
 <br>
 
+
+<?php
+   $reqaffich ="SELECT date reservations"
+
+?>
+
 <table class="table table-striped table-bordered">
     <thead>
             <tr>
                 <th>Date</th>
                 <th>Référence Reservation</th>
+                <th>Prix</th>
                 <th>Statut</th>
                 <th>Actions</th>
             </tr>
@@ -47,6 +54,7 @@ $valider -> execute ([
     ?>
         <tr>
             <td><?php  ?></td>
+            <td><?php ?></td>
             <td><?php ?></td>
             <td><?php ?></td>
             <td>

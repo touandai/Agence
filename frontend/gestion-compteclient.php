@@ -10,6 +10,12 @@ require 'connexion.php';
 
 <h1 class="text-center"><b>Modifier mes informations personnelles</b></h1>
 
+<?php
+
+    $reqaffich = 'SELECT nom, prenom, telephone, ville , mot_de_pass FROM agence.client where id=:id'
+
+
+?>
 
 <main class="container">
 
@@ -84,7 +90,7 @@ require 'connexion.php';
                     </div>
                     <br>
                     <div class="text-center">
-                        <button class="btn btn-lg btn-primary" name="envoyer" type="submit" id="envoyer">Valider mes modifications</button>
+                        <button class="btn btn-primary" name="envoyer" type="submit" id="envoyer">Valider mes modifications</button>
                     </div>
             </fieldset>
         </form>  

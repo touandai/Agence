@@ -1,6 +1,7 @@
 <?php
-$Title ='gestion-circuit, Afrique Centrale Découverte';
+$Title ='Gérer les circuits, Afrique Centrale Découverte';
 
+require 'include/header.php';
 require 'include/entete.php';
 require 'include/menu-nav.php';
 
@@ -86,8 +87,8 @@ if(array_key_exists('envoyer',$_POST)){
                                  
 }
  ?>
-
-<h1 class="text-center">Gérer les circuits</h1>
+<br>
+<h1 class="text-center">Gestion des circuits</h1>
 
 <main id="circuit" class="container">
 
@@ -103,7 +104,6 @@ if(array_key_exists('envoyer',$_POST)){
                             <th>Date de depart</th>
                             <th>Date de retour</th>
                             <th>Prix</th>
-                            <th>Image</th>
                             <th>Type_circuit</th>
                             <th>Date</th>
                             <th>Statut/Action</th>
@@ -124,7 +124,6 @@ if(array_key_exists('envoyer',$_POST)){
                       <td><?php echo $value['date_depart'];?></td>
                       <td><?php echo $value['date_retour'];?></td>
                       <td><?php echo $value['prix'];?></td>
-                      <td><?php echo $value['image'];?></td>
                       <td><?php echo $value['type_circuit'];?></td>
                       <td><?php echo $value['date'];?></td>
   
@@ -200,35 +199,31 @@ if(array_key_exists('envoyer',$_POST)){
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label"><b>Prix : *</b></label>
-                        <input class="form-control" type="text" maxlength="8" name="prix">
+                        <label class="form-label"><b>Prix TTC : *</b></label>
+                        <input class="form-control" type="text" maxlength="10" name="prix">
                         <?php
                         if(isset($_GET['prix']) && ($_GET['prix']==1)){
                         echo '<span class="red"> Saisie Prix obligatoire</span>';
                         }
                         ?>
-
                     <div class="mb-3">
-                        <label class="form-label"><b>Image: *</b></label>
-                        <input class="form-control" type="file" maxlength="30" name="image" id="email" placeholder="monadresse@.....">
-                        <?php
-                        if(isset($_GET['image']) && ($_GET['image']==1)){
-                        echo '<span class="red">Télécharger obligatoirement une image !</span>'; 
-                        }
-                        ?>
-                    </div>
-
-                    <select class="form-control me-2" name="type_circuit">
-                            <option value="">Choisir type Circuit :*</option>
-                            <option value="aller/retour simple">Aller/retour simple</option>
-                            <option value="aller/retour simple + hotel">aller/retour simple + hotel</option>
-                    </select>
+                        <label class="form-label"><b>Type de Circuit: *</b></label>
+                        <select class="form-control me-2" name="type_circuit">
+                                <option value="">--Selectionner--</option>
+                                <option value="aller/retour simple">Aller/Retour simple</option>
+                                <option value="aller/retour simple + hotel">Aller/Retour simple + hotel</option>
+                        </select>
                     <br>
-                    <?php
+                        <?php
                         if(isset($_GET['type_circuit']) && ($_GET['type_circuit']==1)){
                         echo '<span class="red">Choisir le type de circuit !</span>'; 
                         }
                         ?>
+                    <div class="mb-3">
+                        <label class="form-label"><b>Image: *</b></label>
+                        <input class="form-control" type="file" maxlength="30" name="image" id="email" placeholder="monadresse@.....">
+
+                    </div>
 
                     <div class="text-center">
                         <button class="btn btn-primary" name="envoyer" type="submit" id="envoyer">Envoyer</button>

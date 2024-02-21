@@ -227,9 +227,15 @@ div > button, .lien {
   color: red;
 }
 
+.succes {
+  color: #54D0ED;
+}
+
 /*page circuits*/
 .circuit {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .infos-circuit {
@@ -274,6 +280,10 @@ div .carousel-item img:hover {
 .carousel-item img {
   max-width: 800px;
   height: auto;
+}
+
+#cgv {
+  padding: 50px;
 }
 
 /*pages destination*/

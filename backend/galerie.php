@@ -1,6 +1,7 @@
 <?php
 $Title ="Galerie photo";
 
+require 'include/header.php';
 require 'include/entete.php';
 require 'include/menu-nav.php';
 

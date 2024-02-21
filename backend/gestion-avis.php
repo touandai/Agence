@@ -1,15 +1,15 @@
 <?php
-$Title ="gestion-avis";
+$Title ="Gérer les avis";
 
+require 'include/header.php';
 require 'include/entete.php';
 require 'include/menu-nav.php';
 
 require 'connexion.php';
 
 ?>
-
-
-<h1 class="text-center">Avis des Clients </h1>
+<br>
+<h1 class="text-center">Gestion des avis Clients </h1>
 
 <main class="container">
 
@@ -32,7 +32,7 @@ require 'connexion.php';
 
                 <?php
 
-                $reqselect = "SELECT * FROM agence.avis ORDER BY date_avis ASC";
+                $reqselect = "SELECT * FROM agence.avis ORDER BY date_avis ASC LIMIT 6";
                 
                 $reqselect = $conn -> query ($reqselect);
                 $resultat = $reqselect-> fetchAll();

@@ -5,11 +5,11 @@ include 'include-frontend/header.php';
 
 <main class="container validation">
 
-      <h1 class="text-center"><b>RRéservation envoyé avec succès !<b><h1>
+      <h1 class="text-center"><b>Réservation enregistrée avec succès !<b><h1>
      <br>
           
 
-     <p>Le coût du circuit n'est pas inclus dans votre réservation, vous devez l'ajouter lors de votre réglement !</p>
+     <p>Vous pouvez vous connectés à votre compte client pour suivre l'état de votre demande !</p>
      <br>
 
 </main>

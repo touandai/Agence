@@ -44,7 +44,7 @@
     display: flex;
     justify-content: center;
     margin-top: 30px;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
     padding: 10px;
   }
   /*deconnexion*/
@@ -166,9 +166,15 @@ button{
 /*confimation validation formulaire*/
 .validation, h1 p{
   color: #2C5E2E;
-  
+}
+.validation, a{
+ font-size: medium;
+
 }
 .validation{
   padding: 100px;
   color:#0C273D;
+}
+.titre{
+  color: #54D0ED;
 }

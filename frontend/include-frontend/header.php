@@ -24,17 +24,9 @@
 <header>        
         <nav class="navbar navbar-expand-md bg-light" data-bs-theme="white">
             <div class="container-fluid">
-                    <img class="navbar-brand" src="images/afrique1.jpg" alt="logo"/>
+                    <img class="navbar-brand" src="images/imgmenu.png" alt="logo"/>
                     <div class="navbar-brand">
-                        
-                    <?php 
-                    $userConnecte='';
-
-                    ?>
-
                     </div>
-
-
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>

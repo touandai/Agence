@@ -83,13 +83,13 @@ require 'connexion.php';
                             </div>
                             
                             <div class="input-row">
-                            <label class="form-label" for="mot_de_pass"><b> Mot de pass : *</b></label>
+                            <label class="form-label" for="mot_de_pass"><b> Mot de passe : *</b></label>
                             <input  class="form-control form-control" type="password" name="mot_de_pass" minlength="8" maxlength="15" placeholder="Mot de pass">
                             <?php
                                 if(isset($_GET['pwd']) && ($_GET['pwd']==1)){
-                                echo '<span><font color="red">Veuillez saisir votre mot de pass</font></span>';
+                                echo '<span><font color="red">Veuillez saisir votre mot de passe</font></span>';
                                 }else if (isset($_GET['erreurpassword']) && ($_GET['erreurpassword']==1)){
-                                echo '<span><font color="red">Identifiant ou mot de pass incorrect ! </font></span>';
+                                echo '<span><font color="red">Identifiant ou mot de passe incorrect ! </font></span>';
                                 }
                             ?>                   
                             </div>
@@ -108,7 +108,7 @@ require 'connexion.php';
                             <b>Nouveau? </b> <a class="lien" href="inscription.php"> Inscrivez-vous d'abord!</a>
                             <p id="erreur">
                             
-                            <br><b>Mot de pass oublié?</b> <a href="modification-password.php">Réinitialiser mot de pass.</a></p>
+                            <br><b>Mot de passe oublié?</b> <a href="modification-password.php">Réinitialiser mot de pass.</a></p>
                             </div>
                 </fieldset>
             </form> 

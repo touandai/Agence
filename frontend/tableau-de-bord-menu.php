@@ -1,8 +1,8 @@
 <?php
 //création cookie : retenir l'email //
-setcookie('clientconnecte','12345',
+setcookie('userlog', 'client',
 [
-'expires' => time() + 2*24*3600,
+'expires' => time() + 7*24*3600,
 'secure' => true,
 'httponly' => true,
 ]);
@@ -20,7 +20,7 @@ if(!isset($_SESSION['donnees_client'])){
   header("location:backend/espaceadmin.php");
 }
 //si on retrouve l'utilisateur//
-$clientConnecte = $_SESSION['donnees_client']['nom']; 
+$clientConnecte = $_SESSION['donnees_client']; 
 ?>
 
 

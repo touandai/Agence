@@ -82,8 +82,10 @@ require 'include-frontend/header.php';
 ?>
 <div style="float: left; margin: 10px;width: 25%; padding: 15px; background: #dddddd;">
     <div><font color="#2C5E2E"><b>Destination : </b><?php echo $value['destination']; ?></div>
-    <div><b>Date depart : </b><?php echo $value['date_depart']; ?></div><div> 
-    <b>Type Circuit : </b><?php echo $value['type_circuit'];?><br><b>Référence: </b><?php echo $value['id']; ?></font></div>
+    <div><b>Date de depart : </b><?php echo $value['date_depart']; ?></div>
+    <div><b>Date de Retour : </b><?php echo $value['date_retour']; ?></div>
+    <div><b>Type Circuit : </b><?php echo $value['type_circuit'];?></div>
+    <div><b>Prix : </b><?php echo $value['prix']; ?></font></div>
 </div>
 <?php
     }
@@ -92,9 +94,9 @@ require 'include-frontend/header.php';
 <br><br>
 
 </main>
-<aside class="container btn-reservation">
-    <button class="text-centre box"><a id="boutton-reservation" href="reservation.php" style="color:white">Je réserve mon voyage, en indiquant la référence Circuit.</a></button>
-</aside>
+<br>
+<h6 class="text-center"><b><a class="lien" href="circuits.php"> Je selectionne mon circuit > </a></h6>
+<br>
 
 
 <?php

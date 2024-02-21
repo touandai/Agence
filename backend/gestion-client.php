@@ -1,6 +1,7 @@
 <?php
-$Title ="gestion-client";
+$Title ="Gérer les clients";
 
+require 'include/header.php';
 require 'include/entete.php';
 require 'include/menu-nav.php';
 
@@ -91,8 +92,8 @@ if(array_key_exists('envoyer',$_POST)){
 }
 
 ?>
-
-<h1 class="text-center">Gérer les Clients</h1>
+<br>
+<h1 class="text-center">Gestion des Clients</h1>
 
 <main class="contenaire content">
 

@@ -37,10 +37,6 @@ if(array_key_exists('valider',$_POST)){
 
         header("location:succes-validation.php");
    
-    
-
-
-
 }
 
 ?>

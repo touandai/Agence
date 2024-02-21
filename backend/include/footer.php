@@ -13,19 +13,20 @@
     
 
 <footer class="container-fluid footer">
+        <div class="row">
+            <div class="col">
+                <h4 class="text-center ancre">Nos heures de travail</h4>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="col">
-                <h4 class="text-center ancre">Nos horaires d'ouverture</h4>
+               <p class="text-center ancre">Du lundi au samedi de : 7h30 - 12h00 et de : 13h00 - 17:00 </p>  
             </div>
-
         </div>
-
-
-        <div class="row">
-
-        <div class="col">
-            <p class="text-center ancre">Du lundi au samedi de : 7h30 - 12h00 et de : 13h00 - 17:00 </p>  
-        </div>
-</div>
 </footer>
+
+
+</body>
+</html>

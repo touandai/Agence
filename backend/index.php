@@ -6,8 +6,7 @@ require 'connexion.php';
 
 
 /* Racine du projet */
-
-$backend = (isset($_GET['backend'])) ? $_GET['backend'] : "espaceclient";
+$backend =(isset($_GET['backend']))?:"espaceclient";
 
 
 //Si l'utilisateur n'est pas connecté//
@@ -37,17 +36,17 @@ switch($backend) {
   case 'gestion-client':
     require 'backend/gestion-client.php';
     break;
-  /* Ajout patients*/
+  /* Gestion circuits*/
   case 'gestion-circuit':
     require 'backend/gestion-circuit.php';
     break;
-  /* Avis*/
+  /* Gestion reservation*/
+  case 'gestion-reservation':
+    require 'backend/gestion-reservation.php';
+    break;
+  /* Gestion Avis*/
   case 'avis':
     require 'backend/gestion-avis.php';
-    break;
-  /* compte client*/
-  case 'compte-client':
-    require 'backend/gestion-compte-client.php';
     break;
  /* galerie */    
   case 'galerie':

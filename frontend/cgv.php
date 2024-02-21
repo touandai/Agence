@@ -1,15 +1,10 @@
 <?php 
 
-var_dump($_COOKIE);die;
-
 // retenir l'email de la personne connectée pendant 1 an
 
 $Title='Conditions générale de ventes, Afrique Centrale Découverte';
 include 'include-frontend/header.php';
 
-$password ='1233';
-$passwordhash = md5($password);
-var_dump($passwordhash);
 
 
 ?>
@@ -18,24 +13,21 @@ var_dump($passwordhash);
 
 
 
-<main class="container">
-Conditions générales de ventes
-        Pour consulter les conditions générales de ventes
+<main id ="cgv" class="container">
 
-        lien vers un fichier pdf à telecharger
-        <nav class="navbar navbar-light bg-light">
-                <div class="container">
-                  <a class="navbar-brand" href="#">
-                    <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
-                  </a>
-                </div>
-              </nav>
+<p class="text-center">Les conditions générales de vente sont définies au I de l'article L. 441-1 du Code de commerce. Elles comprennent obligatoirement :
+les conditions de règlement ;les éléments de détermination du prix tels que le barème des prix unitaires et les éventuelles réductions de prix.<br><br>
 
+  <a href="supports/projet.pdf" download="projet.pdf">Télécharger nos conditions générales de ventes en PDF</a>
+  </a>
+
+
+</p>
 
 </main>
 
 
 <?php
-include 'include-frontend/footer.php';
+require 'include-frontend/footer.php';
 
 ?>

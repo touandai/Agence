@@ -1,51 +1,80 @@
 <?php 
+session_start();
+//echo '<pre>';
+//var_dump($_SESSION);die;
+$clientConnecte = $_SESSION['donnees_client'];
+
 $Title='Reservations, Afrique Centrale Découverte';
 
 require 'include-frontend/header.php';
 
 require 'connexion.php';
 
-
- if (isset($_POST['envoyer']) AND !empty($_POST['nombre']) AND !empty($_POST['circuit']) AND !empty($_POST['paiement'])){
-
   
+   if(array_key_exists('envoyer',$_POST)){
 
-   /*
+       
+        if(isset($_POST['nombre_personne']) AND empty($_POST['nombre_personne'])){
+        header("location:?nombre=1");
+        exit();
+        }
+        if(isset($_POST['type_reglement']) AND empty($_POST['type_reglement'])){
+        header("location:?paiement=1");
+        exit();
+        }
+        //if(isset($_POST['id_circuit']) AND empty($_POST['id_circuit'])){
+        //header("location:?id_circuit=1");
+        //exit();
+        //}
+       
+           function validation_donnees($donnees){
+                $donnees = trim($donnees);
+                $donnees = stripslashes($donnees);
+                $donnees = htmlspecialchars($donnees);
+                return $donnees;
+            }
 
-    $InsertRervation ='INSERT INTO agence.reservations(nombre_personne, prix, type_reglement, id_circuit, date_reservation)
-    values (:nombre, :prix, :paiement, :circuit, :date)';
+            $nombre_personne = validation_donnees($_POST['nombre_personne']);
+            $prix_total = validation_donnees($_POST['prix_total']);
+            $type_reglement = validation_donnees($_POST['type_reglement']);
+            $id_circuit = $_GET['id_circuit'];
+            
+           // Vérification de l'existence du circuit dans la base 
+            $reqVerifCircuit = "SELECT * FROM agence.circuits WHERE id = :idCircuit";
+            $verif = $conn -> prepare($reqVerifCircuit);
+            $verif -> bindValue(':idCircuit', $id_circuit);
+            $verif -> execute();
+            $circuit = $verif -> fetch();
+            if(empty($circuit)) {
+                header('location:circuits.php');
+                exit();
+            }
+            
+                $insertReservation ='INSERT INTO agence.reservations(nombre_personne, prix, type_reglement, id_circuit, date_reservation, statut, id_client)
+                values (:nombre_personne, :prix_total, :type_reglement, :id_circuit, :date, :statut, :idClient)';
 
-    
+                    $insert = $conn -> prepare ($insertReservation);
+                    $save = $insert-> execute([
+     
+                        ":nombre_personne" => $nombre_personne,   
+                        ":prix_total" => $prix_total,
+                        ":type_reglement" => $type_reglement,
+                        ":id_circuit" => $id_circuit,
+                        ":date" => date('Y-m-d h:m:s'),
+                        ":statut" => "En attente",
+                        ":idClient" => $clientConnecte['id'],
+                    ]);    
 
-    $reqInsert = $conn -> prepare ($InsertRervation);
-    $save = $reqInsert->execute([
-    
-    ":nombre" => $nombre,
-    ":circuit" => $circuit,   
-    ":prix" => $prix,
-    ":paiement" =>$paiement,       
-    ":date" =>date('Y-m-d h:m:s'),
-
-    ]);
-    header('location:confirmation-reservation.php');
-  */
-
+                header('location:confirmation-reservation.php');
 
 
 
 
-
-
- }
+    }
 
 ?>
 
-
-
 <h1 class="text-center"><b>Reservations<b></h1>
-
-
-
 
 <main class="container reservation">
 
@@ -54,73 +83,77 @@ require 'connexion.php';
         <form id="reservation" method="POST" action="">
 
             <fieldset>
-                <legend>Le coût de votre réservation sera affiché!</legend>   
+                <legend >Choix formule et type de réglement</legend>     
+                <!--récuperation valeur id du prix du circuit à multiplier avec le nombre de personnes-->
+                <div class="mb-3">
+                <label class="form-label"><b> Prix Circuit : </b></label>
+                <?php 
+                $id = $_GET['id_circuit'];
+                $req = "SELECT prix FROM agence.circuits WHERE id = :id";
+                $selectPrix = $conn -> prepare ($req);
+                $selectPrix -> bindvalue(':id', $id);
+                $selectPrix -> execute();
+                foreach($selectPrix as $key => $value){                
+                ?> 
+                <div class="element"><?php echo $value['prix'].' '.'F.CFA';?></div>
+                <input class="form-control" type="number" value="<?php echo $value['prix'];?>" name="prixcircuit" id="prix" maxlength="6" readonly="true">
+                <?php
+                }
+                ?>
+                </div> 
 
                 <div class="mb-3">
                     <label class="form-label"><b> Nombre de personnes : *</b></label>
-                    <select class="form-control" name="nombre" id="nombre">
+                    <select class="form-control" name="nombre_personne" id="nombre">
                                     <option value="">--Choisir--</option>
-                                    <option value="1">Solo</option>
+                                    <option value="1">Seul(e)</option>
                                     <option value="2">Couple</option>
-                                    <option value="3">Forfait Groupe</option>
+                                    <option value="3">Groupe</option>
                     </select> 
                     <?php
-                    if(empty($_POST['nombre'])){
-                    echo '<span class="red"> Veuillez choisir une formule </span>';
+                    if(isset($_GET['nombre'])==1){
+                    echo '<strong class="red"> Le choix de la formule est obligatoire ! </strong>';
                     }
                     ?>
+                    <div style="color: red;font-style:italic;" id="erreur-nombre"></div>
                 </div> 
 
-                <div class="mb-3">
-                    <label class="form-label"><b> Réference Circuit : *</b></label>
-                    <input class="form-control" type="text" name="circuit" minlength="1" maxlength="2" placeholder="25">
-                    <?php
-                    if(empty($_POST['circuit'])){
-                    echo '<span class="red"> Veuillez indiquer la réference circuit à 2 chiffres </span>';
-                    }
-                    ?> 
-                </div> 
-
+                <!--calcul prixtotal = nombre_personne  * prix circuit-->
                 <div class="row mb-3">
-                    <label class="form-label"><b> Prix ttc : </b></label>
-                    <input class="form-control" type="text" name="prix" value="" maxlength="15" placeholder="145.000"> 
+                    <label class="form-label"><b> Prix total de la réservation : </b></label> 
+                    <input class="form-control" type="text" name="prix_total" id="prix_total" readonly="true">
                 </div>
-
                 <div class="mb-3">
                     <label class="form-label"><b> Type de réglement : *</b></label>
-                    <select class="form-control" name="paiement" id="paiement">
+                    <select class="form-control" name="type_reglement" id="type_reglement">
                                     <option value="">--Choisir--</option>
-                                    <option value="espece">En agence en espèce</option>
+                                    <option value="espece">En espèce en agence</option>
                                     <option value="cheque">Chèque</option>
                                     <option value="virement">Virement</option>
                     </select> 
                     <?php
-                    if(empty($_POST['paiement'])){
-                    echo '<span class="red"> Veuillez choisir le type de réglement</span>';
-                    }
+                    if(isset($_GET['paiement'])==1){
+                        echo '<strong class="red"> Veuillez choisir un type de paiement ! </strong>';
+                        }
                     ?>
                 </div>
 
                 <div class="text-center">
-                    <button class="btn btn-primary" name="envoyer" type="submit" id="envoyer">Valider ma reservation</button>
+                    <button class="btn btn-primary" name="envoyer" type="submit" id="valider">Valider ma reservation</button>
                 </div>
             </fieldset>
         </form>  
     </section>
 </main>
 
-
-
-
-
-<script>  
-     let mareservation = document.getElementById('envoyer');
-     mareservation.addEventListener('click', function (e){
-    alert('Merci de bien lire les informations avant de procéder à votre paiement')
-     })
-
+<script>
+    /*
+    let affichprixtcc = document.getElementById('valider');
+    affichprixtcc.addEventListener('click', function (e){
+    alert('Un email de confirmation vous sera envoyé en fonction de la formule choisie ! ')
+    })
+    */
 </script>
-
 
 <?php
 require 'include-frontend/footer.php';
