@@ -24,7 +24,8 @@ require 'connexion.php';
                         <th>Note</th>
                         <th>Commentaires</th>
                         <th>Date publication</th>
-                        <th>Statut/Action</th>
+                        <th>Statut</th>
+                        <th>Action</th>
                     </tr>
             </thead>
             <tbody>
@@ -45,8 +46,15 @@ require 'connexion.php';
                     <td><?php echo $value['note'];?></td>
                     <td><?php echo $value['message'];?></td>
                     <td><?php echo $value['date_avis'];?></td>
+                    <td><?php echo $value['statut'];?></td>
 
-                    <td col="2">
+                    <td col="3">
+                    <form method="POST" action="">
+                            <select>
+                                <option>--choisir une action--</option>
+                                <option value="Confirmée">Confirmée</option>
+                                <option value="Confirmée">Annulée</option>
+                            </select>
                     <?php ?>
 
                     <a href="?page=avis&action=ajouter&id=<?php echo $value['id']; ?>"><button class="btn btn-success" type="submit">Valider</button></a>    

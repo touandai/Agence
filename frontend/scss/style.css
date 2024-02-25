@@ -48,6 +48,12 @@ img {
   margin-bottom: 10px;
 }
 
+.recherche {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 section #form-recherche {
   display: flex;
   justify-content: center;
@@ -353,13 +359,13 @@ section, .avis {
   flex-direction: column;
   justify-content: center;
   margin-bottom: 10px;
-  gap: 10px;
+  gap: 15px;
 }
 
 .menu {
   padding: 5px;
-  border: 1px solid;
-  background-color: #54D0ED;
+  border: 3px solid #0C273D;
+  background-color: #FFFEF1;
   font-weight: bolder;
 }
 

@@ -61,7 +61,12 @@ img{
     background-repeat:no-repeat;
     margin-bottom: 10px;
 }    
-
+.recherche{
+  display: flex; 
+  justify-content: center;
+  flex-wrap:wrap;
+ 
+}
 section  #form-recherche{
         display: flex;
         justify-content: center;
@@ -350,13 +355,12 @@ margin-left: 20px;
   flex-direction: column;
   justify-content:center;
   margin-bottom: 10px;
-  gap:10px;
+  gap:15px;
 }
-
 .menu{
   padding:5px;
-  border:1px solid;
-  background-color: $autre2;
+  border:3px solid $primary;
+  background-color: $secondary;
   font-weight: bolder;
 }
 section{

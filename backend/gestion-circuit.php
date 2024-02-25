@@ -83,7 +83,7 @@ if(array_key_exists('envoyer',$_POST)){
                                  ]);
                                  /* Copier l'image physique dans un dossier sur le serveur */
 
-                                 header("location:succes-validation.php");
+                                 header("location:succes-validation-admin.php");
                                  
 }
  ?>
@@ -113,7 +113,7 @@ if(array_key_exists('envoyer',$_POST)){
                 <tbody>
                   
                     <?php
-                        $reqselect = "SELECT * FROM agence.circuits ORDER BY date ASC";
+                        $reqselect = "SELECT * FROM agence.circuits ORDER BY date ASC LIMIT 10";
                         $reqselect = $conn -> query ($reqselect);
                         $resultat = $reqselect-> fetchAll();
                         foreach($resultat as $key => $value) {
@@ -128,9 +128,10 @@ if(array_key_exists('envoyer',$_POST)){
                       <td><?php echo $value['date'];?></td>
   
                       <td col="2">
+                      <button class="btn btn-warning" type="submit">Modifier</button></a> 
                       <?php ?>
 
-                      <a href="<?php echo $value['id']; ?>"><button class="btn btn-success" type="submit">Ajouter</button></a>    
+                      <button class="btn btn-success" name="envoyer" type="submit" id="envoyer">Ajouter</button>   
                        
                       <?php 
                       /*

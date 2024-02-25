@@ -7,9 +7,10 @@ setcookie('userlog', 'client',
 'httponly' => true,
 ]);
 
+
 //demarrage session//
 session_start();
-$Title='menu, Afrique Centrale Découverte';
+$Title='Compte Personnel, Afrique Centrale Découverte';
 
 require 'include-frontend/header.php';
 require 'connexion.php';
@@ -21,6 +22,7 @@ if(!isset($_SESSION['donnees_client'])){
 }
 //si on retrouve l'utilisateur//
 $clientConnecte = $_SESSION['donnees_client']; 
+
 ?>
 
 
@@ -31,7 +33,7 @@ $clientConnecte = $_SESSION['donnees_client'];
                 <a class="lien menu" href="gestion-compteclient.php"><b>Informations personnelles</b></a>
             </div>    
             <div class="user-infos">
-                <span class="btn-deconnexion"><strong>Bonjour, <?= $clientConnecte = $_SESSION['donnees_client']['nom']; ?></strong></span>
+                <span class="btn-deconnexion"><strong>Bonjour, <?= $_SESSION['donnees_client']['prenom']; ?></strong></span>
                 <span class="btn-deconnexion"><a href="deconnexion.php"><strong class="red">Me déconnecter </strong> <img src="images/logout.png" alt="Déconnexion"/></a></span>
             </div>
 </nav>

@@ -65,7 +65,7 @@ if(array_key_exists('envoyer',$_POST)){
    
                
     $InsertClient ='INSERT INTO agence.client(civilite, nom, prenom, age, nationalite, telephone, email, mot_de_pass, date_inscription)
-    values (:civilite, :nom, :prenom, :age, :nationalite, :telephone, :email, :pwd, :date_inscription)';
+    values (:civilite, :nom, :prenom, :age, :nationalite, :telephone, :email, :pwd, :date)';
 
     /*verification email 
         $reqSelect = 'SELECT * FROM client WHERE email = :email';
@@ -88,7 +88,7 @@ if(array_key_exists('envoyer',$_POST)){
     ":date" =>date('Y-m-d h:m:s'),
 
     ]);
-    header('location:succes-validation.php');
+    header("location:succes-validation-admin.php");
 }
 
 ?>
@@ -120,7 +120,7 @@ if(array_key_exists('envoyer',$_POST)){
                 <tbody>
                   
                     <?php
-                        $reqselect = "SELECT * FROM agence.client ORDER BY date_inscription ASC";
+                        $reqselect = "SELECT * FROM agence.client ORDER BY date_inscription ASC LIMIT 10";
                         $reqselect = $conn -> query ($reqselect);
                         $resultat = $reqselect-> fetchAll();
                         foreach($resultat as $key => $value) {
@@ -209,11 +209,15 @@ if(array_key_exists('envoyer',$_POST)){
                         <label class="form-label"><b> Age : *</b></label>
                         <select class="form-control" name="age" id="age">
                                 <option value="0">--Votre age--</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                                <option value="21">21</option>
+                                <?php 
+                                    for($i = 18; $i <= 70; $i++) {
+                                    ?>
+                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <?php
+                                    }
+                                    ?>  
                         </select>
+
                         <?php
                         if(isset($_GET['age']) && ($_GET['age']==1)){
                         echo '<span class="red"> Veuillez indiquer votre date de Naissance </span>';

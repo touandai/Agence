@@ -3,6 +3,7 @@ $Title ='Validation, Afrique Centrale Découverte';
 
 require 'include/header.php';
 require 'include/entete.php';
+
 require 'connexion.php';
 
 
@@ -10,13 +11,10 @@ require 'connexion.php';
 
 <main class="container validation">
 
-      <h1 class="text-center"><b>Formulaire envoyé avec succès !<b><h1>
-     <br>
-           
-
-     <p>Merci de votre visite à bientôt !</p>
-     <br>
-     <a href="espaceadmin.php"> Aller à la Page de connexion</a>
+      <h1 class="text-center"><b>Enrégistrer avec succes !<b><h1>
+      <br>
+      
+     <a class="lien" href="tableau-de-bord.php"> Revenir au  Menu </a>
      
 </main>
 

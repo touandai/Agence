@@ -26,7 +26,8 @@ require 'connexion.php';
                             <th>Type de réglement</th>
                             <th>Numero de Circuit</th>
                             <th>Date de réservation</th>
-                            <th>Statut/Action</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
                         </tr>
                 </thead>
                   
@@ -47,23 +48,20 @@ require 'connexion.php';
                       <td><?php echo $value['date_reservation'];?></td>
                       <td><?php echo $value['statut'];?></td>
   
-                      <td col="2">
-                      <?php ?>
-
-                      <a href="<?php echo $value['id']; ?>"><button class="btn btn-success" type="submit">Ajouter</button></a>    
-                       
-                      <?php 
-                      /*
+                      <td>
+                        <form method="POST" action="">
+                            <select>
+                                <option>--choisir une action--</option>
+                                <option value="Confirmée">Confirmée</option>
+                                <option value="Confirmée">Annulée</option>
+                            </select>
+                            <a href="<?php echo $value['id']; ?>"><button class="btn btn-sm btn-success" type="submit" name="valider">Valider</button></a>    
+                        </form>                
+                      <!--
                       $sup = "DELETE * FROM  agence.circuits where id = :id ";
-  
                       $tdr = $conn -> prepare ($sup);
-                      $tdr -> execute();
-                                      
-                      */          
-                      ?>
-                      
-                      <a href="?page=avis&action=supprimer&id=<?php echo $value['id']; ?>"><button class="btn btn-danger"type="submit">Supprimer</button></a>
-                      </td>
+                      $tdr -> execute();               
+                        -->         
                   </tr>   
               <?php
                   }

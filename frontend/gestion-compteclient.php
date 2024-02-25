@@ -6,99 +6,117 @@ $Title='Modification informations personnelles, Afrique Centrale Découverte';
 require 'tableau-de-bord-menu.php';
 require 'connexion.php';
 
+
+    if(array_key_exists('envoyer',$_POST)){
+       
+        if(empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['telephone']) || empty($_POST['nationalite'])){;
+        header("location:?champvide=1");
+        exit();
+
+            function validation_donnees($donnees){
+
+                $donnees = trim($donnees);
+                $donnees = stripslashes($donnees);
+                $donnees = htmlspecialchars($donnees);
+                return $donnees;
+            }
+           
+                $nom = validation_donnees($_POST['nom']);
+                $prenom = validation_donnees($_POST['prenom']);
+                $telephone = validation_donnees($_POST['telephone']);
+                $nationalite = validation_donnees($_POST['nationalite']);
+                $id= ($clientConnecte['id']);
+
+                $info_personnelles = [];
+
+                $req = 'UPDATE agence.client SET nom = ? , prenom = ? telephone = ? nationalite = ? WHERE id = :id';
+                $conn -> prepare($req);
+
+                //modification nom//
+                if(!empty($_POST['nom'])){
+               
+
+                }
+                //$validNom = $conn -> exec($nom, $_SESSION['id']);
+                //echo '<pre>';
+               // print_r($_SESSION);die;
+
+
+            
+
+        }
+    }  
 ?>
 
-<h1 class="text-center"><b>Modifier mes informations personnelles</b></h1>
+<h2 class="text-center p-4"><b>Modifier mes informations personnelles</b></h2>
+
+
+
+                  
 
 <?php
 
-    $reqaffich = 'SELECT nom, prenom, telephone, ville , mot_de_pass FROM agence.client where id=:id'
+
+            $id= ($_SESSION["donnees_client"]['id']);
 
 
+            $req = 'SELECT nom, prenom, telephone, nationalite FROM agence.client where id=:id';
+            $reqaffich =$conn -> prepare ($req);
+            $reqaffich -> bindvalue(':id', $id);
+            $reqaffich -> execute();
+            foreach($reqaffich as $key => $value){
 ?>
-
 <main class="container">
 
     <section>
 
         <form method="POST" action="">
-
             <fieldset>
                  <legend>Mise à jour des données</legend>   
-
                     <div class="row mb-3">
                             <div class="col">
-                                <label class="form-label"><b>Nom : *</b></label>
-                                <input class="form-control" type="text" name="nom" id="nom" maxlength="15">
-                                <?php
-                                if(isset($_GET['nom']) && ($_GET['nom']==1)){
-                                echo '<span id="erreur" class="red"> Veuillez saisir votre nom </span>';
-                                }
-                                ?>   
+                                <label class="form-label"><b>Nom : </b></label>
+                                <input class="form-control" type="text" name="nom" value="<?php echo $value['nom']; ?>" id="nom" maxlength="15"> 
                             </div>  
 
                             <div class="col">
-                                <label class="form-label"><b> Prenom : *</b></label>
-                                <input class="form-control" type="text" name="prenom" id="prenom" maxlength="15" placeholder="Isabelle">
-                                <?php
-                                if(isset($_GET['prenom']) && ($_GET['prenom']==1)){
-                                echo '<span id="erreur2" class="red"> Veuillez saisir votre prenom </span>';
-                                }
-                                ?>
+                                <label class="form-label"><b> Prenom :*</b></label>
+                                <input class="form-control" type="text" name="prenom" value="<?php echo $value['prenom']; ?>" id="prenom" maxlength="15" placeholder="Isabelle">
                             </div> 
                     </div>
 
                     <div class="row mb-3">
 
-                        <div class="col">
-                            <label class="form-label"><b> Telephone: *</b></label>
-                                    <input  class="form-control form-control" type="tel" name="tel" id="telephone" minlength="14" maxlength="14">
-                                <?php
-                                if(isset($_GET['tel']) && ($_GET['tel']==1)){
-                                echo '<span id="erreur3" class="red"> Veuillez saisir votre numero de telephone! </span>';
-                                }
-                                else{
-                                    
-                                }
-                                ?>
-                        </div>
-                        <div class="col">
-                            <label class="form-label"><b> Ville: *</b></label>
-                                    <input  class="form-control form-control" type="tel" name="tel" id="telephone" minlength="14" maxlength="14">
-                                <?php
-                                if(isset($_GET['tel']) && ($_GET['tel']==1)){
-                                echo '<span id="erreur3" class="red"> Veuillez saisir votre numero de telephone! </span>';
-                                }
-                                else{
-                                    
-                                }
-                                ?>
-                        </div>
+                            <div class="col">
+                                <label class="form-label"><b> Telephone: </b></label>
+                                <input  class="form-control form-control" type="tel" name="telephone" value="<?php echo $value['telephone']; ?>" id="telephone" minlength="14" maxlength="14">
+                            </div>
+                            <div class="col">
+                                <label class="form-label"><b> Nationalité : </b></label>
+                                <input  class="form-control form-control" type="text" name="nationalite" value="<?php echo $value['nationalite']; ?>" id="ville" minlength="14" maxlength="14">
+                            </div>
                     </div>
-
-                    <div class="row mb-3">
-
-                        <div class="col">
-                            <label class="form-label"><b>Mot de pass: *</b></label>
-                            <input  class="form-control form-control" type="password" name="pwd" id="password" minlength="8" maxlength="15" id="pwd" placeholder="mot de pass">
-                            <?php
-                            if(isset($_GET['pwd']) && ($_GET['pwd']==1)){
-                            echo '<span id="erreur5" class="red"> Veuillez enregistrer un mot de pass ! </span>';
-                            }
-                            ?>
-                        </div>
-                    </div>
+                    <div class="text-center">
+                    <?php
+                        $champvide ='Aucun champ ne doit rester vide  !';
+                        if(isset($_GET['champvide'])==1){
+                        echo "<b><span class='red'> $champvide </span></b>";
+                        }
+                        ?>  
+                    </div>   
                     <br>
                     <div class="text-center">
                         <button class="btn btn-primary" name="envoyer" type="submit" id="envoyer">Valider mes modifications</button>
-                    </div>
+                    </div> 
             </fieldset>
         </form>  
     </section>  
 
 
 </main>
-
+<?php
+}
+?>
 <aside class="container">
 
         <div class="col text-center">  

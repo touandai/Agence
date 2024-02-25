@@ -42,25 +42,38 @@ require 'connexion.php';
                         ?>
 
     <div style="float: left; margin: 10px;width: 25%; padding: 10px; background: #dddddd;">
-        <div style="float" ><img src="../backend/uploads/images/<?php echo $value['image']; ?>" alt="Image"/></div>
-        <div><font color="#2C5E2E"><b>Destination : </b><?php echo $value['destination']; ?></div>
+        <div><img class="img-fluid" src="../backend/uploads/images/<?php echo $value['image']; ?>" alt="Image"/></div>
+        <div><b style="color: #2C5E2E">Destination : </b><?php echo $value['destination']; ?></div>
         <div>
-            <b>Type Circuit : </b><?php echo $value['type_circuit'];?>
+        <b style="color: #2C5E2E">Type Circuit : </b><?php echo $value['type_circuit'];?>
             <br>
-            <b>Prix: </b><?php echo $value['prix']; ?>
+            <b style="color: #2C5E2E">Prix: </b><?php echo $value['prix']; ?>
         </div>
+        <?php if(isset($_SESSION['donnees_client'])) : ?>
+        <div><a href="reservation.php?id_circuit=<?php echo $value['id']; ?>">
+        <br>Je réserve</a></a>
+        </div>
+        <?php endif; ?>
+        <br/>
+        <!--
+        <?php
+            if(isset($_SESSION['donnees_client'])) {
+        ?>
         <div><a href="reservation.php?id_circuit=<?php echo $value['id']; ?>">
         <br>Je réserve</a></font></a>
         </div>
+        <?php
+            }
+        ?>-->
     </div>
 <?php
     }
 ?>
-
+<div style="clear:both"></div>
 </main>
 <br>
 
-<h6 class="text-center"><b><button class="lien" type="submit" name="valider"> Accéder à tous les circuits </button></h6>
+<h6 class="text-center"><b><a href="espaceclient.php"> M'identifier pour reserver un circuit</a></h6>
 <br>    
 
 </section>

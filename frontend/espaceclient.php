@@ -1,6 +1,11 @@
 <?php 
 //demarage session // 
 session_start();
+if(isset($_SESSION['donnees_client'])){
+    header("location:tableau-de-bord-client.php");
+    exit();
+}
+
 $Title='Espace Client,Afrique Centrale Découverte';
 
 require 'include-frontend/header.php';
@@ -70,7 +75,7 @@ require 'connexion.php';
 
             <form class="form" method="POST" action="">  
                 <fieldset>
-                    <legend>Identifiez-vous, pour profiter de nos differents services!</legend> 
+                    <legend>Merci de vous Identifier, pour profiter de nos services!</legend> 
                             
                             <div class="input-row">
                             <label class="form-label" for="email"><b> Email : *</b></label>

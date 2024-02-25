@@ -2,6 +2,7 @@
 extract($_POST);
 
 $Title='Recherche de circuit, Afrique Centrale Découverte.';
+
 require 'connexion.php';
 
 require 'include-frontend/header.php';
@@ -21,9 +22,9 @@ require 'include-frontend/header.php';
      </form>
 </div>
 </section>
+<h1 class="text-centre">Circuits</h1>
 
-
-<main class="container content">
+<main class="container recherche content">
 <?php
 /* 1 - renseigne la destination uniquement 
    2- si renseigne uniquement date 
@@ -32,11 +33,9 @@ require 'include-frontend/header.php';
    4 - si destination + date_circuit 
    5- si destination + type_circuit
    6- date_circuit + type_circuit
-
-   */
-
+*/
   $donneesDeRecherche = [];
-  //$result ="Aucun resultat ne correspond à votre recherche";
+
 
     //echo ' > Ma requete initiale est : ' . $reqRecherche;
 
@@ -47,7 +46,7 @@ require 'include-frontend/header.php';
         $reqRecherche .= " AND UPPER(destination) LIKE :destination";
         $donneesDeRecherche[':destination'] =  "%".strtoupper($destination)."%";
     }
-        
+ 
     //echo "<br /> > Ensuite après ma condition 1 : " . $reqRecherche;
 
     /* Seule la date de départ est à renseigner */
@@ -61,17 +60,14 @@ require 'include-frontend/header.php';
         $reqRecherche .= " AND type_circuit = :circuit";
         $donneesDeRecherche[':circuit'] = $circuit;
     }
-    
     /*if(empty($_POST['destination']) AND empty($date_depart) AND empty($circuit)){
         echo "<p> $result </p>";
     }
     */
-
     //echo "<br /> > Après ma condition 3 : " . $reqRecherche . '<br/>';
     //var_dump($donneesDeRecherche);die;
     $tdr = $conn -> prepare($reqRecherche);
     //$tdr -> bindValue(':destination', "%".strtoupper($destination)."%");
-    
     $tdr -> execute($donneesDeRecherche);
     
     $result = $tdr -> fetchAll();
@@ -95,15 +91,15 @@ require 'include-frontend/header.php';
 
 </main>
 <br>
+<?php if($nombreDeResultat !=="") : ?>
 <h6 class="text-center"><b><a class="lien" href="circuits.php"> Je selectionne mon circuit > </a></h6>
 <br>
-
+<?php endif; ?>
 
 <?php
 include 'include-frontend/footer.php';
 
 ?>
-
 <script src="bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $Title='Avis clients, Afrique Centrale Découverte';
 
 require 'include-frontend/header.php';
@@ -21,10 +23,15 @@ if(array_key_exists('valider',$_POST)){
         $nom = validation_donnees($_POST['nom']);
         $note = validation_donnees($_POST['note']);
         $commentaire= htmlspecialchars($_POST['commentaire']);
+       
+        //$date = new DateTime($date_avis);
+        //$date_avis ->format('d/m/Y');
+
+              
 
         
-        $reqInsert = 'INSERT INTO agence.avis(nom, note, message, date_avis ) 
-        values (:nom, :note, :message, :date)';
+        $reqInsert = 'INSERT INTO agence.avis (nom, note, message, date_avis, statut) 
+        values (:nom, :note, :message, :date, :statut)';
         
         $insert = $conn -> prepare ($reqInsert);
         $save = $insert-> execute([
@@ -32,7 +39,8 @@ if(array_key_exists('valider',$_POST)){
             ":nom" => $nom,   
             ":note" => $note,
             ":message" => $commentaire,
-            ":date" => date('Y-m-d h:m:s'),
+            ":date" => date('d/m/Y'),
+            ":statut" => "En attente",
         ]);    
 
         header("location:succes-validation.php");

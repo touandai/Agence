@@ -92,6 +92,8 @@ require 'connexion.php';
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/application.js"></script>
+<script type="text/javascript" src="js/contact.js"></script>
+<script type="text/javascript" src="js/inscription.js"></script>
 </body>
 </html>
 

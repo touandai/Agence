@@ -1,4 +1,5 @@
 <?php
+$Title='Validation';
 include 'include-frontend/header.php';
 
 ?>
@@ -11,7 +12,7 @@ include 'include-frontend/header.php';
 
      <p>Merci de votre visite à bientôt !</p>
      <br>
-
+    
 </main>
 
 

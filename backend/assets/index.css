@@ -126,6 +126,14 @@
     max-width: 100%;
     height: auto;  
   }
+  .lien{
+      font-weight: bolder;
+      border:5px solid;
+      border-radius: 5px;
+      padding:10px;
+      
+
+  }
   /*page gestion avis*/
   .avis
   {

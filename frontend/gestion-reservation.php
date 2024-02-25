@@ -17,7 +17,7 @@ $valider -> execute ([
 ?>
 
 
-<h1 class="text-center"><b>Réservation</b></h1>
+<h2 class="text-center p-4"><b>Réservation</b></h2>
 <br>
 
 
@@ -27,10 +27,6 @@ $valider -> execute ([
 <br>
 
 
-<?php
-   $reqaffich ="SELECT date reservations"
-
-?>
 
 <table class="table table-striped table-bordered">
     <thead>
@@ -42,27 +38,32 @@ $valider -> execute ([
                 <th>Actions</th>
             </tr>
     </thead>
+
     <tbody>
-    <?php 
-    
-        //$req = "DELETE * FROM agence.reservation where id = :id";
 
-        //$tdr = $conn -> query($req);
-        //$resultat = $tdr -> fetchAll();
+    <?php
+        $id= $clientConnecte['id'];
 
-        //foreach($resultat as $key => $value) {
+
+        $req = 'SELECT date_reservation, id, prix, statut FROM agence.reservations WHERE id_client = :id_client';
+        $resultat = $conn -> prepare ($req);
+        $resultat -> bindvalue(':id_client', $id);
+        $resultat -> execute();
+        
+        foreach($resultat as $key => $value) {
+
     ?>
         <tr>
-            <td><?php  ?></td>
-            <td><?php ?></td>
-            <td><?php ?></td>
-            <td><?php ?></td>
+            <td><?php echo $value['date_reservation']; ?></td>
+            <td><?php echo $value['id']; ?></td>
+            <td><?php echo $value['prix']; ?></td>
+            <td><?php echo $value['statut']; ?></td>
             <td>
                <button class="btn btn-danger sous-titre text-center" type="submit" name="annuler">J'annule ma réservation</button>
             </td>
         </tr>   
     <?php
-       // }
+    }
     ?>
     </tbody>
 

@@ -1,31 +1,30 @@
 <?php 
 session_start();
-//echo '<pre>';
-//var_dump($_SESSION);die;
+$Title='Reservations, Afrique Centrale Découverte';
+
+
+if(!isset($_SESSION['donnees_client'])){ 
+    header("location:espaceclient.php");
+    }
 $clientConnecte = $_SESSION['donnees_client'];
 
-$Title='Reservations, Afrique Centrale Découverte';
+
 
 require 'include-frontend/header.php';
 
 require 'connexion.php';
 
-  
-   if(array_key_exists('envoyer',$_POST)){
+  // if(isset($_POST['envoyer'])){
+    if(array_key_exists('envoyer',$_POST)){
 
-       
-        if(isset($_POST['nombre_personne']) AND empty($_POST['nombre_personne'])){
-        header("location:?nombre=1");
+        if(isset($_POST['nombre_personne']) && empty($_POST['nombre_personne'])){
+        header("location:?id_circuit=".$_GET['id_circuit']."&nombre_de_personne=1");
         exit();
         }
-        if(isset($_POST['type_reglement']) AND empty($_POST['type_reglement'])){
-        header("location:?paiement=1");
-        exit();
-        }
-        //if(isset($_POST['id_circuit']) AND empty($_POST['id_circuit'])){
-        //header("location:?id_circuit=1");
-        //exit();
-        //}
+        if(isset($_POST['type_reglement']) && empty($_POST['type_reglement'])){
+            header("location:?id_circuit=".$_GET['id_circuit']."&type_reglement=1");
+            
+            }
        
            function validation_donnees($donnees){
                 $donnees = trim($donnees);
@@ -33,18 +32,20 @@ require 'connexion.php';
                 $donnees = htmlspecialchars($donnees);
                 return $donnees;
             }
-
+            
             $nombre_personne = validation_donnees($_POST['nombre_personne']);
             $prix_total = validation_donnees($_POST['prix_total']);
             $type_reglement = validation_donnees($_POST['type_reglement']);
             $id_circuit = $_GET['id_circuit'];
-            
+
+
            // Vérification de l'existence du circuit dans la base 
             $reqVerifCircuit = "SELECT * FROM agence.circuits WHERE id = :idCircuit";
             $verif = $conn -> prepare($reqVerifCircuit);
             $verif -> bindValue(':idCircuit', $id_circuit);
             $verif -> execute();
             $circuit = $verif -> fetch();
+           
             if(empty($circuit)) {
                 header('location:circuits.php');
                 exit();
@@ -58,18 +59,18 @@ require 'connexion.php';
      
                         ":nombre_personne" => $nombre_personne,   
                         ":prix_total" => $prix_total,
-                        ":type_reglement" => $type_reglement,
+                        ":type_reglement" => (empty($type_reglement)) ? NULL : $type_reglement,
                         ":id_circuit" => $id_circuit,
                         ":date" => date('Y-m-d h:m:s'),
                         ":statut" => "En attente",
                         ":idClient" => $clientConnecte['id'],
                     ]);    
+                if($save){
+                    header('location:confirmation-reservation.php');
+                }
+                echo 'erreur';die;
 
-                header('location:confirmation-reservation.php');
-
-
-
-
+               //  $type_reglement, verif champs paiement 
     }
 
 ?>
@@ -88,19 +89,20 @@ require 'connexion.php';
                 <div class="mb-3">
                 <label class="form-label"><b> Prix Circuit : </b></label>
                 <?php 
+
                 $id = $_GET['id_circuit'];
                 $req = "SELECT prix FROM agence.circuits WHERE id = :id";
                 $selectPrix = $conn -> prepare ($req);
-                $selectPrix -> bindvalue(':id', $id);
+                $selectPrix -> bindvalue(':id',$id);
                 $selectPrix -> execute();
                 foreach($selectPrix as $key => $value){                
                 ?> 
                 <div class="element"><?php echo $value['prix'].' '.'F.CFA';?></div>
                 <input class="form-control" type="number" value="<?php echo $value['prix'];?>" name="prixcircuit" id="prix" maxlength="6" readonly="true">
+                </div> 
                 <?php
                 }
                 ?>
-                </div> 
 
                 <div class="mb-3">
                     <label class="form-label"><b> Nombre de personnes : *</b></label>
@@ -110,11 +112,10 @@ require 'connexion.php';
                                     <option value="2">Couple</option>
                                     <option value="3">Groupe</option>
                     </select> 
-                    <?php
-                    if(isset($_GET['nombre'])==1){
-                    echo '<strong class="red"> Le choix de la formule est obligatoire ! </strong>';
+                    <?php if(isset($_GET['nombre_de_personne']) && ($_GET['nombre_de_personne']==1)){
+                    echo '<span id="erreur" class="red"> Veuillez saisir votre nom </span>';
                     }
-                    ?>
+                    ?> 
                     <div style="color: red;font-style:italic;" id="erreur-nombre"></div>
                 </div> 
 
@@ -131,11 +132,10 @@ require 'connexion.php';
                                     <option value="cheque">Chèque</option>
                                     <option value="virement">Virement</option>
                     </select> 
-                    <?php
-                    if(isset($_GET['paiement'])==1){
-                        echo '<strong class="red"> Veuillez choisir un type de paiement ! </strong>';
-                        }
-                    ?>
+                    <?php if(isset($_GET['type_reglement']) && ($_GET['type_reglement']==1)){
+                    echo '<span id="erreur" class="red"> Veuillez indiquer le type de réglement! </span>';
+                    }
+                    ?> 
                 </div>
 
                 <div class="text-center">
