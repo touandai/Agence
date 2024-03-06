@@ -7,9 +7,41 @@ require 'include/menu-nav.php';
 
 require 'connexion.php';
 
+if(array_key_exists('valider',$_POST)){
+        
+    function validation_donnees($donnees){
+        $donnees = trim($donnees);
+        $donnees = stripslashes($donnees);
+        $donnees = htmlspecialchars($donnees);
+        return $donnees;
+        }
+                
+        $id = validation_donnees($_POST['id']);
+        $statut = validation_donnees($_POST['statut']);
+
+
+        $reqvalider = 'UPDATE agence.avis SET statut =:statut, date_validation =:date WHERE id =:id';
+        $valider = $conn -> prepare ($reqvalider);
+        $valider -> bindValue(':id',$id);
+        $valider -> execute ([
+        
+        ":id" => $_POST['id'],
+        ":statut" => $_POST['statut'],
+        ":date" => date('Y-m-d h:m:s'),
+
+        ]);
+        if($valider){
+        header("location:?pages=gestion-avis.php&succes=1");
+        }else {
+            echo "<strong> Merci de réessayer plus tard ! </strong>";
+        }
+
+}
+
 ?>
+
 <br>
-<h1 class="text-center">Gestion des avis Clients </h1>
+<h2 class="text-center">Gestion des avis Clients </h2>
 
 <main class="container">
 
@@ -19,7 +51,6 @@ require 'connexion.php';
         <caption>Moderation des avis</caption>
             <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Nom</th>
                         <th>Note</th>
                         <th>Commentaires</th>
@@ -30,52 +61,36 @@ require 'connexion.php';
             </thead>
             <tbody>
                
-
                 <?php
 
                 $reqselect = "SELECT * FROM agence.avis ORDER BY date_avis ASC LIMIT 6";
-                
                 $reqselect = $conn -> query ($reqselect);
                 $resultat = $reqselect-> fetchAll();
        
                 foreach($resultat as $key => $value) {
                ?>
-                <tr>
-                    <td><?php echo $value['id'];?></td>
-                    <td><?php echo $value['nom'];?></td>
-                    <td><?php echo $value['note'];?></td>
-                    <td><?php echo $value['message'];?></td>
-                    <td><?php echo $value['date_avis'];?></td>
-                    <td><?php echo $value['statut'];?></td>
-
-                    <td col="3">
-                    <form method="POST" action="">
-                            <select>
-                                <option>--choisir une action--</option>
-                                <option value="Confirmée">Confirmée</option>
-                                <option value="Confirmée">Annulée</option>
-                            </select>
-                    <?php ?>
-
-                    <a href="?page=avis&action=ajouter&id=<?php echo $value['id']; ?>"><button class="btn btn-success" type="submit">Valider</button></a>    
-                     
-                    <?php 
-                    /*
-                    $sup = "DELETE * FROM  cabinet_diet.avis where note=0; ORDER BY date_avis ASC ";
-
-                    $tdr = $conn -> query($sup);
-                       */                 
-                    ?>
-                    
-                    <a href="?page=avis&action=supprimer&id=<?php echo $value['id']; ?>"><button class="btn btn-danger"type="submit">Supprimer</button></a>
-                    </td>
-                </tr>   
-            <?php
-                }
-
-            ?>
-            </tbody>
-
+                    <tr>
+                        <td><?php echo $value['nom']; ?></td>
+                        <td><?php echo $value['note']; ?></td>
+                        <td><?php echo $value['message']; ?></td>
+                        <td><?php echo $value['date_avis'];?></td>
+                        <td><?php echo $value['statut']; ?></td>
+                        <td>
+                            <form method="POST" action="">
+                                <input type="hidden" name="id" value="<?php echo $value['id'];?>" readonly="true">
+                               
+                                <select name="statut">
+                                    <option value="">Modifier</option>
+                                    <option value="Confirmer">Confirmée</option>
+                                </select>
+                                
+                                <button class="btn btn-success" type="submit" name="valider"> Valider </button>  
+                        </td>
+                  </tr>   
+               <?php
+               }
+               ?>
+               </tbody>
        </table>
 </main>
 

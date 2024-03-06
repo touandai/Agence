@@ -28,5 +28,9 @@
 </footer>
 
 
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/confirmation.js"></script>
+
 </body>
 </html>
+

@@ -15,7 +15,9 @@
   body a {
     text-decoration: none;
   }
-
+  main{
+    margin-bottom: 30px;
+  }
     /*header et pages entête*/
     header {
       background: #0C273D;
@@ -53,11 +55,8 @@
     vertical-align: middle;
     margin-left: 20px;
   }
-
-
   /*menu*/
-  .menu
-  {
+  .menu  {
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -121,18 +120,16 @@
     margin-top: 10px;
     padding: 10px;
   }
-
   img{
     max-width: 100%;
     height: auto;  
   }
   .lien{
+      color:#2C5E2E;
       font-weight: bolder;
       border:5px solid;
-      border-radius: 5px;
-      padding:10px;
-      
-
+      border-radius: 3px;
+      padding:5px;  
   }
   /*page gestion avis*/
   .avis

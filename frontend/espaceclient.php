@@ -2,7 +2,7 @@
 //demarage session // 
 session_start();
 if(isset($_SESSION['donnees_client'])){
-    header("location:tableau-de-bord-client.php");
+    header("location:pages/tableau-de-bord-client.php");
     exit();
 }
 
@@ -25,10 +25,8 @@ require 'connexion.php';
         header("location:?pwd=1");
         exit();
         }
-     
                     $email = $_POST['email'];
                     $password = $_POST['mot_de_pass'];
-
 
                     //verifier si email existe en base de données //
 
@@ -40,30 +38,34 @@ require 'connexion.php';
                     $reqExec-> execute ([
                         ":email"  => $_POST['email'],                 
                         ]);
-
-                    $client = $reqExec ->fetch(PDO::FETCH_ASSOC);
-               
+                    $emailExist = $reqExec ->fetch(PDO::FETCH_ASSOC);
                     
-                     // verification email base données  //
-                    if(!empty($client)){
-                         //client trouvé //
-                         $_SESSION['donnees_client'] = $client;
-                        $passwordhash = $client['mot_de_pass'];
+                    // verification email base données  //
+                     //client trouvé email correct //
+                    if(!empty($emailExist)){ 
+                            //client trouvé//
+                        $passwordhash = $emailExist['mot_de_pass'];
+                        
                         if(password_verify($password, $passwordhash)){
-                            //client trouvé mot de pass correcte
-                            header("location:tableau-de-bord-client.php");
+                            $_SESSION['donnees_client'] = $emailExist;
+                            $emailExist =$clientConnecte;
+                        header("location:pages/tableau-de-bord-client.php");
+                        exit();
                         }
                         else{
-                            //client trouvé Mot de pass incorrect//
-                            header("location:?erreurpassword=1");
-                        }                        
+                            //client trouvé mais mot de pass incorrect//
+                            header("location:?erreurpassword=1");die;
+                            }                        
                     }else{
-                        //l'adresse email ne figure pas en base de données//
-                        header("location:?emailintrouvable=1");
+                    //l'adresse email ne figure pas en base de données//
+                    header("location:?emailintrouvable=1");die;
                     }
-
-   }
-
+                        
+                       // $_SESSION['donnees_client'] = $client;
+                       // $passwordhash = $client['mot_de_pass'];
+         
+    } 
+$clientConnecte 
 ?>
 
 <h1 class="text-center"><b>Accéder à mon Compte</b></h1>

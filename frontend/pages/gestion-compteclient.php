@@ -4,7 +4,7 @@
 $Title='Modification informations personnelles, Afrique Centrale Découverte';
 
 require 'tableau-de-bord-menu.php';
-require 'connexion.php';
+require '../connexion.php';
 
 
     if(array_key_exists('envoyer',$_POST)){
@@ -25,9 +25,8 @@ require 'connexion.php';
                 $prenom = validation_donnees($_POST['prenom']);
                 $telephone = validation_donnees($_POST['telephone']);
                 $nationalite = validation_donnees($_POST['nationalite']);
+                
                 $id= ($clientConnecte['id']);
-
-                $info_personnelles = [];
 
                 $req = 'UPDATE agence.client SET nom = ? , prenom = ? telephone = ? nationalite = ? WHERE id = :id';
                 $conn -> prepare($req);
@@ -41,24 +40,16 @@ require 'connexion.php';
                 //echo '<pre>';
                // print_r($_SESSION);die;
 
-
-            
-
         }
     }  
 ?>
 
 <h2 class="text-center p-4"><b>Modifier mes informations personnelles</b></h2>
 
-
-
                   
 
 <?php
-
-
             $id= ($_SESSION["donnees_client"]['id']);
-
 
             $req = 'SELECT nom, prenom, telephone, nationalite FROM agence.client where id=:id';
             $reqaffich =$conn -> prepare ($req);
@@ -66,10 +57,10 @@ require 'connexion.php';
             $reqaffich -> execute();
             foreach($reqaffich as $key => $value){
 ?>
+
 <main class="container">
 
     <section>
-
         <form method="POST" action="">
             <fieldset>
                  <legend>Mise à jour des données</legend>   
@@ -84,7 +75,6 @@ require 'connexion.php';
                                 <input class="form-control" type="text" name="prenom" value="<?php echo $value['prenom']; ?>" id="prenom" maxlength="15" placeholder="Isabelle">
                             </div> 
                     </div>
-
                     <div class="row mb-3">
 
                             <div class="col">
@@ -111,21 +101,19 @@ require 'connexion.php';
             </fieldset>
         </form>  
     </section>  
-
-
 </main>
+
 <?php
 }
 ?>
+
 <aside class="container">
-
         <div class="col text-center">  
-            <a class="lien sous-titre" href="avis.php" >Je laisse mon avis</a>
+            <a class="lien sous-titre" href="../avis.php" >Je laisse mon avis</a>
         </div>
-
 </aside>
 
 <?php
-require 'include-frontend/footer.php';
+require 'footer.php';
 
 ?>

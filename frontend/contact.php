@@ -45,10 +45,9 @@ if(array_key_exists('envoyer',$_POST)){
                     $telephone = validation_donnees($_POST['telephone']);
                     $message = validation_donnees($_POST['message']);
                                                  
-                         try{
+                       
                                  $req='INSERT INTO agence.contacts(type_demande, nom, email, telephone, message, date_contact)
                                   values (:motif, :nom, :email, :telephone, :message, :date)';
-                 
                                  $reqInsertion = $conn -> prepare ($req);
                                  $enregister = $reqInsertion->execute([
                                  
@@ -63,9 +62,7 @@ if(array_key_exists('envoyer',$_POST)){
 
                                  header("location:succes-validation.php");
 
-                         }catch (PDOException $e){
-                                 echo $e->getMessage();die;
-                 }
+                        
    
           }
  ?>

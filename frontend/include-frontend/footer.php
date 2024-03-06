@@ -10,7 +10,7 @@ require 'connexion.php';
     <div class="col" >
         <p class="text-centre"><b>Les derniers avis de nos clients</b></p>
         <hr>
-        <p>
+        
         
         <?php  
          $reqselect = "SELECT * FROM agence.avis ORDER BY date_avis ASC LIMIT 2";
@@ -20,6 +20,7 @@ require 'connexion.php';
 
          foreach($resultat as $key => $value) {
         ?>
+        <p>
          <b>Posté par</b> : <?php echo $value['nom']; ?> <br><b>Note : </b>
          <?php echo $value['note']; ?> <b> Message : </b> <?php echo $value['message'];?> <b> Date : </b> 
          <?php echo $value['date_avis'];?></p>
@@ -64,7 +65,7 @@ require 'connexion.php';
             <p class="ancre">Du lundi au samedi de : 7h30 - 12h00 et de : 13h00 - 17:00 </p>  
         </div>
         <div class="col text-centre">
-             <a  class="ancre" href="politique.html">Politiques de confidentialité </a>
+             <a  class="ancre" href="politique.php">Politiques de confidentialité </a>
         </div>
 
 
@@ -81,7 +82,7 @@ require 'connexion.php';
   
         <div class="col p-1">
              <a  class="ancre-footer2" href="https://cemac.int/">Cemac</a>
-             <a  class="ancre-footer2" href="">Mentions utiles</a>
+             <a  class="ancre-footer2" href="#">Mentions utiles</a>
              <a  class="ancre-footer2" href="https://www.afrique-tourisme.com/">infos utiles</a>
         </div>
 
@@ -89,11 +90,9 @@ require 'connexion.php';
 
 </div>
 
-
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/application.js"></script>
 <script type="text/javascript" src="js/contact.js"></script>
-<script type="text/javascript" src="js/inscription.js"></script>
 </body>
 </html>
 

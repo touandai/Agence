@@ -46,9 +46,6 @@ body {
 header{
     margin-bottom: 50px;
   }
-#menu{
-  font-weight: bold;
-}
 
 img{
     max-width: 160px;
@@ -252,6 +249,10 @@ div > button, .lien{
   justify-content: center;
   flex-wrap:wrap;
 }
+.text-primary2{
+  color: $primary;
+  font-weight: bolder;
+}
 .infos-circuit{
     display: flex;
     margin: 5px;
@@ -260,15 +261,7 @@ div > button, .lien{
 .sous-titre{
     font-weight: bolder;    
 }
-/*pages galérie*/
-/*
-.galerie{
-  background-image: url("../images/img.png");
-  background-size: cover;  
-  background-repeat:no-repeat;
-  margin-bottom: 20px;
-}
-*/
+//pages galérie//
 div .carousel-item, h5{
   text-align: center;
   font-size: larger;
@@ -387,7 +380,6 @@ form{
       overflow: hidden;
     }
   }
-
   @media screen and (max-width: 430px){
     .div-menu-dashboard{
       display: Block;

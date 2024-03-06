@@ -105,8 +105,12 @@ include 'include-frontend/header.php';
     </section>
 </main>
 
+
+<!--affichage vidéo-->
+<aside class="container text-center p-2">
+    <video src="images/savane1.mp4"  type="video/mp4" controls>
+</aside>
 <?php
-include 'include-frontend/bouttonreservation.php';
 
 include 'include-frontend/footer.php';
 

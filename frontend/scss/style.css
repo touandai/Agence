@@ -244,6 +244,11 @@ div > button, .lien {
   flex-wrap: wrap;
 }
 
+.text-primary2 {
+  color: #0C273D;
+  font-weight: bolder;
+}
+
 .infos-circuit {
   display: flex;
   margin: 5px;
@@ -254,15 +259,6 @@ div > button, .lien {
   font-weight: bolder;
 }
 
-/*pages galérie*/
-/*
-.galerie{
-  background-image: url("../images/img.png");
-  background-size: cover;  
-  background-repeat:no-repeat;
-  margin-bottom: 20px;
-}
-*/
 div .carousel-item, h5 {
   text-align: center;
   font-size: larger;

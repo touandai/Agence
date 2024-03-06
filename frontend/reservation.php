@@ -98,7 +98,7 @@ require 'connexion.php';
                 foreach($selectPrix as $key => $value){                
                 ?> 
                 <div class="element"><?php echo $value['prix'].' '.'F.CFA';?></div>
-                <input class="form-control" type="number" value="<?php echo $value['prix'];?>" name="prixcircuit" id="prix" maxlength="6" readonly="true">
+                <input class="form-control" type="hidden" value="<?php echo $value['prix'];?>" name="prixcircuit" id="prix" maxlength="6" readonly="true">
                 </div> 
                 <?php
                 }
@@ -113,7 +113,7 @@ require 'connexion.php';
                                     <option value="3">Groupe</option>
                     </select> 
                     <?php if(isset($_GET['nombre_de_personne']) && ($_GET['nombre_de_personne']==1)){
-                    echo '<span id="erreur" class="red"> Veuillez saisir votre nom </span>';
+                    echo '<span id="erreur" class="red"> Désolé, Le choix de formule est obligatoire !</span>';
                     }
                     ?> 
                     <div style="color: red;font-style:italic;" id="erreur-nombre"></div>
@@ -126,7 +126,7 @@ require 'connexion.php';
                 </div>
                 <div class="mb-3">
                     <label class="form-label"><b> Type de réglement : *</b></label>
-                    <select class="form-control" name="type_reglement" id="type_reglement">
+                    <select class="form-control" name="type_reglement" id="reglement">
                                     <option value="">--Choisir--</option>
                                     <option value="espece">En espèce en agence</option>
                                     <option value="cheque">Chèque</option>
@@ -147,12 +147,19 @@ require 'connexion.php';
 </main>
 
 <script>
-    /*
-    let affichprixtcc = document.getElementById('valider');
-    affichprixtcc.addEventListener('click', function (e){
-    alert('Un email de confirmation vous sera envoyé en fonction de la formule choisie ! ')
+
+    let reservation = document.getElementById('reservation');
+        
+    reservation.addEventListener('submit',function(e){
+        
+        let Nombre = document.getElementById('nombre')
+        let Reglement = document.getElementById('reglement')
+            alert('Assurez vous d\'avoir rempli tous les champs!')
+        if(Nombre.value && Reglement.value !==""){
+            alert ('Vous pouvez suivre l\'état de votre réservation sur votre espace client')
+        } 
+
     })
-    */
 </script>
 
 <?php

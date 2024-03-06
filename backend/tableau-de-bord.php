@@ -20,7 +20,7 @@ if(!isset($_SESSION['donnees_user'])){
 
 
 
-<h1 class="text-center">Tableau de bord</h1>
+<h2 class="text-center">Tableau de bord</h2>
 
 <main class="container">
 

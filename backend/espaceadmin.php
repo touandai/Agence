@@ -113,7 +113,7 @@ require 'connexion.php';
                                         echo "<strong>Mot de passe incorrect</strong>";
                                         }
                                         if(isset($_GET['emailintrouvable']) && ($_GET['emailintrouvable']==1)){
-                                            echo "<strong>Vous n'êtes pas un membre d'admnin</strong>";
+                                            echo "<strong>Vous n'êtes pas un membre d'administration!</strong>";
                                             }
                             ?>                   
                             </div>

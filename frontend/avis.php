@@ -206,7 +206,11 @@ require 'connexion.php';
             Erreur.innerHTML ="Le nom doit composer que de lettres sans espace ni tiret";
             Erreur.style.color ='red';
             e.preventDefault();
-        }        
+        }else{         
+            let Erreur = document.getElementById('erreur');
+            Erreur.innerHTML ="champ valide";
+            Erreur.style.color ='green';
+        }  
         if (inputNote.value ==""){
             let Erreur2 = document.getElementById('erreur2');
             Erreur2.innerHTML ="Veuillez choisir une note";

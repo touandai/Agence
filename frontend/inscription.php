@@ -5,8 +5,6 @@ require 'include-frontend/header.php';
 
 require 'connexion.php';
 
-
-
 if(array_key_exists('envoyer',$_POST)){
 
             if(isset($_POST['civilite']) && empty($_POST['civilite'])){
@@ -57,15 +55,6 @@ if(array_key_exists('envoyer',$_POST)){
             $email = validation_donnees($_POST['email']);
             $pwd = validation_donnees($_POST['pwd']);
 
-            //format email //
-          //  function isValidEmail($email){
-          //  return preg_match('/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/i', $email);
-           // }
-
-            //$valid = false;
-           // header("location:email=2");
-            //}
-
              // hachage password // 
             $pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
            
@@ -79,7 +68,6 @@ if(array_key_exists('envoyer',$_POST)){
                if($result == true){
                header("location:?existe=1");
                } 
-       
                     $InsertClient ='INSERT INTO agence.client(civilite, nom, prenom, age, nationalite, telephone, email, mot_de_pass, date_inscription)
                     values (:civilite, :nom, :prenom, :age, :nationalite, :tel, :email, :pwd, :date)';
 
@@ -98,7 +86,7 @@ if(array_key_exists('envoyer',$_POST)){
                     ":date" =>date('Y-m-d h:m:s'),
 
                     ]);
-                    header('location:succes-validation.php');
+                    header('location:succes-validation.php');die;
 
 }
 
@@ -110,14 +98,14 @@ if(array_key_exists('envoyer',$_POST)){
 
     <section>
 
-        <form method="POST" action="">
+        <form id="form_inscription" method="POST" action="">
 
             <fieldset>
                  <legend>Je m'inscris pour profiter des offres !</legend>   
 
                     <div class="mb-3">
                         <label class="form-label"><b> Civilité : *</b></label>
-                        <select class="form-control" name="civilite" id="civilite">
+                        <select class="form-control" name="civilite" id="civil">
                                         <option value="">--Indiquer votre civilité--</option>
                                         <option value="Monsieur">Monsieur</option>
                                         <option value="Madame">Madame</option>
@@ -133,7 +121,7 @@ if(array_key_exists('envoyer',$_POST)){
                     <div class="row mb-3">
                             <div class="col">
                                 <label class="form-label"><b>Nom : *</b></label>
-                                <input class="form-control" type="text" name="nom" id="nom" maxlength="15">
+                                <input class="form-control" type="text" name="nom" id="name" maxlength="15">
                                 <span id="erreurnom"></span> 
                                 <?php
                                 if(isset($_GET['nom']) && ($_GET['nom']==1)){
@@ -166,6 +154,7 @@ if(array_key_exists('envoyer',$_POST)){
                                     }
                                     ?>  
                         </select>
+                        <span id="erreurage"></span>
                         <?php
                         if(isset($_GET['age']) && ($_GET['age']==1)){
                         echo '<span class="red"> Veuillez indiquer votre date de Naissance </span>';
@@ -178,13 +167,14 @@ if(array_key_exists('envoyer',$_POST)){
 
                             <label class="form-label"><b> Nationalité: *</b></label>
                             <select class="form-control" name="nationalite" id="nationalite">
-                                <option value="0">--Votre Nationalité--</option>
+                                <option value="">--Votre Nationalité--</option>
                                 <option value="Centrafricaine">Centrafricaine</option>
                                 <option value="Gabonaise">Gabonaise</option>
                                 <option value="Camerounaise">Camerounaise</option>
                                 <option value="Tchadienne">Tchadienne</option>
                                 <option value="Congolaise">Congolaise</option>
                             </select>
+                            <span id="erreurnat"></span>
                                 <?php
                                 if(isset($_GET['nationalite']) && ($_GET['nationalite']==1)){
                                 echo '<span class="red"> Veuillez indiquer votre nationalité! </span>';
@@ -203,9 +193,6 @@ if(array_key_exists('envoyer',$_POST)){
                                 if(isset($_GET['tel']) && ($_GET['tel']==1)){
                                 echo '<span class="red"> Veuillez saisir votre numero de telephone! </span>';
                                 }
-                                else{
-                                    
-                                }
                                 ?>
                         </div>
                     </div>
@@ -213,12 +200,12 @@ if(array_key_exists('envoyer',$_POST)){
                     <div class="row mb-3">
                         <div class="col">
                             <label class="form-label"><b>E-mail: *</b></label>
-                            <input class="form-control" type="email" name="email" id="email" maxlength="25" id="email" placeholder="adresse@.. ">
+                            <input class="form-control" type="email" name="email" id="email" maxlength="25" placeholder="adresse@.">
                             <span id="erreuremail"></span> 
                             <?php
                             if(isset($_GET['email']) && ($_GET['email']==1)){
                             echo '<span class="red"> Veuillez saisir votre Email ! </span>';
-                            }else if (isset($_GET['existe']) && ($_GET['existe'] == 1)){
+                            }else if (isset($_GET['existe']) && ($_GET['existe']== 1)){
                             echo '<span class="red"> Un compte existe déjà avec cet email, identifiez-vous ! </span>';
                             }
                             ?>
@@ -226,7 +213,7 @@ if(array_key_exists('envoyer',$_POST)){
 
                         <div class="col">
                             <label class="form-label"><b>Mot de passe: *</b></label>
-                            <input  class="form-control form-control" type="password" name="pwd" id="password" minlength="8" maxlength="15" id="pwd" placeholder="mot de pass">
+                            <input  class="form-control form-control" type="password" name="pwd" id="password" minlength="8" maxlength="12" id="pwd" placeholder="mot de pass">
                             <span id="erreurpassword"></span> 
                             <?php
                             if(isset($_GET['pwd']) && ($_GET['pwd']==1)){
@@ -237,7 +224,7 @@ if(array_key_exists('envoyer',$_POST)){
                     </div>
                     <br>
                     <div class="col text-center">
-                        <button class="btn btn-primary" name="envoyer" type="submit" id="inscription">Envoyer</button>
+                        <button class="btn btn-primary" name="envoyer" id="envoyer" type="submit">Envoyer</button>
                     </div>
                     <br>
                     <div class="col text-center"> Déjà Inscrit(e)? <a class="lien" href="espaceclient.php"> <b>Connectez-vous </b></a>
@@ -247,7 +234,106 @@ if(array_key_exists('envoyer',$_POST)){
     </section>  
 </main>
 
+
+<script>
+
+let Form_inscription = document.getElementById('form_inscription');
+    
+Form_inscription.addEventListener('submit',function(e){
+
+        let Civilite = document.getElementById('civil')
+        let Name = document.getElementById('name')
+        let Prenom = document.getElementById('prenom')
+        let Tel = document.getElementById('telephone')
+        let Age = document.getElementById('age')
+        let Nationalite = document.getElementById('nationalite')
+        let Email = document.getElementById('email')
+        let Password = document.getElementById('password')
+
+        let inputRegex = /^[a-zA-Z]+$/; 
+        let telRegex = /^[0-9]+$/; 
+        let emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+        let passwordRegex = /^[a-z]+[A-Z{1},0-9]$/; 
+
+        if (Civilite.value.trim() ==""){
+            let Erreurcivilite = document.getElementById('erreurcivilite');
+            Erreurcivilite.innerHTML = "Le champ Civilité est obligatoire !";
+            Erreurcivilite.style.color = 'red';
+            e.preventDefault();
+        }
+        if (Name.value.trim() ==""){
+            let Erreurnom = document.getElementById('erreurnom');
+            Erreurnom.innerHTML = "Le champ Nom est obligatoire!";
+            Erreurnom.style.color = 'red';
+            e.preventDefault();
+        }else if (inputRegex.test(Name.value) == false){
+            let Erreurnom = document.getElementById('erreurnom');
+            Erreurnom.innerHTML ="Le Nom doit comporter uniquement des lettres et tirets";
+            Erreurnom.style.color="red";
+            e.preventDefault();
+        }  
+        if (Prenom.value.trim() ==""){
+            let Erreurprenom = document.getElementById('erreurprenom');
+            Erreurprenom.innerHTML =" Le champ Prenom est obligatoire!";
+            Erreurprenom.style.color ='red';
+            e.preventDefault();
+        }else if (inputRegex.test(Prenom.value) == false){
+            let Erreurprenom = document.getElementById('erreurprenom');
+            Erreurprenom.innerHTML ="Le Prenom doit comporter uniquement des lettres et tirets";
+            Erreurprenom.style.color ='red';
+            e.preventDefault();
+        }
+        if (Age.value.trim() ==""){
+            let Erreurage = document.getElementById('erreurage');
+            Erreurage.innerHTML = "Le champ Age est obligatoire!";
+            Erreurage.style.color = 'red';
+            e.preventDefault();
+        }
+        if (Nationalite.value.trim() ==""){
+            let Erreurnat = document.getElementById('erreurnat');
+            Erreurnat.innerHTML = "Le champ Nationalité est obligatoire!";
+            Erreurnat.style.color = 'red';
+            e.preventDefault();
+        }
+        if (Tel.value.trim() ==""){
+            let Erreurtel = document.getElementById('erreurtel');
+            Erreurtel.innerHTML = "Le champ Téléphone est obligatoire!";
+            Erreurtel.style.color = 'red';
+            e.preventDefault();         
+        }else if (telRegex.test(Tel.value) == false){
+            let Erreurpassword = document.getElementById('erreurtel');
+            Erreurpassword.innerHTML ="Votre telephone ne doit composer que de chiffres";
+            Erreurpassword.style.color ='red';
+            e.preventDefault();
+        }  
+        if (Email.value.trim() ==""){
+            let Erreurmail = document.getElementById('erreuremail');
+            Erreurmail.innerHTML = "Le champ Email est obligatoire!";
+            Erreurmail.style.color = 'red';
+            e.preventDefault(); 
+        }else if(emailRegex.test(Email.value) == false){
+            let Erreurmail = document.getElementById('erreurmail');
+            Erreurmail.innerHTML ="Adresse email invalide !";
+            Erreurmail.style.color ='red';
+            e.preventDefault();  
+        }   
+        if (Password.value.trim() ==""){
+            let Erreurpassword = document.getElementById('erreurpassword');
+            Erreurpassword.innerHTML = "Le champ mot de pass est obligatoire!";
+            Erreurpassword.style.color = 'red';
+            e.preventDefault();
+        } else if(passwordRegex.test(Password.value) == false){
+            let Erreurpassword = document.getElementById('erreurpassword');
+            Erreurpassword.innerHTML = "Le mot de pass doit contenir une lettre majuscule!";
+            Erreurpassword.style.color = 'red';
+            e.preventDefault();
+        }
+
+    })
+</script>
+
 <?php
 include 'include-frontend/footer.php';
+
 
 ?>
