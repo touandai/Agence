@@ -18,20 +18,18 @@ if(array_key_exists('valider',$_POST)){
                 
         $id = validation_donnees($_POST['id']);
         $statut = validation_donnees($_POST['statut']);
-
+        $date_modification = date('Y-m-d h:m:s');
 
         $reqvalider = 'UPDATE agence.avis SET statut =:statut, date_validation =:date WHERE id =:id';
         $valider = $conn -> prepare ($reqvalider);
         $valider -> bindValue(':id',$id);
-        $valider -> execute ([
+        $valider -> bindValue(':statut',$statut);
+        $valider -> bindValue(':date',$date_modification);
+        $valider -> execute ();
         
-        ":id" => $_POST['id'],
-        ":statut" => $_POST['statut'],
-        ":date" => date('Y-m-d h:m:s'),
-
-        ]);
         if($valider){
         header("location:?pages=gestion-avis.php&succes=1");
+        exit();
         }else {
             echo "<strong> Merci de réessayer plus tard ! </strong>";
         }
@@ -41,7 +39,7 @@ if(array_key_exists('valider',$_POST)){
 ?>
 
 <br>
-<h2 class="text-center">Gestion des avis Clients </h2>
+<h2 class="text-center">Gestion avis Clients </h2>
 
 <main class="container">
 
@@ -61,14 +59,14 @@ if(array_key_exists('valider',$_POST)){
             </thead>
             <tbody>
                
-                <?php
+                    <?php
 
-                $reqselect = "SELECT * FROM agence.avis ORDER BY date_avis ASC LIMIT 6";
-                $reqselect = $conn -> query ($reqselect);
-                $resultat = $reqselect-> fetchAll();
-       
-                foreach($resultat as $key => $value) {
-               ?>
+                    $reqselect = "SELECT * FROM agence.avis ORDER BY statut DESC LIMIT 6";
+                    $reqselect = $conn -> query ($reqselect);
+                    $resultat = $reqselect-> fetchAll();
+        
+                    foreach($resultat as $key => $value) {
+                    ?>
                     <tr>
                         <td><?php echo $value['nom']; ?></td>
                         <td><?php echo $value['note']; ?></td>
@@ -78,15 +76,14 @@ if(array_key_exists('valider',$_POST)){
                         <td>
                             <form method="POST" action="">
                                 <input type="hidden" name="id" value="<?php echo $value['id'];?>" readonly="true">
-                               
                                 <select name="statut">
                                     <option value="">Modifier</option>
-                                    <option value="Confirmer">Confirmée</option>
+                                    <option value="Confirmée">Confirmée</option>
                                 </select>
-                                
-                                <button class="btn btn-success" type="submit" name="valider"> Valider </button>  
+                                <button class="btn btn-success  sous-titre text-center" type="submit" name="valider">Valider</button> 
+                            </form>     
                         </td>
-                  </tr>   
+                    </tr>   
                <?php
                }
                ?>
@@ -95,6 +92,6 @@ if(array_key_exists('valider',$_POST)){
 </main>
 
 <?php
-include 'include/footer.php';
+require 'include/footer.php';
 
 ?>

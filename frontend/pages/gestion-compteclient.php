@@ -7,51 +7,47 @@ require 'tableau-de-bord-menu.php';
 require '../connexion.php';
 
 
-    if(array_key_exists('envoyer',$_POST)){
-       
-        if(empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['telephone']) || empty($_POST['nationalite'])){;
-        header("location:?champvide=1");
-        exit();
+    if(array_key_exists('modifier',$_POST)){
+        //if(empty($_POST['nom']) || empty($_POST['tel']) || empty($_POST['nat'])){;
+        //header("location:?champvide=1");
+        //exit();
 
             function validation_donnees($donnees){
-
-                $donnees = trim($donnees);
-                $donnees = stripslashes($donnees);
-                $donnees = htmlspecialchars($donnees);
-                return $donnees;
+            $donnees = trim($donnees);
+            $donnees = stripslashes($donnees);
+            $donnees = htmlspecialchars($donnees);
+            return $donnees;
             }
-           
-                $nom = validation_donnees($_POST['nom']);
-                $prenom = validation_donnees($_POST['prenom']);
-                $telephone = validation_donnees($_POST['telephone']);
-                $nationalite = validation_donnees($_POST['nationalite']);
-                
-                $id= ($clientConnecte['id']);
+            $id = ($_SESSION["donnees_client"]['id']);
+            $nom = validation_donnees($_POST['nom']);
+            $telephone = validation_donnees($_POST['tel']);
+            $nationalite = validation_donnees($_POST['nat']);
+              
+            $reqModif = 'UPDATE agence.client SET nom =:nom, telephone =:tel, nationalite =:nat WHERE id =:id';
+            $statement = $conn -> prepare($reqModif);
+            $statement -> bindValue(':id',$id);
+            $statement -> bindValue(':nom',$nom);
+            $statement -> bindValue(':tel',$telephone);
+            $statement -> bindValue(':nat',$nationalite);
+            $valider = $statement-> execute();
+ 
+            if($valider){
+            header("location:?pages=gestion-compteclient.php&probleme=1");
+            }
 
-                $req = 'UPDATE agence.client SET nom = ? , prenom = ? telephone = ? nationalite = ? WHERE id = :id';
-                $conn -> prepare($req);
 
-                //modification nom//
-                if(!empty($_POST['nom'])){
-               
+      // }
 
-                }
-                //$validNom = $conn -> exec($nom, $_SESSION['id']);
-                //echo '<pre>';
-               // print_r($_SESSION);die;
-
-        }
     }  
 ?>
 
-<h2 class="text-center p-4"><b>Modifier mes informations personnelles</b></h2>
-
+<h4 class="text-center p-2"><b>Modifier mes informations personnelles</b></h4>
                   
-
+              <!--affichage données clients-->
 <?php
             $id= ($_SESSION["donnees_client"]['id']);
 
-            $req = 'SELECT nom, prenom, telephone, nationalite FROM agence.client where id=:id';
+            $req = 'SELECT nom, telephone, nationalite FROM agence.client where id=:id';
             $reqaffich =$conn -> prepare ($req);
             $reqaffich -> bindvalue(':id', $id);
             $reqaffich -> execute();
@@ -63,27 +59,24 @@ require '../connexion.php';
     <section>
         <form method="POST" action="">
             <fieldset>
-                 <legend>Mise à jour des données</legend>   
+                 <legend>Mise à jour des données</legend>  
+                    
                     <div class="row mb-3">
+                            <input type="hidden" name="id" value="<?php echo ($_SESSION['donnees_client']['id']);?>" readonly="true">
                             <div class="col">
                                 <label class="form-label"><b>Nom : </b></label>
                                 <input class="form-control" type="text" name="nom" value="<?php echo $value['nom']; ?>" id="nom" maxlength="15"> 
                             </div>  
-
-                            <div class="col">
-                                <label class="form-label"><b> Prenom :*</b></label>
-                                <input class="form-control" type="text" name="prenom" value="<?php echo $value['prenom']; ?>" id="prenom" maxlength="15" placeholder="Isabelle">
-                            </div> 
                     </div>
                     <div class="row mb-3">
-
                             <div class="col">
                                 <label class="form-label"><b> Telephone: </b></label>
-                                <input  class="form-control form-control" type="tel" name="telephone" value="<?php echo $value['telephone']; ?>" id="telephone" minlength="14" maxlength="14">
+                                <input  class="form-control form-control" type="tel" name="tel" value="<?php echo $value['telephone']; ?>" id="telephone" minlength="14" maxlength="14">
                             </div>
+                    <div class="row mb-3">
                             <div class="col">
                                 <label class="form-label"><b> Nationalité : </b></label>
-                                <input  class="form-control form-control" type="text" name="nationalite" value="<?php echo $value['nationalite']; ?>" id="ville" minlength="14" maxlength="14">
+                                <input  class="form-control form-control" type="text" name="nat" value="<?php echo $value['nationalite']; ?>" id="ville" minlength="8" maxlength="14">
                             </div>
                     </div>
                     <div class="text-center">
@@ -96,13 +89,12 @@ require '../connexion.php';
                     </div>   
                     <br>
                     <div class="text-center">
-                        <button class="btn btn-primary" name="envoyer" type="submit" id="envoyer">Valider mes modifications</button>
+                        <button class="btn btn-primary" name="modifier" type="submit" id="envoyer" onclick="return confirm('Validez-vous les modifications apportées?')">Valider mes modifications</button>
                     </div> 
             </fieldset>
         </form>  
     </section>  
 </main>
-
 <?php
 }
 ?>

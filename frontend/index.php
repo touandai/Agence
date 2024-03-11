@@ -6,7 +6,6 @@ include 'include-frontend/header.php';
 ?>
 
 <section id="recherche" class="container">
-
         <div id="form-recherche" class="container input-group">
              <form method="POST" action="recherche.php" class="d-flex">
                 <input class="form-control me-2" type="search" name="destination" placeholder="Destination" aria-label="Search">
@@ -20,17 +19,13 @@ include 'include-frontend/header.php';
              </form>
         </div>
 </section>
-        
-
 
 <main class="container content">
  
-
-    <article class="container apropos text-center p-4">
+    <article class="container text-center p-4">
                 <h1 class="titre"><b>Des voyages à petits prix!</b></h1>
                 <br><br>
-        <div class="row row-cols-2"> 
-
+        <div class="row row-cols-2 apropos"> 
             <div class="col border" id="info">
 
                 <h3>De belles natures à découvrir!</h3>
@@ -40,7 +35,6 @@ include 'include-frontend/header.php';
                 <dd><span>La faune vous reserve beaucoup de surprises.<br> 
                 Accéder à la galérie photos pour visiter quelques lieux.</span></dd>  
             </div>
-            
             <div class="col" id="caroussel">
 
                 <div class="images">

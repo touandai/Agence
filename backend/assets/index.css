@@ -20,17 +20,17 @@
   }
     /*header et pages entête*/
     header {
-      background: #0C273D;
-      margin-bottom: 30px;
+      background: #0b2020;
+      margin-bottom: 60px;
     }
     .logo {
       float: left;
-      padding: 20px;
+      padding: 15px;
     }
     .information-user {
       float: right;
       padding: 20px;
-      margin-top:50px;
+      margin-top:30px;
       color:white;
     }
     .btn-deconnexion {
@@ -46,7 +46,7 @@
     display: flex;
     justify-content: center;
     margin-top: 30px;
-    margin-bottom: 70px;
+    margin-bottom: 150px;
     padding: 10px;
   }
   /*deconnexion*/

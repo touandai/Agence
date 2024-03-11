@@ -15,17 +15,22 @@ require '../connexion.php';
                     
             $id = validation_donnees($_POST['id']);
             $statut = validation_donnees($_POST['statut']);
+            $date = date('Y-m-d h:m:s');
 
 
             $reqAnnul = 'UPDATE agence.reservations SET statut = :statut, date_annulation =:date WHERE id = :id';
             $valider = $conn -> prepare ($reqAnnul);
+
             $valider -> bindValue(':id',$id);
-            $valider -> execute ([
+            $valider -> bindValue(':statut',$id);
+            $valider -> bindValue(':date',$date);
+
+            $valider -> execute ();
             
-            ":id" => $_POST['id'],
-            ":statut" => $_POST['statut'],
-            ":date" => date('Y-m-d h:m:s'),
-            ]);
+            //":id" => $_POST['id'],
+            //":statut" => $_POST['statut'],
+            //":date" => date('Y-m-d h:m:s'),
+           
             if($valider){
             header("location:?pages=gestion-reservation.php&succes=1");die;
             }else {
@@ -37,13 +42,14 @@ require '../connexion.php';
 ?>
 
 
-<h2 class="text-center p-4"><b>Réservation</b></h2>
+<h4 class="text-center p-4"><b>Réservations</b></h4>
 <br>
 
 
 <main class="container annule-reservation">
 
-<h3 class="text-center">Je renonce à mon voyage et souhaite annuler ma reservation</h3>
+
+<p class="text-center span"></p>
 <br>
 
 
@@ -86,13 +92,7 @@ require '../connexion.php';
                         <option value="Annulation-imprévu">Annulation-imprévu</option>
                         <option value="Annulation-autres">Annulation-autres</option>
                      </select>
-                     <?php 
-                     if(isset($_GET['succes']) && $_GET['succes']==1){
-                     echo "<strong> Votre réservation est bien annulé !</strong>";
-                     }
-                     ?>
-
-                     <button class="btn btn-danger sous-titre text-center" type="submit" name="valider">Valider</button>
+                     <button class="btn btn-danger sous-titre text-center" type="submit" name="valider" onclick="return confirm('êtes-vous sûr de vouloir annuler?')">Valider</button>
                 </form>
             </td>
         </tr>   

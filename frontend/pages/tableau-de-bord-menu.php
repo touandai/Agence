@@ -6,8 +6,6 @@ setcookie('userlog', 'client',
 'secure' => true,
 'httponly' => true,
 ]);
-
-
 //demarrage session//
 session_start();
 $Title='Compte Personnel, Afrique Centrale Découverte';
@@ -28,8 +26,8 @@ $clientConnecte = $_SESSION['donnees_client'];
 
 <nav id="nav-dashboard" class="container text-center">
             <div class="div-menu-dashboard">
-                <a class="lien menu" href="tableau-de-bord-client.php"><b>Compte Client</b></a>
-                <a class="lien menu" href="gestion-reservation.php"><b>Gérer ma réservation</b></a>  
+                <a class="lien menu" href="tableau-de-bord-client.php"><b>Statut Compte</b></a>
+                <a class="lien menu" href="gestion-reservation.php"><b>Mes réservations</b></a>  
                 <a class="lien menu" href="gestion-compteclient.php"><b>Informations personnelles</b></a>
             </div>    
             <div class="user-infos">

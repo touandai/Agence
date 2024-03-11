@@ -19,18 +19,25 @@ if(array_key_exists('valider',$_POST)){
                 
         $id = validation_donnees($_POST['id']);
         $statut = validation_donnees($_POST['statut']);
+        $date_modif = date('Y-m-d h:m:s');
 
                       
         $req = 'UPDATE agence.reservations  SET statut = :statut, date_validation = :date WHERE id = :id';
         $statement = $conn -> prepare($req);
         $statement -> bindValue(':id',$id);
-        $valider = $statement-> execute ([
+        $statement -> bindValue(':statut',$statut);
+        $statement -> bindValue(':date',$date_modif);
+        $valider = $statement-> execute ();
         
-        ":id" => $_POST['id'],
-        ":statut" => $_POST['statut'],
-        ":date" => date('Y-m-d h:m:s'),
+        //":id" => $_POST['id'],
+        //":statut" => $_POST['statut'],
+        //":date" => date('Y-m-d h:m:s'),
 
-         ]);
+         if($statement){
+            header("location:?pages=gestion-réservation.php&succes=1");
+            }else {
+                echo "<strong> problème technique, Merci de réessayer plus tard ! </strong>";
+            }
 
 }
 
@@ -50,6 +57,7 @@ if(array_key_exists('valider',$_POST)){
             <caption>Gestion des Réservations</caption>
                 <thead>
                         <tr>
+                            <th>Id Réservation</th>
                             <th>Nbre de personnes</th>
                             <th>Prix ttc</th>
                             <th>Type de réglement</th>
@@ -70,6 +78,7 @@ if(array_key_exists('valider',$_POST)){
 
                     ?>
                    <tr>
+                      <td><?php echo $value['id'];?></td>
                       <td><?php echo $value['nombre_personne'];?></td>
                       <td><?php echo $value['prix'];?></td>
                       <td><?php echo $value['type_reglement'];?></td>
@@ -78,7 +87,7 @@ if(array_key_exists('valider',$_POST)){
                       <td><?php echo $value['statut'];?></td>
                       <td>
                         <form method="POST" action="">
-                            <input type="hidden" name="id" value="<?php echo $value['id']; ?>" readonly>
+                            <input type="hidden" name="id" value="<?php echo $value['id']; ?>" readonly="true">
                             <select name="statut">
                                 <option value="">Modifier</option>
                                 <option value="Confirmée">Confirmée</option>
@@ -87,18 +96,17 @@ if(array_key_exists('valider',$_POST)){
                             <button class="btn btn-success sous-titre text-center" type="submit" name="valider">Valider</button>
                         </form>
                       </td>                     
-                  </tr>   
-              <?php
-                  }
-              ?>
+                    </tr>   
+                    <?php
+                    }
+                    ?>
             </tbody>
         </table>      
     </section>
 
 </main>
 
-
 <?php
-include 'include/footer.php';
+require 'include/footer.php';
 
 ?>

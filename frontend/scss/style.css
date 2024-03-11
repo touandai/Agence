@@ -31,10 +31,6 @@ header {
   margin-bottom: 50px;
 }
 
-#menu {
-  font-weight: bold;
-}
-
 img {
   max-width: 160px;
   height: auto;
@@ -62,10 +58,10 @@ section #form-recherche {
 
 /*Page principale / Accueil*/
 main .content {
-  margin-top: 20px;
+  display: flex;
+  margin-top: 15px;
   padding: 10px;
   justify-content: center;
-  display: flex;
   border: 2px solide black;
 }
 main article {
@@ -114,7 +110,7 @@ main article {
   display: flex;
   height: auto;
   animation-duration: 30s;
-  animation-direction: alternate;
+  animation-direction: alternate-reverse;
   animation-name: imagesAnimee;
   animation-iteration-count: infinite;
 }
@@ -124,16 +120,16 @@ main article {
     transform: translateX(0);
   }
   20% {
-    transform: translatex(-350px);
+    transform: translatex(-240px);
   }
   40% {
-    transform: translateX(-700px);
+    transform: translateX(-590px);
   }
   60% {
-    transform: translateX(-1050px);
+    transform: translateX(-940px);
   }
   80% {
-    transform: translate(-1350px);
+    transform: translate(-1240px);
   }
   100% {
     transform: translateX(0);
@@ -280,7 +276,7 @@ div .carousel-item img:hover {
 }
 
 .carousel-item img {
-  max-width: 800px;
+  max-width: 700px;
   height: auto;
 }
 
@@ -380,24 +376,31 @@ form legend {
 }
 
 /* Média queries*/
+@media screen and (max-width: 992px) {
+  .apropos {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
 @media screen and (max-width: 768px) {
   #caroussel {
     width: 375px;
     height: 230px;
   }
+  #info {
+    width: 375px;
+    height: 230px;
+    margin-bottom: 5px;
+  }
 }
-@media screen and (max-width: 992px) {
-  #apropos {
-    flex-direction: column;
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 12px;
   }
 }
 @media screen and (max-width: 430px) {
   .box {
     overflow: hidden;
-  }
-}
-@media screen and (max-width: 430px) {
-  .div-menu-dashboard {
-    display: Block;
   }
 }/*# sourceMappingURL=style.css.map */

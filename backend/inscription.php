@@ -1,5 +1,7 @@
 <?php  
 
+require 'connexion.php';
+
 if(array_key_exists('envoyer',$_POST)){
 
     if(isset($_POST['nom']) && empty($_POST['nom'])){     
@@ -72,6 +74,7 @@ if(array_key_exists('envoyer',$_POST)){
     </div>
     <div class="clear"></div>
 </header>
+
 </body>
 </html>
 
@@ -167,6 +170,7 @@ if(array_key_exists('envoyer',$_POST)){
     }) 
     
 </script>
+
 <?php
 include 'include/footer.php';
 

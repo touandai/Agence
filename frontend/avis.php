@@ -56,8 +56,7 @@ if(array_key_exists('valider',$_POST)){
 
 <main class="container avis">
 
-        <section class="" id="dropdownMenuButton" data-toggle="dropdown">
-                 
+        <section id="dropdownMenuButton" data-toggle="dropdown">     
                 <form class="form" method="POST" id="myform" action="">                    
                        <fieldset>
                             <legend>Laissez-nous votre avis</legend>
@@ -188,9 +187,7 @@ require 'connexion.php';
        
 <script>
     let Myform = document.getElementById('myform');
-
     Myform.addEventListener('submit',function(e){
-
         let inputNom = document.getElementById('name')
         let inputNote = document.getElementById('note')
         let Commentaire = document.getElementById('commentaire')
@@ -225,8 +222,6 @@ require 'connexion.php';
         e.preventDefault();
         }
     }) 
-    
-
 </script>
 
 </body>

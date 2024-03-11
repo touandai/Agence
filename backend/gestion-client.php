@@ -7,6 +7,22 @@ require 'include/menu-nav.php';
 
 require 'connexion.php';
 
+if(array_key_exists('valider',$_POST))  {
+    
+    $id = $_POST['id'];
+    $reqsupp = 'DELETE FROM agence.client WHERE id = :id';
+    $statment = $conn -> prepare($reqsupp);
+    $statment -> bindValue(':id',$id);
+    $supp =  $statment -> execute();
+    
+    //condition si le client a déjà réservé//
+    if($supp) {
+        header('location:?gestion-client&suppression=1');
+        exit();
+    }
+
+}    
+
 ?>
 <br>
 <h2 class="text-center">Gestion des Clients</h2>
@@ -53,20 +69,12 @@ require 'connexion.php';
                       <td><?php echo $value['date_inscription'];?></td>
   
                       <td>
-                      <?php ?>
-                      <a href="?page=avis&action=supprimer&id=<?php echo $value['id']; ?>"><button class="btn btn-danger"type="submit">Supprimer</button></a>
 
-                      <?php 
-                      /*
-                      $sup = "DELETE * FROM  agence.circuits where id = :id ";
-  
-                      $tdr = $conn -> prepare ($sup);
-                      $tdr -> execute();
-                                      
-                      */          
-                      ?>
-                      
-                      
+                      <form method="POST" action=""> 
+                          <input type="hidden" name="id" value="<?php echo $value['id']; ?>" readonly="true">
+                          <button class="btn btn-danger"  type="submit" name="valider" onclick="return confirm('Vous confirmez cette suppression <?php echo $value['id']; ?> ?')">supprimer</button>
+                      </form>
+
                       </td>
                   </tr>   
               <?php

@@ -7,8 +7,54 @@ require 'include/menu-nav.php';
 
 require 'connexion.php';
 
+    //suppression de circuits // 
+    if(array_key_exists('valider',$_POST))  {
+    
+        $id = $_POST['id'];
+        $reqsupp = 'DELETE FROM agence.circuits WHERE id = :id';
+        $statment = $conn -> prepare($reqsupp);
+        $statment -> bindValue(':id',$id);
+        $supp =  $statment -> execute();
+        if($supp) {
+            header('location:?gestion-circuit.php&suppression=1');
+            exit();
+        }
+    }    
 
- ?>
+    //modification de circuits // 
+    if(array_key_exists('valider',$_POST))  {
+
+        function validation_donnees($donnees){
+            $donnees = trim($donnees);
+            $donnees = stripslashes($donnees);
+            $donnees = htmlspecialchars($donnees);
+            return $donnees;
+            }
+                    
+            $id = validation_donnees($_POST['id']);
+            $prix = validation_donnees($_POST['prix']);
+            $date = validation_donnees($_POST['date']);
+    
+        $id = $_POST['id'];
+        $reqModif = 'UPDATE agence.circuits SET prix =:prix, date =:date, date_modification =:date WHERE id = :id';
+        $statment = $conn -> prepare($reqModif);
+        $statment -> bindValue(':id',$id);
+        $modif =  $statment -> execute([
+
+        ":id" => $_POST['id'],
+        ":prix" => $_POST['prix'],
+        ":date" => $_POST['date'],
+        ":date" => date('Y-m-d h:m:s'),
+
+        ]);
+        if($modif) {
+            header('location:?gestion-circuit.php&modification=1');
+            exit();
+        }
+    }   
+
+?>
+
 
 <br>
 <h2 class="text-center">Gestion des circuits</h2>
@@ -22,14 +68,13 @@ require 'connexion.php';
             <caption>Gestion Circuits</caption>
                 <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Destination</th>
                             <th>Date de depart</th>
                             <th>Date de retour</th>
                             <th>Prix</th>
                             <th>Type_circuit</th>
                             <th>Date</th>
-                            <th>Statut/Action</th>
+                            <th>Actions</th>
                         </tr>
                 </thead>
                   
@@ -42,7 +87,6 @@ require 'connexion.php';
                         foreach($resultat as $key => $value) {
                     ?>
                    <tr>
-                      <td><?php echo $value['id'];?></td>
                       <td><?php echo $value['destination'];?></td>
                       <td><?php echo $value['date_depart'];?></td>
                       <td><?php echo $value['date_retour'];?></td>
@@ -50,28 +94,19 @@ require 'connexion.php';
                       <td><?php echo $value['type_circuit'];?></td>
                       <td><?php echo $value['date'];?></td>
   
-                      <td col="2">
-                      <button class="btn btn-warning" type="submit">Modifier</button></a> 
-                      <?php ?>
-                      <a href="?page=avis&action=supprimer&id=<?php echo $value['id']; ?>"><button class="btn btn-danger"type="submit">Supprimer</button></a>
-  
-                       
-                      <?php 
-                      /*
-                      $sup = "DELETE * FROM  agence.circuits where id = :id ";
-  
-                      $tdr = $conn -> prepare ($sup);
-                      $tdr -> execute();
-                                      
-                      */          
-                      ?>
-                      
-                     
+                      <td>
+                      <form method="POST" action=""> 
+                          <input type="hidden" name="id" value="<?php echo $value['id']; ?>" readonly="true">
+
+                          <button class="btn btn-warning" type="submit" name="modifier">Modifier</button>
+                          <button class="btn btn-danger"  type="submit" name="valider" onclick="return confirm('Vous confirmez cette suppression <?php echo $value['id']; ?> ?')">supprimer</button>
+                      </form>
+
                       </td>
                   </tr>   
-              <?php
-                  }
-              ?>
+                <?php
+                }
+                ?>
             </tbody>
         </table>      
     </section>

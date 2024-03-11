@@ -23,7 +23,8 @@ require 'connexion.php';
         <p>
          <b>Posté par</b> : <?php echo $value['nom']; ?> <br><b>Note : </b>
          <?php echo $value['note']; ?> <b> Message : </b> <?php echo $value['message'];?> <b> Date : </b> 
-         <?php echo $value['date_avis'];?></p>
+         <?php
+         echo $value['date_avis'];?></p>
         <?php
          }
         
