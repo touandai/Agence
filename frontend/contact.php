@@ -133,7 +133,7 @@ if(array_key_exists('envoyer',$_POST)){
                         ?>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary btn-lg" name="envoyer" type="submit" id="envoyer">Envoyer</button>
+                        <button class="btn btn-primary" name="envoyer" type="submit" id="envoyer">Envoyer</button>
                     </div>
             </fieldset>
         </form>  

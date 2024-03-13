@@ -35,10 +35,7 @@ require 'include-frontend/header.php';
    6- date_circuit + type_circuit
 */
   $donneesDeRecherche = [];
-
-
     //echo ' > Ma requete initiale est : ' . $reqRecherche;
-
   $reqRecherche = " SELECT * FROM agence.circuits WHERE 1 = 1";
 
   /* Seulement la destination est renseignée */
@@ -46,11 +43,8 @@ require 'include-frontend/header.php';
         $reqRecherche .= " AND UPPER(destination) LIKE :destination";
         $donneesDeRecherche[':destination'] =  "%".strtoupper($destination)."%";
     }
- 
     //echo "<br /> > Ensuite après ma condition 1 : " . $reqRecherche;
-
     /* Seule la date de départ est à renseigner */
-
     if(!empty($date_depart)) {
         $reqRecherche .= " AND date_depart >= :dateDepart";
         $donneesDeRecherche[':dateDepart'] = $date_depart;
@@ -60,12 +54,7 @@ require 'include-frontend/header.php';
         $reqRecherche .= " AND type_circuit = :circuit";
         $donneesDeRecherche[':circuit'] = $circuit;
     }
-    /*if(empty($_POST['destination']) AND empty($date_depart) AND empty($circuit)){
-        echo "<p> $result </p>";
-    }
-    */
     //echo "<br /> > Après ma condition 3 : " . $reqRecherche . '<br/>';
-    //var_dump($donneesDeRecherche);die;
     $tdr = $conn -> prepare($reqRecherche);
     //$tdr -> bindValue(':destination', "%".strtoupper($destination)."%");
     $tdr -> execute($donneesDeRecherche);
@@ -84,15 +73,17 @@ require 'include-frontend/header.php';
     <div><b>Prix : </b><?php echo $value['prix']; ?></font></div>
 </div>
 <?php
-    }
+}
 ?>
+
 <div style="clear: both;"></div>
 <br><br>
 
 </main>
 <br>
+
 <?php if($nombreDeResultat !=="") : ?>
-<h6 class="text-center"><b><a class="lien" href="circuits.php"> Je selectionne mon circuit > </a></h6>
+<h6 class="text-center"><b><a class="lien" href="circuits.php"> Détails circuits >> </a></h6>
 <br>
 <?php endif; ?>
 

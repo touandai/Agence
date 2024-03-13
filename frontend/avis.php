@@ -23,24 +23,24 @@ if(array_key_exists('valider',$_POST)){
         $nom = validation_donnees($_POST['nom']);
         $note = validation_donnees($_POST['note']);
         $commentaire= htmlspecialchars($_POST['commentaire']);
-       
+        $id_client = validation_donnees($_SESSION["donnees_client"]['id']);
+        
         //$date = new DateTime($date_avis);
         //$date_avis ->format('d/m/Y');
 
-              
-
-        
-        $reqInsert = 'INSERT INTO agence.avis (nom, note, message, date_avis, statut) 
-        values (:nom, :note, :message, :date, :statut)';
+        $reqInsert = 'INSERT INTO agence.avis (nom, note, message, date_avis, statut, id_client) 
+        values (:nom, :note, :message, :date, :statut, :id_client)';
         
         $insert = $conn -> prepare ($reqInsert);
+        $insert->bindValue(':id_client',$id_client);
         $save = $insert-> execute([
                  
             ":nom" => $nom,   
             ":note" => $note,
             ":message" => $commentaire,
             ":date" => date('d/m/Y'),
-            ":statut" => "En attente",
+            ":statut" => "En attente de validation",
+            ":id_client" => $id_client,
         ]);    
 
         header("location:succes-validation.php");
@@ -60,9 +60,8 @@ if(array_key_exists('valider',$_POST)){
                 <form class="form" method="POST" id="myform" action="">                    
                        <fieldset>
                             <legend>Laissez-nous votre avis</legend>
-                         
                                 <div class="p-2">
-                                    <label class="form-label" for="name"><b>Pseudo / Nom :*</b></label>
+                                    <label class="form-label" for="name"><b>Pseudo:*</b></label>
                                     <input class="form-control" type="text" name="nom" id="name" placeholder="Martin" maxlength="12"/>
                                     <span id="erreur"></span>
                                 </div>

@@ -252,8 +252,8 @@ Form_inscription.addEventListener('submit',function(e){
 
         let inputRegex = /^[a-zA-Z]+$/; 
         let telRegex = /^[0-9]+$/; 
-        let emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-        let passwordRegex = /^[a-z]+[A-Z{1},0-9]$/; 
+        let emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,3}$/
+        let passwordRegex = /^[a-zA-Z]+[0-9]+[#?!@$%^&*-]+$/; 
 
         if (Civilite.value.trim() ==""){
             let Erreurcivilite = document.getElementById('erreurcivilite');
@@ -324,7 +324,7 @@ Form_inscription.addEventListener('submit',function(e){
             e.preventDefault();
         } else if(passwordRegex.test(Password.value) == false){
             let Erreurpassword = document.getElementById('erreurpassword');
-            Erreurpassword.innerHTML = "Le mot de pass doit contenir une lettre majuscule!";
+            Erreurpassword.innerHTML = "Le mot de pass doit comporter de lettres majuscules, miniscules,de chiffres et caractères spéciaux !";
             Erreurpassword.style.color = 'red';
             e.preventDefault();
         }

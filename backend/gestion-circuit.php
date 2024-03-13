@@ -64,7 +64,6 @@ require 'connexion.php';
    
     <section class="container circuit">
         <table class="table table-striped table-bordered">
-          
             <caption>Gestion Circuits</caption>
                 <thead>
                         <tr>
@@ -79,9 +78,8 @@ require 'connexion.php';
                 </thead>
                   
                 <tbody>
-                  
                     <?php
-                        $reqselect = "SELECT * FROM agence.circuits ORDER BY date ASC LIMIT 5";
+                        $reqselect = "SELECT * FROM agence.circuits ORDER BY statut ASC LIMIT 6";
                         $reqselect = $conn -> query ($reqselect);
                         $resultat = $reqselect-> fetchAll();
                         foreach($resultat as $key => $value) {
@@ -93,21 +91,19 @@ require 'connexion.php';
                       <td><?php echo $value['prix'];?></td>
                       <td><?php echo $value['type_circuit'];?></td>
                       <td><?php echo $value['date'];?></td>
-  
                       <td>
-                      <form method="POST" action=""> 
-                          <input type="hidden" name="id" value="<?php echo $value['id']; ?>" readonly="true">
+                        <form method="POST" action=""> 
+                            <input type="hidden" name="id" value="<?php echo $value['id']; ?>" readonly="true">
 
-                          <button class="btn btn-warning" type="submit" name="modifier">Modifier</button>
-                          <button class="btn btn-danger"  type="submit" name="valider" onclick="return confirm('Vous confirmez cette suppression <?php echo $value['id']; ?> ?')">supprimer</button>
-                      </form>
-
+                            <button class="btn btn-warning" type="submit" name="modifier">Modifier</button>
+                            <button class="btn btn-danger"  type="submit" name="valider" onclick="return confirm('Confirmez-vous cette suppression <?php echo $value['id']; ?> ?')">supprimer</button>
+                        </form>
                       </td>
                   </tr>   
                 <?php
                 }
                 ?>
-            </tbody>
+                </tbody>
         </table>      
     </section>
 

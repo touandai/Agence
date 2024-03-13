@@ -12,11 +12,10 @@ require '../connexion.php';
             $donnees = htmlspecialchars($donnees);
             return $donnees;
             }
-                    
+                                
             $id = validation_donnees($_POST['id']);
             $statut = validation_donnees($_POST['statut']);
             $date = date('Y-m-d h:m:s');
-
 
             $reqAnnul = 'UPDATE agence.reservations SET statut = :statut, date_annulation =:date WHERE id = :id';
             $valider = $conn -> prepare ($reqAnnul);

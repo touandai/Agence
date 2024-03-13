@@ -14,7 +14,6 @@ require 'connexion.php';
     </div>
 
     <main class="container circuit text-center p-2">
-            
                         <?php 
                         /* Nombre de circuit à afficher par page */
                         $pagelimit = 12;
@@ -81,20 +80,22 @@ require 'connexion.php';
 
         <nav aria-label="navigation">
             <ul class="pagination justify-content-center"> 
-                <li class="page-item "></li>
-                <a href="circuits.php?page=1" class="page-link text-primary2 disabled">Précédant</a>
+                 <!-- Lien page précédente désactivé si on se trouve sur la page de début-->
+                <li class="page-item <?= ($numeroPage == 1) ? "disabled" : "" ?>">
+                    <a href="circuits.php?<?= $numeroPage - 1 ?>" class="page-link text-primary2">Précédant</a>
                 </li>  
                 <?php 
                     for($i = 1; $i <= $totalPage; $i++) {
                 ?>
                  <li class="page-item"></li>
-                <a href="circuits.php?page=<?php echo $i; ?>" class="page-link text-primary2 active"><?php echo $i; ?></a>
+                    <a href="circuits.php?page=<?php echo $i; ?>" class="page-link text-primary2"><?php echo $i; ?></a>
                 </li>
                 <?php
-                    }
+                }
                 ?>
-                <li class="page-item"></li>
-                <a href="#" class="page-link text-primary2">Suivant</a>
+                 <!-- Lien page suivante désactivé si on se trouve sur la page de fin-->
+                <li class="page-item <?= ($numeroPage ==  $totalPage ) ? "disabled" : "" ?>">
+                    <a href="circuits.php? <?= $numeroPage + 1 ?>" class="page-link text-primary2">Suivant</a>
                 </li> 
             </ul>   
         </nav> 
@@ -106,7 +107,7 @@ require 'connexion.php';
     <?php
     if(empty($_SESSION['donnees_client'])): ?>
     
-    <h6 class="text-center"><b><a class="text-primary2 lien" href="espaceclient.php"> M'identifier pour reserver un circuit</a></h6>
+    <h6 class="text-center"><b><a class="text-primary2 lien" href="espaceclient.php"> Je m'identifie pour reserver</a></h6>
     <br>   
     <?php endif; ?>
 

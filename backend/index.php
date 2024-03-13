@@ -1,4 +1,5 @@
 <?php
+
 $Title='Dashboard, Afrique Centrale Découverte.';
 require 'connexion.php';
 /* Démarrage session */
@@ -47,10 +48,6 @@ switch($backend) {
   /* Gestion Avis*/
   case 'avis':
     require 'backend/gestion-avis.php';
-    break;
- /* galerie */    
-  case 'galerie':
-    require 'backend/galerie.php';
     break;
 }
 

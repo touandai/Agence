@@ -5,7 +5,6 @@ if(isset($_SESSION['donnees_client'])){
     header("location:pages/tableau-de-bord-client.php");
     exit();
 }
-
 $Title='Espace Client,Afrique Centrale Découverte';
 
 require 'include-frontend/header.php';
@@ -78,7 +77,6 @@ $clientConnecte
             <form class="form" method="POST" action="">  
                 <fieldset>
                     <legend>Merci de vous Identifier, pour profiter de nos services!</legend> 
-                            
                             <div class="input-row">
                             <label class="form-label" for="email"><b> Email : *</b></label>
                             <input class="form-control form-control" type="email" name="email" maxlength="25" placeholder="Dupont">
@@ -88,7 +86,6 @@ $clientConnecte
                                 }
                             ?>
                             </div>
-                            
                             <div class="input-row">
                             <label class="form-label" for="mot_de_pass"><b> Mot de passe : *</b></label>
                             <input  class="form-control form-control" type="password" name="mot_de_pass" minlength="8" maxlength="15" placeholder="Mot de pass">
@@ -101,7 +98,6 @@ $clientConnecte
                             ?>                   
                             </div>
                             <br>
-
                             <div class="text-center">
                             <button class="btn btn-primary" name="connexion" type="submit">Connexion</button>
                             <br><br>

@@ -6,6 +6,8 @@ setcookie('userlog', 'client',
 'secure' => true,
 'httponly' => true,
 ]);
+
+
 //demarrage session//
 session_start();
 $Title='Compte Personnel, Afrique Centrale Découverte';

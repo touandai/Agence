@@ -25,19 +25,17 @@ require 'connexion.php';
             header("location:?id_circuit=".$_GET['id_circuit']."&type_reglement=1");
             
             }
-       
+            //fonction controle saisie données // 
            function validation_donnees($donnees){
                 $donnees = trim($donnees);
                 $donnees = stripslashes($donnees);
                 $donnees = htmlspecialchars($donnees);
                 return $donnees;
             }
-            
             $nombre_personne = validation_donnees($_POST['nombre_personne']);
             $prix_total = validation_donnees($_POST['prix_total']);
             $type_reglement = validation_donnees($_POST['type_reglement']);
             $id_circuit = $_GET['id_circuit'];
-
 
            // Vérification de l'existence du circuit dans la base 
             $reqVerifCircuit = "SELECT * FROM agence.circuits WHERE id = :idCircuit";
@@ -62,7 +60,7 @@ require 'connexion.php';
                         ":type_reglement" => (empty($type_reglement)) ? NULL : $type_reglement,
                         ":id_circuit" => $id_circuit,
                         ":date" => date('Y-m-d h:m:s'),
-                        ":statut" => "En attente",
+                        ":statut" => "En cours de traitement",
                         ":idClient" => $clientConnecte['id'],
                     ]);    
                 if($save){

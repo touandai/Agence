@@ -2,6 +2,7 @@
 //demarage session // 
 session_start();
 
+
 require 'connexion.php';
 
     if(array_key_exists('connexion',$_POST)){
@@ -16,28 +17,19 @@ require 'connexion.php';
             header("location:?pwd=1");
             exit();
             }
-
             $email = $_POST['email'];
             $password = $_POST['mot_de_pass'];
-            
             //verifier si email existe en base de données //
-
             $reqSelect = 'SELECT * FROM agence.user WHERE email = :email';
-            
             $reqExec = $conn -> prepare($reqSelect);
             $reqExec -> bindvalue('email', $email);
-
             $reqExec-> execute ([
                 ":email"  => $_POST['email'],                 
                 ]);
-
             $user = $reqExec ->fetch(PDO::FETCH_ASSOC);
-       
-            
              // verification email base données  //
             if(!empty($user)){
                  //client trouvé //
-               
                 $passwordhash = $user['mot_de_pass'];
                 if(password_verify($password, $passwordhash)){
                     $_SESSION['donnees_user'] = $user;

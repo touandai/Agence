@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+  body a {
+    text-decoration: none;
+  }
+  main{
+    margin-bottom: 30px;
+  }
+    /*header et pages entête*/
+    header {
+      background: #0b2020;
+      margin-bottom: 60px;
+    }
+    .logo {
+      float: left;
+      padding: 15px;
+    }
+    .information-user {
+      float: right;
+      padding: 20px;
+      margin-top:30px;
+      color:white;
+    }
+    .btn-deconnexion {
+      display: inline;
+      vertical-align: middle;
+      margin-left: 20px;
+    }
+    .clear {
+      clear: both;
+    }
+   /*pages connexion*/
+   .connexion, .inscription{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 150px;
+    padding: 10px;
+  }
+  /*deconnexion*/
+  .btn-deconnexion {
+    display: inline;
+    vertical-align: middle;
+    margin-left: 20px;
+  }
+  /*menu*/
+  .menu  {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .menu a {
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    text-transform: uppercase;
+    background: #2C5E2E;
+    color: #ffffff;
+    font-size: 12px;
+  
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  }
+  /*footer*/
+.ancre{
+    color:#FFFEF1;;
+    }
+.footer{
+      margin-top: 10px;
+      padding:10px;
+      background-color:#0b2020;
+}
+  .text-center{
+    text-align: center;
+    font-weight: bold;
+  }
+  p  {
+    font-weight: bold;
+  }
+  /*page ajout patients*/
+  .form{
+   margin:10px;
+   padding:10px;
+  }
+  legend {
+    color:#0b2020;
+    font-weight: bolder;
+  }
+  /*page gestion clients*/
+  .gestion-client
+  {
+    display: flex;
+    justify-content:space-evenly;
+  
+  }
+  .client
+  {
+    display: flex;
+    justify-content:space-around;
+    padding: 10px;
+  }
+  /*page gestion circuits*/
+  .circuit {
+    display: flex;
+    justify-content:center;
+    margin-top: 10px;
+    padding: 10px;
+  }
+  img{
+    max-width: 100%;
+    height: auto;  
+  }
+  .lien{
+      color:#2C5E2E;
+      font-weight: bolder;
+      border:5px solid;
+      border-radius: 3px;
+      padding:5px;  
+  }
+  /*page gestion avis*/
+  .avis
+  {
+    margin-top: 5px;
+    border:2px solid;
+    border-radius: 5px;
+    text-align: center;
+    font-weight:bolder;
+  }
+  .ajout-sup
+  {
+    display: flex;
+  }
+  strong
+  {
+    color:red;
+  }
+  .red{
+    color: red;
+  }
+  p
+  {
+    color :blue;
+  }
+  /*pages formulaire espace-admin */
+.connexion{
+    margin-top: 30px;
+    padding:10px;
+}
+form{
+ 
+    padding:15px;
+}
+button{
+     color:#0C273D;
+}
+
+/*confimation validation formulaire*/
+.validation, h1 p{
+  color: #2C5E2E;
+}
+.validation, a{
+ font-size: medium;
+
+}
+.validation{
+  padding: 100px;
+  color:#0C273D;
+}
+.titre{
+  color: #54D0ED;
+}
