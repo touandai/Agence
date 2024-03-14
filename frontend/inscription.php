@@ -251,7 +251,7 @@ Form_inscription.addEventListener('submit',function(e){
         let Password = document.getElementById('password')
 
         let inputRegex = /^[a-zA-Z]+$/; 
-        let telRegex = /^[0-9]+$/; 
+        let telRegex = /^[0]{2}[0-9]*$/;
         let emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,3}$/
         let passwordRegex = /^[a-zA-Z]+[0-9]+[#?!@$%^&*-]+$/; 
 

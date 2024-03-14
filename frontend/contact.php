@@ -118,13 +118,13 @@ if(array_key_exists('envoyer',$_POST)){
 
                     <div class="mb-3">
                         <label class="form-label"><b>Telephone:</b></label>
-                        <input class="form-control" type="text" minlength="14" maxlength="15" name="telephone" id="tel" placeholder="+236....">
+                        <input class="form-control" type="text" minlength="13" maxlength="13" name="telephone" id="tel" placeholder="+236....">
                         <span id="erreurtel"></span> 
                     </div>
 
                     <div class="mb-3 p-4">
                         <label class="form-label"><b>Message:*</b></label>
-                        <textarea class="form-control" name="message" id="message" maxlength="1000" placeholder=" Ecrivez ici votre message..."></textarea>
+                        <textarea class="form-control" name="message" id="message" placeholder="Ecrivez ici votre message..."></textarea>
                         <span id="erreurmessage"></span>
                         <?php
                         if(isset($_GET['message']) && ($_GET['message']==1)){

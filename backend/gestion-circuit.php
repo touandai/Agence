@@ -79,7 +79,7 @@ require 'connexion.php';
                   
                 <tbody>
                     <?php
-                        $reqselect = "SELECT * FROM agence.circuits ORDER BY statut ASC LIMIT 6";
+                        $reqselect = "SELECT * FROM agence.circuits ORDER BY date ASC LIMIT 6";
                         $reqselect = $conn -> query ($reqselect);
                         $resultat = $reqselect-> fetchAll();
                         foreach($resultat as $key => $value) {

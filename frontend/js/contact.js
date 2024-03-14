@@ -10,8 +10,8 @@
             let Message = document.getElementById('message');
 
                 let nomformat = /^[a-zA-Z-\s]+$/;
-                let mailformat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-                let telforformat =  /^[0-9]*$/;
+                let mailformat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,3}$/
+                let telforformat =  /^[0]{2}[0-9]*$/;
 
             //controle saisie champ obligatoire motif// 
             if (Motif.value.trim() ==""){
@@ -39,7 +39,7 @@
             e.preventDefault();
                 }else if (mailformat.test(inputEmail.value) == false){
                 let Erreurmail = document.querySelector('#erreurmail');
-                Erreurmail.innerHTML ="Adresse email invalide !";
+                Erreurmail.innerHTML ="Format email invalide !";
                 Erreurmail.style.color ='red';
                 e.preventDefault();
             }
@@ -51,7 +51,7 @@
             e.preventDefault();
                 }else if (telforformat.test(inputTel.value) == false){
                 let Erreurtel = document.getElementById('erreurtel');
-                Erreurtel.innerHTML ="Ce champ doit composer que de chiffres ! ";
+                Erreurtel.innerHTML ="Ce champ doit composer des chiffres, et commence par un indicatif ! ";
                 Erreurtel.style.color ='red';
                 e.preventDefault();
             }
