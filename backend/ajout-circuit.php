@@ -8,7 +8,7 @@ require 'include/menu-nav.php';
 require 'connexion.php';
 
 if(array_key_exists('envoyer',$_POST)){
-    echo '<pre>';
+    
     $donneesImages = explode('/', $_FILES['image']['type']);
     $extensionImage = end($donneesImages);
     $nouveauNomImage = sha1(md5(time())) . "." . $extensionImage;
@@ -73,17 +73,17 @@ if(array_key_exists('envoyer',$_POST)){
                         $reqInsertion = $conn -> prepare ($reqAjout);
                         $enregister = $reqInsertion->execute([
                         
-                        ":destination" => $destination,   
+                        ":destination" => $destination,
                         ":date_depart" => $date_depart,
                         ":date_retour" => $date_retour,
                         ":prix" => $prix,
                         ":type_circuit" => $type_circuit,
-                        ":date" =>date('Y-m-d h:m:s'),                                 
+                        ":date" =>date('Y-m-d h:m:s'),
                         ":image" => $nouveauNomImage,
                         ]);
 
                        if($enregister){
-                        header("location:?ajout-circuit.php&succes=1");die;
+                        header("location:ajout-circuit.php?valider=1");
                        }
 
                         
@@ -92,13 +92,20 @@ if(array_key_exists('envoyer',$_POST)){
 
 ?>
 
+<?php 
+    if(isset($_GET['valider']) && ($_GET['valider'] == 1)) {
+    ?>
+    <div style="padding: 20px;color: #ffffff;background: green;text-align:center;">Nouveau Circuit ajouté avec succès!</div>
+    <?php
+    }
+    ?>
 <main class="container">
     <section class="container circuit">
 
         <form id="ajoutcircuit" method="POST" action="" enctype="multipart/form-data">
     
             <fieldset>
-                    <legend>Ajouter circuits</legend>   
+                    <legend>Ajouter circuits</legend>
 
                 <div class="mb-3">
 
@@ -191,6 +198,6 @@ if(array_key_exists('envoyer',$_POST)){
 </script>
 
 <?php
-include 'include/footer.php';
+require 'include/footer.php';
 
 ?>

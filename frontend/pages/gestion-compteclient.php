@@ -23,7 +23,7 @@ require '../connexion.php';
             $telephone = validation_donnees($_POST['tel']);
             $nationalite = validation_donnees($_POST['nat']);
               
-            $reqModif = 'UPDATE agence.client SET nom =:nom, telephone =:tel, nationalite =:nat WHERE id =:id';
+            $reqModif = 'UPDATE agence.clients SET nom =:nom, telephone =:tel, nationalite =:nat WHERE id =:id';
             $statement = $conn -> prepare($reqModif);
             $statement -> bindValue(':id',$id);
             $statement -> bindValue(':nom',$nom);
@@ -47,7 +47,7 @@ require '../connexion.php';
 <?php
             $id= ($_SESSION["donnees_client"]['id']);
 
-            $req = 'SELECT nom, telephone, nationalite FROM agence.client where id=:id';
+            $req = 'SELECT nom, telephone, nationalite FROM agence.clients where id=:id';
             $reqaffich =$conn -> prepare ($req);
             $reqaffich -> bindvalue(':id', $id);
             $reqaffich -> execute();

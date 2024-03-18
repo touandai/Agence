@@ -86,7 +86,7 @@ main{
 }
 /*formulaire recherche accueil*/
 .box{
-    //position: relative;
+    //position: relative;//
     top: 5px;
     background:$primary;
     border: 2px solid $primary;
@@ -304,7 +304,7 @@ div .carousel-item{
    text-decoration: none;
 }
 #reservation{
-  padding:20px;
+   padding:20px;
    border:5px solid $primary;
    border-radius: 20px;
 }
@@ -315,16 +315,11 @@ section, .avis{
   margin-top:5px;
   margin-bottom: 5px;
 }
-/*confimation validation formulaire*/
+//confimation validation formulaire//
 .validation, h1 p{
    color:$nature;
 }
-/*
-:first-child::before {
-  content: "\0020 \2302";
-}
-*/
-/*espace admin utilisateur*/
+//espace admin utilisateur//
 .compteclient{
   display: flex;
 }
@@ -334,6 +329,10 @@ section, .avis{
 }
 .lien{
   text-decoration: none;
+}
+#confirmation{
+  color:$nature;
+  font-weight: bolder;
 }
 .btn-deconnexion{
 display: inline;
@@ -353,6 +352,11 @@ margin-left: 20px;
   border:3px solid $primary;
   background-color: $secondary;
   font-weight: bolder;
+}
+.modifemail{
+  display: flex;
+  gap: 5px;
+  padding: 5px;
 }
 section{
   @include page-formulaire;

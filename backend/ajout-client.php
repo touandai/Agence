@@ -14,31 +14,31 @@ if(array_key_exists('valider',$_POST)){
         header("location:?civilite=1");
         exit();
         }
-        if(isset($_POST['nom']) && empty($_POST['nom'])){     
+        if(isset($_POST['nom']) && empty($_POST['nom'])){
         header("location:?nom=1");
         exit();
         }
-        if(isset($_POST['prenom']) && empty($_POST['prenom'])){   
+        if(isset($_POST['prenom']) && empty($_POST['prenom'])){
         header("location:?prenom=1");
-        exit();            
+        exit();
         }
-        if(isset($_POST['age']) && empty($_POST['age'])){   
+        if(isset($_POST['age']) && empty($_POST['age'])){
         header("location:?age=1");
-        exit();             
+        exit();
         }
-        if(isset($_POST['nationalite']) && empty($_POST['nationalite'])){     
+        if(isset($_POST['nationalite']) && empty($_POST['nationalite'])){
             header("location:?nationalite=1");
             exit();
                 
         }
-        if(isset($_POST['telephone']) && empty($_POST['telephone'])){   
+        if(isset($_POST['telephone']) && empty($_POST['telephone'])){
             header("location:?telephone=1");
-            exit();             
+            exit();
         }
-        if(isset($_POST['email']) && empty($_POST['email'])){  
-        $pwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT);   
+        if(isset($_POST['email']) && empty($_POST['email'])){
+        $pwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
         header("location:?email=1");
-        exit();  
+        exit();
         }
 
 
@@ -61,38 +61,46 @@ if(array_key_exists('valider',$_POST)){
         $pwd = validation_donnees($_POST['pwd']);
 
                 
-        $InsertClient ='INSERT INTO agence.client(civilite, nom, prenom, age, nationalite, telephone, email, mot_de_pass, date_inscription)
+        $InsertClient ='INSERT INTO agence.clients (civilite, nom, prenom, age, nationalite, telephone, email, mot_de_pass, date_inscription)
         values (:civilite, :nom, :prenom, :age, :nationalite, :telephone, :email, :pwd, :date)';
 
         //verification email //
-        $verifEmail = 'SELECT * FROM agence.user WHERE email = :email';
+        $verifEmail = 'SELECT * FROM agence.clients WHERE email = :email';
         $pdoStatement = $conn -> prepare($verifEmail);
         $pdoStatement -> bindValue(':email', $email);
         $result =  $pdoStatement -> execute ();
 
         if($result == true){
         header("location:?existe=1");
-        }  
+        }
 
         $reqInsertion = $conn -> prepare ($InsertClient);
         $save = $reqInsertion->execute([
 
         ":civilite" => $civilite,
-        ":nom" => $nom,   
+        ":nom" => $nom,
         ":prenom" => $prenom,
         ":age" =>$age,
         ":nationalite" => $nationalite,
         ":telephone" => $telephone,
-        ":email" => $email,   
-        ":pwd" => $pwd,        
+        ":email" => $email,
+        ":pwd" => $pwd,
         ":date" =>date('Y-m-d h:m:s'),
 
         ]);
-        //header("location:succes-validation-admin.php");//
+        if($save){
+        header("location:ajout-client.php?succes=1");
+        }
     }
 
 ?>
-
+    <?php 
+    if(isset($_GET['succes']) && ($_GET['succes'] == 1)) {
+    ?>
+    <div style="padding: 20px;color: #ffffff;background: green;text-align:center;">Nouveau client ajouté avec succès!</div>
+    <?php
+    }
+    ?>
 <main class="container">
  
 <section class="container circuit">
@@ -100,7 +108,7 @@ if(array_key_exists('valider',$_POST)){
 <form id="ajoutclient" method="POST" action="">
 
     <fieldset>
-         <legend>Ajouter des clients </legend>   
+         <legend>Ajouter des clients </legend>
 
             <div class="mb-3">
                 <label class="form-label"><b> Civilité : *</b></label>
@@ -174,9 +182,6 @@ if(array_key_exists('valider',$_POST)){
                         <?php
                         if(isset($_GET['nationalite']) && ($_GET['nationalite']==1)){
                         echo '<span class="red"> Veuillez indiquer la nationalité! </span>';
-                        }
-                        else{
-                            
                         }
                         ?>
                 </div>

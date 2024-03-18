@@ -29,7 +29,7 @@ require 'connexion.php';
 
                     //verifier si email existe en base de données //
 
-                    $reqSelect = 'SELECT * FROM agence.client WHERE email = :email';
+                    $reqSelect = 'SELECT * FROM agence.clients WHERE email = :email';
                     
                     $reqExec = $conn -> prepare($reqSelect);
                     $reqExec -> bindvalue('email', $email);

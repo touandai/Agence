@@ -56,11 +56,11 @@ require '../connexion.php';
 <table class="table table-striped table-bordered">
     <thead>
             <tr>
-                <th>Date</th>
-                <th>Référence Reservation</th>
-                <th>Prix</th>
-                <th>Statut</th>
-                <th>Actions</th>
+                <th  class="text-center">Date</th>
+                <th  class="text-center">Référence Reservation</th>
+                <th  class="text-center">Prix</th>
+                <th  class="text-center">Statut</th>
+                <th  class="text-center">Actions</th>
             </tr>
     </thead>
 
@@ -79,19 +79,23 @@ require '../connexion.php';
 
     ?>
         <tr>
-            <td><?php echo $value['date_reservation']; ?></td>
-            <td><?php echo $value['id']; ?></td>
-            <td><?php echo $value['prix']; ?></td>
-            <td><?php echo $value['statut']; ?></td>
+            <td class="text-center"><?php
+                    setlocale(LC_TIME,'fr');
+                    $date = strftime('%d/%m/%Y',strtotime($value['date_reservation']));
+                    echo $date ?>
+            </td>
+            <td class="text-center"><?php echo $value['id']; ?></td>
+            <td class="text-center"><?php echo $value['prix']; ?></td>
+            <td class="text-center"><font color="green"><?php echo $value['statut']; ?></font></td>
             <td>
-                <form method="POST" action="">
+                <form class="text-center" method="POST" action="">
                      <input type="hidden" name="id" value="<?php echo $value['id']; ?>" readonly="true">
                      <select name="statut">
                         <option value="">Choisir un motif</option>
                         <option value="Annulation-imprévu">Annulation-imprévu</option>
                         <option value="Annulation-autres">Annulation-autres</option>
                      </select>
-                     <button class="btn btn-danger sous-titre text-center" type="submit" name="valider" onclick="return confirm('êtes-vous sûr de vouloir annuler?')">Valider</button>
+                     <button class="btn btn-danger btn-sm sous-titre text-center" type="submit" name="valider" onclick="return confirm('êtes-vous sûr de vouloir annuler?')">Valider</button>
                 </form>
             </td>
         </tr>   

@@ -21,8 +21,11 @@ require '../connexion.php';
          foreach($resultat as $key => $value) {
         ?>
          <b>Posté par</b> : <?php echo $value['nom']; ?> <br><b>Note : </b>
-         <?php echo $value['note']; ?> <b> Message : </b> <?php echo $value['message'];?> <b> Date : </b> 
-         <?php echo $value['date_avis'];?></p>
+         <?php echo $value['note']; ?> <b> Message : </b> <?php echo $value['message'];?> <b> Date : </b>
+         <?php
+         setlocale(LC_TIME,'fr');
+         $datefr = strftime('%d/%m/%Y',strtotime($value['date_avis']));
+         echo $datefr ?></p>
         <?php
          }
         
@@ -36,7 +39,7 @@ require '../connexion.php';
             <a href="#"><img src="../images/fb.png" alt="facebook"/></a> 
             <a href="#"><img src="../images/whatapps.png" alt="whatapps"/></a>
             <a href="#"><img src="../images/twiter.png" alt="twiter" /></a>
-            <a href="#"><img src="../images/tiktok.png" alt="tiktok"/></a>       
+            <a href="#"><img src="../images/tiktok.png" alt="tiktok"/></a>
            </p> 
         </div>   
     </div>
@@ -58,10 +61,10 @@ require '../connexion.php';
     <div class="row">
 
         <div class="col text-centre">
-            <a href="../contact.php">Contact</a>       
+            <a href="../contact.php">Contact</a>
         </div>
         <div class="col text-centre">
-            <p class="ancre">Du lundi au samedi de : 7h30 - 12h00 et de : 13h00 - 17:00 </p>  
+            <p class="ancre">Du lundi au samedi de : 7h30 - 12h00 et de : 13h00 - 17:00 </p>
         </div>
         <div class="col text-centre">
              <a  class="ancre" href="../politique.php">Politiques de confidentialité </a>
@@ -85,7 +88,7 @@ require '../connexion.php';
              <a  class="ancre-footer2" href="https://www.afrique-tourisme.com/">infos utiles</a>
         </div>
 
-    </div>  
+    </div>
 
 </div>
 

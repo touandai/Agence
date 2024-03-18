@@ -31,7 +31,7 @@ if(array_key_exists('valider',$_POST)){
         header("location:?pages=gestion-avis.php&succes=1");
         exit();
         }else {
-            echo "<strong> Merci de réessayer plus tard ! </strong>";
+            header("location:?pages=gestion-avis.php&succes=0");
         }
 
 }
@@ -40,7 +40,13 @@ if(array_key_exists('valider',$_POST)){
 
 <br>
 <h2 class="text-center">Gestion avis Clients </h2>
-
+<?php
+    if(isset($_GET['succes']) && ($_GET['succes'] == 1)) {
+    ?>
+    <div style="padding: 20px;color: #ffffff;background: green;text-align:center;"><b>Cet avis approuvé!</b></div>
+    <?php
+    }
+    ?>
 <main class="container">
 
 
@@ -49,12 +55,12 @@ if(array_key_exists('valider',$_POST)){
         <caption>Moderation des avis</caption>
             <thead>
                     <tr>
-                        <th>Nom</th>
-                        <th>Note</th>
-                        <th>Commentaires</th>
-                        <th>Date publication</th>
-                        <th>Statut</th>
-                        <th>Action</th>
+                        <th class="text-center">Nom</th>
+                        <th class="text-center">Note</th>
+                        <th class="text-center">Commentaires</th>
+                        <th class="text-center">Date publication</th>
+                        <th class="text-center">Statut</th>
+                        <th class="text-center">Action</th>
                     </tr>
             </thead>
             <tbody>
@@ -71,7 +77,11 @@ if(array_key_exists('valider',$_POST)){
                         <td><?php echo $value['nom']; ?></td>
                         <td><?php echo $value['note']; ?></td>
                         <td><?php echo $value['message']; ?></td>
-                        <td><?php echo $value['date_avis'];?></td>
+                        <td><?php
+                        setlocale(LC_TIME,'fr');
+                        $datefr = strftime('%d/%m/%Y',strtotime($value['date_avis']));
+                        echo $datefr ?>
+                        </td>
                         <td><?php echo $value['statut']; ?></td>
                         <td>
                             <form method="POST" action="">
@@ -80,7 +90,7 @@ if(array_key_exists('valider',$_POST)){
                                     <option value="">Modifier</option>
                                     <option value="Confirmée">Confirmée</option>
                                 </select>
-                                <button class="btn btn-success  sous-titre text-center" type="submit" name="valider">Valider</button> 
+                                <button class="btn btn-success  sous-titre text-center btn-sm" type="submit" name="valider">Valider</button> 
                             </form>     
                         </td>
                     </tr>   

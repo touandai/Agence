@@ -12,7 +12,7 @@ require 'connexion.php';
         <hr>
         
         
-        <?php  
+        <?php
          $reqselect = "SELECT * FROM agence.avis ORDER BY date_avis ASC LIMIT 2";
          
          $reqselect = $conn -> query ($reqselect);
@@ -24,7 +24,11 @@ require 'connexion.php';
          <b>Posté par</b> : <?php echo $value['nom']; ?> <br><b>Note : </b>
          <?php echo $value['note']; ?> <b> Message : </b> <?php echo $value['message'];?> <b> Date : </b> 
          <?php
-         echo $value['date_avis'];?></p>
+         
+         //transformation date en format local//
+         setlocale(LC_TIME,'fr');
+         $datefr = strftime('%d/%m/%Y',strtotime($value['date_avis']));
+         echo $datefr ?></p>
         <?php
          }
         
@@ -47,20 +51,15 @@ require 'connexion.php';
 
 
 <footer class="container-fluid footer">
-
     <div class="row">
-
         <div class="col">
             <h4 class="text-center ancre">Nos horaires d'ouverture</h4>
         </div>
-
     </div>
 
-
     <div class="row">
-
         <div class="col text-centre">
-            <a href="contact.php">Contact</a>       
+            <a href="contact.php">Contact</a>
         </div>
         <div class="col text-centre">
             <p class="ancre">Du lundi au samedi de : 7h30 - 12h00 et de : 13h00 - 17:00 </p>  
@@ -68,32 +67,29 @@ require 'connexion.php';
         <div class="col text-centre">
              <a  class="ancre" href="politique.php">Politiques de confidentialité </a>
         </div>
-
-
     </div>
 </footer>
 
 <div class="container-fluid footer2">
     
     <div class="row text-center">
-
         <div class="col p-1">
              <a  class="" href="cgv.php">Conditions Générales de ventesV</a>
         </div>
-  
         <div class="col p-1">
              <a  class="ancre-footer2" href="https://cemac.int/">Cemac</a>
              <a  class="ancre-footer2" href="#">Mentions utiles</a>
              <a  class="ancre-footer2" href="https://www.afrique-tourisme.com/">infos utiles</a>
         </div>
-
-    </div>  
+    </div>
 
 </div>
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/application.js"></script>
 <script type="text/javascript" src="js/contact.js"></script>
+<script type="text/javascript" src="js/inscription.js"></script>
+<script type="text/javascript" src="js/modifpassword.js"></script>
 </body>
 </html>
 

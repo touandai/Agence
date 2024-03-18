@@ -25,6 +25,7 @@ if(array_key_exists('valider',$_POST)){
         $commentaire= htmlspecialchars($_POST['commentaire']);
         $id_client = validation_donnees($_SESSION["donnees_client"]['id']);
         
+        
         //$date = new DateTime($date_avis);
         //$date_avis ->format('d/m/Y');
 
@@ -35,13 +36,13 @@ if(array_key_exists('valider',$_POST)){
         $insert->bindValue(':id_client',$id_client);
         $save = $insert-> execute([
                  
-            ":nom" => $nom,   
+            ":nom" => $nom,
             ":note" => $note,
             ":message" => $commentaire,
             ":date" => date('d/m/Y'),
             ":statut" => "En attente de validation",
             ":id_client" => $id_client,
-        ]);    
+        ]);
 
         header("location:succes-validation.php");
    

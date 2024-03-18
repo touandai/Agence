@@ -10,7 +10,7 @@ require 'connexion.php';
 if(array_key_exists('valider',$_POST))  {
     
     $id = $_POST['id'];
-    $reqsupp = 'DELETE FROM agence.client WHERE id = :id';
+    $reqsupp = 'DELETE FROM agence.clients WHERE id = :id';
     $statment = $conn -> prepare($reqsupp);
     $statment -> bindValue(':id',$id);
     $supp =  $statment -> execute();
@@ -21,7 +21,7 @@ if(array_key_exists('valider',$_POST))  {
         exit();
     }
 
-}    
+}
 
 ?>
 <br>
@@ -33,43 +33,49 @@ if(array_key_exists('valider',$_POST))  {
             <caption>Gestion clients</caption>
                 <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Civilité</th>
-                            <th>Nom</th>
-                            <th>Prenom</th>
-                            <th>Age</th>
-                            <th>Nationalité</th>
-                            <th>Téléphone</th>
-                            <th>Email</th>
-                            <th>Date d'inscription</th>
-                            <th>Statut/Action</th>
+                            <th class="text-center">Id</th>
+                            <th class="text-center">Civilité</th>
+                            <th class="text-center">Nom</th>
+                            <th class="text-center">Prenom</th>
+                            <th class="text-center">Age</th>
+                            <th class="text-center">Nationalité</th>
+                            <th class="text-center">Téléphone</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Date d'inscription</th>
+                            <th class="text-center">Statut/Action</th>
                         </tr>
                 </thead>
                   
                 <tbody>
                     <?php
-                        $reqselect = "SELECT * FROM agence.client ORDER BY date_inscription ASC LIMIT 5";
+                        $reqselect = "SELECT * FROM agence.clients ORDER BY date_inscription ASC LIMIT 5";
                         $reqselect = $conn -> query ($reqselect);
                         $resultat = $reqselect-> fetchAll();
                         foreach($resultat as $key => $value) {
                     ?>
                    <tr>
-                      <td><?php echo $value['id'];?></td>
-                      <td><?php echo $value['civilite'];?></td>
-                      <td><?php echo $value['nom'];?></td>
-                      <td><?php echo $value['prenom'];?></td>
-                      <td><?php echo $value['age'];?></td>
-                      <td><?php echo $value['nationalite'];?></td>
-                      <td><?php echo $value['telephone'];?></td>
-                      <td><?php echo $value['email'];?></td>
-                      <td><?php echo $value['date_inscription'];?></td>
+                      <td class="text-centre"><?php echo $value['id'];?></td>
+                      <td class="text-centre"><?php echo $value['civilite'];?></td>
+                      <td class="text-centre"><?php echo $value['nom'];?></td>
+                      <td class="text-centre"><?php echo $value['prenom'];?></td>
+                      <td class="text-centre"><?php echo $value['age'];?></td>
+                      <td class="text-centre"><?php echo $value['nationalite'];?></td>
+                      <td class="text-centre"><?php echo $value['telephone'];?></td>
+                      <td class="text-centre"><?php echo $value['email'];?></td>
+                      <td class="text-centre"><?php
+                          setlocale(LC_TIME,'fr');
+                          $datefr = strftime('%d/%m/%Y',strtotime($value['date_inscription']));
+                          echo $datefr ?>
                       <td>
-                        <form method="POST" action=""> 
+                        <form method="POST" action="">
                             <input type="hidden" name="id" value="<?php echo $value['id']; ?>" readonly="true">
-                            <button class="btn btn-danger"  type="submit" name="valider" onclick="return confirm('Vous confirmez cette suppression <?php echo $value['id']; ?> ?')">supprimer</button>
+
+                            <button class="btn btn-danger btn-sm"  type="submit" name="valider" 
+                            onclick="return confirm('Vous confirmez cette suppression <?php echo $value['id']; ?> ?')">
+                            supprimer</button>
                         </form>
                       </td>
-                  </tr>   
+                  </tr>
                 <?php
                 }
                 ?>

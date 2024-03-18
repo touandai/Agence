@@ -7,10 +7,19 @@ require 'include/menu-nav.php';
 
 require 'connexion.php';
 
-    //suppression de circuits // 
+    
+    //suppression de circuits //
     if(array_key_exists('valider',$_POST))  {
     
-        $id = $_POST['id'];
+        function validationdonnees($donnees){
+            $donnees = trim($donnees);
+            $donnees = stripslashes($donnees);
+            $donnees = htmlspecialchars($donnees);
+            return $donnees;
+            }
+        $id = validationdonnees($_POST['id']);
+
+
         $reqsupp = 'DELETE FROM agence.circuits WHERE id = :id';
         $statment = $conn -> prepare($reqsupp);
         $statment -> bindValue(':id',$id);
@@ -19,46 +28,58 @@ require 'connexion.php';
             header('location:?gestion-circuit.php&suppression=1');
             exit();
         }
-    }    
+    }
 
-    //modification de circuits // 
-    if(array_key_exists('valider',$_POST))  {
+    //modification de circuit//
+    if(array_key_exists('modifier',$_POST))  {
 
-        function validation_donnees($donnees){
+            function validationdonnees($donnees){
             $donnees = trim($donnees);
             $donnees = stripslashes($donnees);
             $donnees = htmlspecialchars($donnees);
             return $donnees;
             }
                     
-            $id = validation_donnees($_POST['id']);
-            $prix = validation_donnees($_POST['prix']);
-            $date = validation_donnees($_POST['date']);
-    
-        $id = $_POST['id'];
-        $reqModif = 'UPDATE agence.circuits SET prix =:prix, date =:date, date_modification =:date WHERE id = :id';
-        $statment = $conn -> prepare($reqModif);
-        $statment -> bindValue(':id',$id);
-        $modif =  $statment -> execute([
+            $id = validationdonnees($_POST['id']);
+            $prix = validationdonnees($_POST['prix']);
+            $date_modif = date('Y-m-d h:m:s');
 
-        ":id" => $_POST['id'],
-        ":prix" => $_POST['prix'],
-        ":date" => $_POST['date'],
-        ":date" => date('Y-m-d h:m:s'),
+            $reqModif = 'UPDATE agence.circuits SET prix =:prix, date_modification =:date WHERE id = :id';
+            $modification = $conn -> prepare($reqModif);
+            $modification -> bindValue(':id',$id);
+            $modification -> bindValue(':prix',$prix);
+            $modification -> bindValue(':date',$date_modif);
 
-        ]);
-        if($modif) {
-            header('location:?gestion-circuit.php&modification=1');
-            exit();
-        }
-    }   
+            $modif =  $modification -> execute();
+
+            if($modif) {
+                header("location:?gestion-circuit.php&modification=1");
+                exit();
+            }else{
+                header("location:?gestion-circuit.php&modification=0");
+            }
+
+    }
 
 ?>
 
 
 <br>
 <h2 class="text-center">Gestion des circuits</h2>
-
+<?php 
+    if(isset($_GET['modification']) && ($_GET['modification'] == 1)) {
+    ?>
+    <div style="padding: 20px;color: #ffffff;background: green;text-align:center;"> Modification effectuée avec succès!</div>
+    <?php
+    }
+    ?>
+    <?php
+    if(isset($_GET['suppression']) && ($_GET['suppression'] == 1)) {
+    ?>
+    <div style="padding: 20px;color: #ffffff;background: red;text-align:center;"><b>Le circuit est bien supprimé !</b></div>
+    <?php
+    }
+    ?>
 <main id="circuit" class="container">
 
    
@@ -67,44 +88,62 @@ require 'connexion.php';
             <caption>Gestion Circuits</caption>
                 <thead>
                         <tr>
-                            <th>Destination</th>
-                            <th>Date de depart</th>
-                            <th>Date de retour</th>
-                            <th>Prix</th>
-                            <th>Type_circuit</th>
-                            <th>Date</th>
-                            <th>Actions</th>
+                            <th class="text-center">Destination</th>
+                            <th class="text-center">Date de depart</th>
+                            <th class="text-center">Date de retour</th>
+                            <th class="text-center">Prix</th>
+                            <th class="text-center">Type_circuit</th>
+                            <th class="text-center">Date Publication</th>
+                            <th class="text-center">Actions</th>
                         </tr>
                 </thead>
                   
                 <tbody>
                     <?php
-                        $reqselect = "SELECT * FROM agence.circuits ORDER BY date ASC LIMIT 6";
+                        $reqselect = "SELECT * FROM agence.circuits ORDER BY date DESC LIMIT 6";
                         $reqselect = $conn -> query ($reqselect);
                         $resultat = $reqselect-> fetchAll();
                         foreach($resultat as $key => $value) {
                     ?>
                    <tr>
                       <td><?php echo $value['destination'];?></td>
-                      <td><?php echo $value['date_depart'];?></td>
-                      <td><?php echo $value['date_retour'];?></td>
+                      <td><?php
+                       setlocale(LC_TIME,'fr');
+                       $datefr = strftime('%d/%m/%Y',strtotime($value['date_depart']));
+                       echo $datefr ?>
+                       </td>
+                      <td><?php
+                        setlocale(LC_TIME,'fr');
+                        $datefr = strftime('%d/%m/%Y',strtotime($value['date_retour']));
+                        echo $datefr ?>
+                       </td>
                       <td><?php echo $value['prix'];?></td>
                       <td><?php echo $value['type_circuit'];?></td>
-                      <td><?php echo $value['date'];?></td>
+                      <td><?php 
+                           setlocale(LC_TIME,'fr');
+                           $datefr = strftime('%d/%m/%Y',strtotime($value['date']));
+                           echo $datefr ?>
+                      </td>
                       <td>
-                        <form method="POST" action=""> 
+                        <form method="POST" action="">
                             <input type="hidden" name="id" value="<?php echo $value['id']; ?>" readonly="true">
+                            <input type="text" name="prix" placeholder="Indiquer le nouveau prix">
+                            <!--<a class="btn btn-warning" href ="modif-circuit.php">Modifier</a>-->
 
-                            <button class="btn btn-warning" type="submit" name="modifier">Modifier</button>
-                            <button class="btn btn-danger"  type="submit" name="valider" onclick="return confirm('Confirmez-vous cette suppression <?php echo $value['id']; ?> ?')">supprimer</button>
+                            <button class="btn btn-warning btn-sm" type="submit" name="modifier" id="modifier"
+                            onclick="return confirm('Confirmez-vous la modification <?php echo $value['id']; ?> ?')">
+                                Modifier</button>
+                            <button class="btn btn-danger btn-sm"  type="submit" name="valider"
+                            onclick="return confirm('Confirmez-vous cette suppression <?php echo $value['id']; ?> ?')">
+                                supprimer</button>
                         </form>
                       </td>
-                  </tr>   
+                  </tr>
                 <?php
                 }
                 ?>
                 </tbody>
-        </table>      
+        </table>
     </section>
 
     <div class="text-center">
@@ -113,7 +152,8 @@ require 'connexion.php';
 
 </main>
 
+
 <?php
-include 'include/footer.php';
+require 'include/footer.php';
 
 ?>

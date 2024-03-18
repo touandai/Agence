@@ -23,15 +23,17 @@ if(!isset($_SESSION['donnees_user'])){
 <h2 class="text-center">Tableau de bord</h2>
 
 <main class="container">
-  <?php
-  /*
-  echo '<pre>';
-  print_r($_SESSION['donnees_user']);
-*/
-  ?>
+
+
+
+<?php
+
+  //  echo '<pre>';   print_r($_SESSION['donnees_user']);//
+?>
+
 </main>
 
 <?php
-include 'include/footer.php';
+require 'include/footer.php';
 
 ?>

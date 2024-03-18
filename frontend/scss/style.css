@@ -315,17 +315,10 @@ section, .avis {
   margin-bottom: 5px;
 }
 
-/*confimation validation formulaire*/
 .validation, h1 p {
   color: #2C5E2E;
 }
 
-/*
-:first-child::before {
-  content: "\0020 \2302";
-}
-*/
-/*espace admin utilisateur*/
 .compteclient {
   display: flex;
 }
@@ -337,6 +330,10 @@ section, .avis {
 
 .lien {
   text-decoration: none;
+}
+
+.confirmation {
+  color: #2C5E2E;
 }
 
 .btn-deconnexion {
@@ -359,6 +356,12 @@ section, .avis {
   border: 3px solid #0C273D;
   background-color: #FFFEF1;
   font-weight: bolder;
+}
+
+.modifemail {
+  display: flex;
+  gap: 5px;
+  padding: 5px;
 }
 
 section {

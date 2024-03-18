@@ -8,7 +8,7 @@ require '../connexion.php';
 
 $id= ($_SESSION["donnees_client"]['id']);
 
-$req = 'SELECT nom, date_inscription FROM agence.client WHERE id = :id';
+$req = 'SELECT nom, date_inscription FROM agence.clients WHERE id = :id';
 $selecdate = $conn -> prepare ($req);
 $selecdate -> bindvalue(':id', $id);
 $selecdate -> execute();
@@ -20,10 +20,16 @@ foreach($selecdate as $key => $value){
 
 
 <main class="container ">
-<div>   
-<p><b>Titulaire Compte : </b><?php echo $value['nom']; ?>
-<p><b>Date d'inscription : </b>Vous êtes membre depuis <?php echo $value['date_inscription']; ?><p>
+
 <div>
+    <p><b>Titulaire Compte : </b><?php echo $value['nom']; ?></p>
+    <p><b>Date d'inscription : </b>Vous êtes membre depuis le,
+    <?php
+        setlocale(LC_TIME,'fr');
+        $datefr = strftime('%d/%m/%Y',strtotime($value['date_inscription']));
+        echo $datefr ?></p>
+<div>
+    
 <?php
 }
 ?>
