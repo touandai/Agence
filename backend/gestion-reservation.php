@@ -59,8 +59,6 @@ if(isset($_POST['supprimer'])){
 
 ?>
 
-
-
 <br>
 <h2 class="text-center">Gestion des Réservations</h2>
 
@@ -107,14 +105,14 @@ if(isset($_POST['supprimer'])){
 
                     ?>
                    <tr>
-                      <td><?php echo $value['id'];?></td>
-                      <td><?php echo $value['nombre_personne'];?></td>
-                      <td><?php echo $value['prix'];?></td>
-                      <td><?php echo $value['type_reglement'];?></td>
-                      <td><?php echo $value['id_circuit'];?></td>
-                      <td><?php echo $value['date_reservation'];?></td>
-                      <td><?php echo $value['statut'];?></td>
-                      <td>
+                      <td class="text-centre"><?php echo $value['id'];?></td>
+                      <td class="text-centre"><?php echo $value['nombre_personne'];?></td>
+                      <td class="text-centre"><?php echo $value['prix'];?></td>
+                      <td class="text-centre"><?php echo $value['type_reglement'];?></td>
+                      <td class="text-centre"><?php echo $value['id_circuit'];?></td>
+                      <td class="text-centre"><?php echo $value['date_reservation'];?></td>
+                      <td class="text-centre"><?php echo $value['statut'];?></td>
+                      <td class="text-centre">
                         <form method="POST" action="">
                             <input type="hidden" name="id" value="<?php echo $value['id']; ?>" readonly="true">
                             <select name="statut">
@@ -123,7 +121,10 @@ if(isset($_POST['supprimer'])){
                                 <option value="Annulée">Annulée</option>
                             </select>
                             <button class="btn btn-success btn-sm" type="submit" name="valider">Valider</button>
-                            <button class="btn btn-danger btn-sm" type="submit" name="supprimer" onclick="return confirm('Confirmez-vous cette suppression?')">Supprimer</button>
+                            
+                            <div>
+                                <button class="btn btn-danger btn-sm" type="submit" name="supprimer" onclick="return confirm('Confirmez-vous cette suppression?')">Supprimer</button>
+                            </div>
                         </form>
                       </td>
                     </tr>
@@ -131,7 +132,7 @@ if(isset($_POST['supprimer'])){
                     }
                     ?>
             </tbody>
-        </table>      
+        </table>
     </section>
 
 </main>

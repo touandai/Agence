@@ -74,10 +74,10 @@ if(array_key_exists('valider',$_POST)){
                     foreach($resultat as $key => $value) {
                     ?>
                     <tr>
-                        <td><?php echo $value['nom']; ?></td>
-                        <td><?php echo $value['note']; ?></td>
-                        <td><?php echo $value['message']; ?></td>
-                        <td><?php
+                        <td class="text-centre"><?php echo $value['nom']; ?></td>
+                        <td class="text-centre"><?php echo $value['note']; ?></td>
+                        <td class="text-centre"><?php echo $value['message']; ?></td>
+                        <td class="text-centre"><?php
                         setlocale(LC_TIME,'fr');
                         $datefr = strftime('%d/%m/%Y',strtotime($value['date_avis']));
                         echo $datefr ?>
@@ -91,7 +91,7 @@ if(array_key_exists('valider',$_POST)){
                                     <option value="Confirmée">Confirmée</option>
                                 </select>
                                 <button class="btn btn-success  sous-titre text-center btn-sm" type="submit" name="valider">Valider</button> 
-                            </form>     
+                            </form>
                         </td>
                     </tr>   
                <?php

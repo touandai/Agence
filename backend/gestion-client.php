@@ -73,11 +73,11 @@ if(array_key_exists('valider',$_POST))  {
                           setlocale(LC_TIME,'fr');
                           $datefr = strftime('%d/%m/%Y',strtotime($value['date_inscription']));
                           echo $datefr ?>
-                      <td>
+                      <td class="text-centre">
                         <form method="POST" action="">
                             <input type="hidden" name="id" value="<?php echo $value['id']; ?>" readonly="true">
 
-                            <button class="btn btn-danger btn-sm"  type="submit" name="valider" 
+                            <button class="btn btn-danger btn-sm"  type="submit" name="valider"
                             onclick="return confirm('Vous confirmez cette suppression <?php echo $value['id']; ?> ?')">
                             supprimer</button>
                         </form>

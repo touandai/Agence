@@ -106,25 +106,25 @@ require 'connexion.php';
                         foreach($resultat as $key => $value) {
                     ?>
                    <tr>
-                      <td><?php echo $value['destination'];?></td>
-                      <td><?php
+                      <td class="text-centre"><?php echo $value['destination'];?></td>
+                      <td class="text-centre"><?php
                        setlocale(LC_TIME,'fr');
                        $datefr = strftime('%d/%m/%Y',strtotime($value['date_depart']));
                        echo $datefr ?>
                        </td>
-                      <td><?php
+                      <td class="text-centre"><?php
                         setlocale(LC_TIME,'fr');
                         $datefr = strftime('%d/%m/%Y',strtotime($value['date_retour']));
                         echo $datefr ?>
                        </td>
-                      <td><?php echo $value['prix'];?></td>
-                      <td><?php echo $value['type_circuit'];?></td>
-                      <td><?php 
+                      <td class="text-centre"><?php echo $value['prix'];?></td>
+                      <td class="text-centre"><?php echo $value['type_circuit'];?></td>
+                      <td class="text-centre"><?php
                            setlocale(LC_TIME,'fr');
                            $datefr = strftime('%d/%m/%Y',strtotime($value['date']));
                            echo $datefr ?>
                       </td>
-                      <td>
+                      <td class="text-centre">
                         <form method="POST" action="">
                             <input type="hidden" name="id" value="<?php echo $value['id']; ?>" readonly="true">
                             <input type="text" name="prix" placeholder="Indiquer le nouveau prix">
