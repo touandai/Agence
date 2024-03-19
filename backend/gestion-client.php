@@ -27,7 +27,14 @@ if(array_key_exists('valider',$_POST))  {
 <br>
 <h2 class="text-center">Gestion des Clients</h2>
 
-<main class="contenaire content">
+<main class="container">
+    <?php
+    if(isset($_GET['suppression']) && ($_GET['suppression'] == 1)) {
+    ?>
+    <div style="padding: 20px;color: #ffffff;background: red;text-align:center;"><b>Le client a été supprimé !</b></div>
+    <?php
+    }
+    ?>
     <section class="container circuit">
         <table class="table table-striped table-bordered">
             <caption>Gestion clients</caption>
@@ -48,7 +55,7 @@ if(array_key_exists('valider',$_POST))  {
                   
                 <tbody>
                     <?php
-                        $reqselect = "SELECT * FROM agence.clients ORDER BY date_inscription ASC LIMIT 5";
+                        $reqselect = "SELECT * FROM agence.clients ORDER BY date_inscription DESC LIMIT 5";
                         $reqselect = $conn -> query ($reqselect);
                         $resultat = $reqselect-> fetchAll();
                         foreach($resultat as $key => $value) {

@@ -66,6 +66,8 @@ require 'connexion.php';
 
 <br>
 <h2 class="text-center">Gestion des circuits</h2>
+
+<main id="circuit" class="container">
 <?php 
     if(isset($_GET['modification']) && ($_GET['modification'] == 1)) {
     ?>
@@ -80,8 +82,6 @@ require 'connexion.php';
     <?php
     }
     ?>
-<main id="circuit" class="container">
-
    
     <section class="container circuit">
         <table class="table table-striped table-bordered">

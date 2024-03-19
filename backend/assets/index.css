@@ -114,12 +114,7 @@
     padding: 10px;
   }
   /*page gestion circuits*/
-  .circuit {
-    display: flex;
-    justify-content:center;
-    margin-top: 10px;
-    padding: 10px;
-  }
+
   img{
     max-width: 100%;
     height: auto;  

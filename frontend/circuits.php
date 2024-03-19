@@ -42,18 +42,33 @@ require 'connexion.php';
             </div>
             <br>
             <div style="float: left;"><b style="color: #2C5E2E">Destination : </b><?php echo $value['destination']; ?></div>
+            
             <div style="float: left;"><b style="color: #2C5E2E">Type Circuit : </b><?php echo $value['type_circuit'];?></div>
-            <div style="float: left;"><b style="color: #2C5E2E">Date de départ : </b><?php echo $value['date_depart'];?></div>
-            <div style="float: left;"><b style="color: #2C5E2E">Date de retour : </b><?php echo $value['date_retour'];?></div>
+            
+            <div style="float: left;"><b style="color: #2C5E2E">Date de départ : </b>
+                <?php
+                setlocale(LC_TIME,'fr');
+                $datedepart = strftime('%d/%m/%Y',strtotime($value['date_depart']));
+                echo $datedepart ?>
+            </div>
+            <div style="float: left;"><b style="color: #2C5E2E">Date de retour : </b>
+                <?php
+                setlocale(LC_TIME,'fr');
+                $dateretour = strftime('%d/%m/%Y',strtotime($value['date_retour']));
+                echo $dateretour ?>
+            </div>
+
             <div style="float: left;"><b style="color: #2C5E2E">Référence Annonce : </b><?php echo $value['id'].'A24';?></div>
             <div style="float: right; margin: 5px;"><b>Prix Circuit: </b><?php echo $value['prix']; ?></div>
             <br>
+
             <?php if(isset($_SESSION['donnees_client'])) : ?>
             <div style="float: left;margin: 5px; width: 100%;">
                 <a class="text-primary2 lien" href="reservation.php?id_circuit=<?php echo $value['id']; ?>">
                 Je réserve</a>
             </div>
             <?php endif; ?>
+
             <br>
         </div>
         <?php

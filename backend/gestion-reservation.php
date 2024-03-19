@@ -63,7 +63,9 @@ if(isset($_POST['supprimer'])){
 
 <br>
 <h2 class="text-center">Gestion des Réservations</h2>
-    <?php
+
+<main id="circuit" class="container">
+<?php
     if(isset($_GET['succes']) && ($_GET['succes'] == 1)) {
     ?>
     <div style="padding: 20px;color: #ffffff;background: green;text-align:center;"><b>La reservation a été bien mise à jour !</b></div>
@@ -77,8 +79,6 @@ if(isset($_POST['supprimer'])){
     <?php
     }
     ?>
-<main id="circuit" class="container">
-
    
     <section class="container circuit">
         <table class="table table-striped table-bordered">

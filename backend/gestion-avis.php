@@ -40,15 +40,15 @@ if(array_key_exists('valider',$_POST)){
 
 <br>
 <h2 class="text-center">Gestion avis Clients </h2>
-<?php
+
+<main class="container">
+    <?php
     if(isset($_GET['succes']) && ($_GET['succes'] == 1)) {
     ?>
-    <div style="padding: 20px;color: #ffffff;background: green;text-align:center;"><b>Cet avis approuvé!</b></div>
+    <div style="padding: 20px;color: #ffffff;background: green;text-align:center;"><b>Avis approuvé!</b></div>
     <?php
     }
     ?>
-<main class="container">
-
 
         <table class="table table-striped table-bordered">
           

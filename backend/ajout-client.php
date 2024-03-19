@@ -94,15 +94,16 @@ if(array_key_exists('valider',$_POST)){
     }
 
 ?>
-    <?php 
+
+<main class="container">
+<?php
     if(isset($_GET['succes']) && ($_GET['succes'] == 1)) {
     ?>
-    <div style="padding: 20px;color: #ffffff;background: green;text-align:center;">Nouveau client ajouté avec succès!</div>
+    <div style="padding: 20px;color: #ffffff;background: green;text-align:center;"><b>Nouveau client ajouté avec succès!</b></div>
     <?php
     }
     ?>
-<main class="container">
- 
+
 <section class="container circuit">
 
 <form id="ajoutclient" method="POST" action="">

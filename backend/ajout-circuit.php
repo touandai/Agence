@@ -92,14 +92,14 @@ if(array_key_exists('envoyer',$_POST)){
 
 ?>
 
+<main class="container">
 <?php 
     if(isset($_GET['valider']) && ($_GET['valider'] == 1)) {
     ?>
-    <div style="padding: 20px;color: #ffffff;background: green;text-align:center;">Nouveau Circuit ajouté avec succès!</div>
+    <div style="padding: 20px;color: #ffffff;background: green;text-align:center;"><b>Nouveau Circuit ajouté avec succès!</b></div>
     <?php
     }
     ?>
-<main class="container">
     <section class="container circuit">
 
         <form id="ajoutcircuit" method="POST" action="" enctype="multipart/form-data">
@@ -126,7 +126,7 @@ if(array_key_exists('envoyer',$_POST)){
 
                 <div class="mb-3">
                 <label class="form-label"><b>Date de départ :*</b></label>
-                <input class="form-control" type="text" name="date_depart">    
+                <input class="form-control" type="date" name="date_depart" min="2024-03-27">
                 <?php
                 if(isset($_GET['date_depart']) && ($_GET['date_depart']==1)){
                 echo '<span class="red">Veuillez saisir une date de départ </span>';
@@ -136,7 +136,7 @@ if(array_key_exists('envoyer',$_POST)){
 
                 <div class="mb-3">
                 <label class="form-label"><b>Date de retour :*</b></label>
-                <input class="form-control" type="text" name="date_retour">
+                <input class="form-control" type="date" name="date_retour" min="2024-03-27">
                 <?php
                 if(isset($_GET['date_retour']) && ($_GET['date_retour']==1)){
                 echo '<span class="red">Veuillez saisir une date de retour </span>';
