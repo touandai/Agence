@@ -29,7 +29,6 @@ foreach($selecdate as $key => $value){
         $datefr = strftime('%d/%m/%Y',strtotime($value['date_inscription']));
         echo $datefr ?></p>
 <div>
-    
 <?php
 }
 ?>

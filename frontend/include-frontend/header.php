@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="scss/style.css">
 </head>
 <body>
-
 <div class="container entete"> 
         <div>
             <img class="rounded" src="images/logo.png" alt="logo"/>
@@ -19,7 +18,6 @@
             <em class="titre">Offres limitées !</em>
         </div>  
 </div>    
-
 <header>        
         <nav class="navbar navbar-expand-md bg-light" data-bs-theme="white">
             <div class="container-fluid">

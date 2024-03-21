@@ -62,9 +62,8 @@ require 'connexion.php';
                         
                        // $_SESSION['donnees_client'] = $client;
                        // $passwordhash = $client['mot_de_pass'];
-         
     } 
-$clientConnecte 
+
 ?>
 
 <h1 class="text-center"><b>Accéder à mon Compte</b></h1>

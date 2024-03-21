@@ -13,10 +13,6 @@ if(array_key_exists('envoyer',$_POST)){
     $extensionImage = end($donneesImages);
     $nouveauNomImage = sha1(md5(time())) . "." . $extensionImage;
     
-    if(false === move_uploaded_file($_FILES['image']['tmp_name'], "uploads/images/" . $nouveauNomImage)) {
-       header('location:gestion-circuit.php?fichier=error');
-       exit();
-    }
    if(isset($_POST['destination']) && empty($_POST['destination'])){     
        header("location:?destination=1");
        exit();
@@ -48,6 +44,10 @@ if(array_key_exists('envoyer',$_POST)){
        header("location:?type_circuit=1");
        exit();             
                }
+    if(false === move_uploaded_file($_FILES['image']['tmp_name'], "uploads/images/" . $nouveauNomImage)) {
+        header('location:ajout-circuit.php?fichier=error');
+        exit();
+    }
        //fonction pour valider les données et éviter les inections de type XSS
 
        function validation_donnees($donnees){
@@ -178,7 +178,11 @@ if(array_key_exists('envoyer',$_POST)){
                 <div class="mb-3">
                 <label class="form-label"><b>Image: *</b></label>
                 <input class="form-control" type="file" maxlength="30" name="image" id="email" placeholder="monadresse@.....">
-
+                <?php
+                if(isset($_GET['fichier'])=='error'){
+                echo '<span class="red">Veuillez selectionner une image !</span>';
+                }
+                 ?>
                 </div>
 
                 <div class="text-center">

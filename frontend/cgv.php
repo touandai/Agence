@@ -18,7 +18,7 @@ include 'include-frontend/header.php';
 <p class="text-center">Les conditions générales de vente sont définies au I de l'article L. 441-1 du Code de commerce. Elles comprennent obligatoirement :
 les conditions de règlement ;les éléments de détermination du prix tels que le barème des prix unitaires et les éventuelles réductions de prix.<br><br>
 
-  <a href="supports/projet.pdf" download="projet.pdf">Télécharger nos conditions générales de ventes en PDF</a>
+  <a href="images/ACCES-PEROLS.pdf" download="ACCES-PEROLS.pdf">Télécharger nos conditions générales de ventes en PDF</a>
   </a>
 
 

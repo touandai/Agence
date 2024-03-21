@@ -2,7 +2,6 @@
 //demarage session // 
 session_start();
 
-
 require 'connexion.php';
 
     if(array_key_exists('connexion',$_POST)){
