@@ -73,7 +73,7 @@ if(isset($_POST['supprimer'])){
     <?php
     if(isset($_GET['supprimer']) && ($_GET['supprimer'] == 1)) {
     ?>
-    <div style="padding: 20px;color: #ffffff;background: red;text-align:center;"><b>La reservation a été bien Suppriméé !</b></div>
+    <div style="padding: 20px;color: #ffffff;background: red;text-align:center;"><b>La reservation a été bien Supprimée !</b></div>
     <?php
     }
     ?>
@@ -110,7 +110,11 @@ if(isset($_POST['supprimer'])){
                       <td class="text-centre"><?php echo $value['prix'];?></td>
                       <td class="text-centre"><?php echo $value['type_reglement'];?></td>
                       <td class="text-centre"><?php echo $value['id_circuit'];?></td>
-                      <td class="text-centre"><?php echo $value['date_reservation'];?></td>
+                      <td class="text-centre"><?php
+                       setlocale(LC_TIME,'fr');
+                       $date_reservation = strftime('%d/%m/%Y',strtotime($value['date_reservation']));
+                       echo $date_reservation ?>
+                      </td>
                       <td class="text-centre"><?php echo $value['statut'];?></td>
                       <td class="text-centre">
                         <form method="POST" action="">

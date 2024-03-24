@@ -1,7 +1,7 @@
 <?php
 $Title='Accueil, Afrique Centrale Découverte.';
 
-include 'include-frontend/header.php';
+require 'include-frontend/header.php';
 
 ?>
 
@@ -73,7 +73,7 @@ include 'include-frontend/header.php';
 
 
 <?php
-include 'include-frontend/footer.php';
+require 'include-frontend/footer.php';
 
 ?>
 

@@ -88,7 +88,7 @@ require 'include-frontend/header.php';
 <?php endif; ?>
 
 <?php
-include 'include-frontend/footer.php';
+require 'include-frontend/footer.php';
 
 ?>
 <script src="bootstrap.bundle.min.js"></script>

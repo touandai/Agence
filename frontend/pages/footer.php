@@ -13,7 +13,7 @@ require '../connexion.php';
         <p>
         
         <?php  
-         $reqselect = "SELECT * FROM agence.avis ORDER BY date_avis ASC LIMIT 2";
+         $reqselect = "SELECT * FROM agence.avis ORDER BY date_avis DESC LIMIT 2";
          
          $reqselect = $conn -> query ($reqselect);
          $resultat = $reqselect-> fetchAll();

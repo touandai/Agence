@@ -207,7 +207,7 @@ footer a{
         }
 .titre{
     text-align: center;
-    color: $primary;
+    
  }
 .ancre{
     color:$secondary;
@@ -239,7 +239,10 @@ div > button, .lien{
   color:red; 
 }
 .succes{
-  color: $autre2;
+  color: $nature;
+}
+.warning{
+  color:darkgoldenrod;
 }
 /*page circuits*/
 .circuit{

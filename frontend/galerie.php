@@ -1,7 +1,7 @@
 
 <?php 
 $Title='Galérie Photos, Afrique Centrale Découverte';
-include 'include-frontend/header.php';
+require 'include-frontend/header.php';
 
 ?>
 
@@ -402,7 +402,6 @@ include 'include-frontend/header.php';
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <?php
-
-include 'include-frontend/footer.php';
+require 'include-frontend/footer.php';
 
 ?>

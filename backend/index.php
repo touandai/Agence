@@ -1,28 +1,25 @@
 <?php
 
-$Title='Dashboard, Afrique Centrale Découverte.';
+$Title='Accueil, Afrique Centrale Découverte.';
 require 'connexion.php';
 /* Démarrage session */
 /*session_start();
 
-
 /* Racine du projet */
 $backend =(isset($_GET['backend']))?:"espaceclient";
-
 
 //Si l'utilisateur n'est pas connecté//
 if(!isset($_SESSION['donnees_user'])){ 
   header("location:backend/espaceadmin.php");
 }
 //si on retrouve l'utilisateur//
-$userConnecte = $_SESSION['donnees_user']['nom']; 
-
+$userConnecte = $_SESSION['donnees_user']['nom'];
 
 
 switch($backend) {
   /* Tableau de bord */
   case 'tableau-de-bord':
-  default:   
+  default:
     require 'backend/tableau-de-bord.php';
     break;
    /* connexion */

@@ -1,39 +1,37 @@
 <?php
 require 'connexion.php';
-
 ?>
 
 <aside class="container main p-4">
-   
     <div class="row row-cols-2">
-    
-    <div class="col" >
-        <p class="text-centre"><b>Les derniers avis de nos clients</b></p>
+        <div class="col" >
+            <p class="text-centre"><b>Les derniers avis de nos clients</b></p>
         <hr>
         
-        
         <?php
-         $reqselect = "SELECT * FROM agence.avis ORDER BY date_avis ASC LIMIT 2";
-         
-         $reqselect = $conn -> query ($reqselect);
-         $resultat = $reqselect-> fetchAll();
 
-         foreach($resultat as $key => $value) {
-        ?>
-        <p>
-         <b>Posté par</b> : <?php echo $value['nom']; ?> <br><b>Note : </b>
-         <?php echo $value['note']; ?> <b> Message : </b> <?php echo $value['message'];?> <b> Date : </b> 
-         <?php
-         
-         //transformation date en format local//
-         setlocale(LC_TIME,'fr');
-         $datefr = strftime('%d/%m/%Y',strtotime($value['date_avis']));
-         echo $datefr ?></p>
-        <?php
-         }
-        
-        ?>
-    </div>
+            //$statut ='Confirmée';  WHERE statut =:statut//
+            $reqselect = 'SELECT nom, message, note, date_avis FROM agence.avis ORDER BY date_avis DESC LIMIT 2';
+            $reqsel= $conn -> query ($reqselect);
+            //$reqsel -> BindValue(':statut',$statut);
+            $resultat = $reqsel -> fetchAll();
+            
+                foreach($resultat as $key => $value) {
+                ?>
+                    <p><b>Posté par</b> : <?php echo $value['nom']; ?> <br><b>Note : </b>
+                    <?php echo $value['note']; ?> <b> Message : </b> <?php echo $value['message'];?> <b> Date : </b> 
+                    
+                    <?php
+                    //transformation date en format local//
+                    setlocale(LC_TIME,'fr');
+                    $datefr = strftime('%d/%m/%Y',strtotime($value['date_avis']));
+                    echo $datefr ?></p>
+
+                <?php
+                }
+                ?>  
+
+        </div>
     <div class="col reseaux-sociaux">
         <div>
             <p class="text-centre"><b>Suivez-nous sur les réseaux sociaux</b></p>
@@ -84,12 +82,14 @@ require 'connexion.php';
     </div>
 
 </div>
-
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/application.js"></script>
-<script type="text/javascript" src="js/contact.js"></script>
-<script type="text/javascript" src="js/inscription.js"></script>
-<script type="text/javascript" src="js/modifpassword.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
+    <script type="text/javascript" src="js/contact.js"></script>
+    <script type="text/javascript" src="js/inscription.js"></script>
+    <script type="text/javascript" src="js/modifpassword.js"></script>
+    <script type="text/javascript" src="js/reservation.js"></script>
+    <script type="text/javascript" src="js/avis.js"></script>
+    <link rel="stylesheet" href="assets/bootstrap.bundle.min.js">
 </body>
 </html>
 

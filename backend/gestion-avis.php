@@ -1,6 +1,5 @@
 <?php
 $Title ="Gérer les avis";
-
 require 'include/header.php';
 require 'include/entete.php';
 require 'include/menu-nav.php';
@@ -14,8 +13,7 @@ if(array_key_exists('valider',$_POST)){
         $donnees = stripslashes($donnees);
         $donnees = htmlspecialchars($donnees);
         return $donnees;
-        }
-                
+        }     
         $id = validation_donnees($_POST['id']);
         $statut = validation_donnees($_POST['statut']);
         $date_modification = date('Y-m-d h:m:s');
@@ -33,11 +31,8 @@ if(array_key_exists('valider',$_POST)){
         }else {
             header("location:?pages=gestion-avis.php&succes=0");
         }
-
 }
-
 ?>
-
 <br>
 <h2 class="text-center">Gestion avis Clients </h2>
 
@@ -49,9 +44,7 @@ if(array_key_exists('valider',$_POST)){
     <?php
     }
     ?>
-
         <table class="table table-striped table-bordered">
-          
         <caption>Moderation des avis</caption>
             <thead>
                     <tr>
@@ -64,12 +57,10 @@ if(array_key_exists('valider',$_POST)){
                     </tr>
             </thead>
             <tbody>
-               
                     <?php
-
                     $reqselect = "SELECT * FROM agence.avis ORDER BY statut DESC LIMIT 6";
-                    $reqselect = $conn -> query ($reqselect);
-                    $resultat = $reqselect-> fetchAll();
+                    $reqsel = $conn -> query ($reqselect);
+                    $resultat = $reqsel-> fetchAll();
         
                     foreach($resultat as $key => $value) {
                     ?>

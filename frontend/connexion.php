@@ -10,10 +10,9 @@ $dsn = "pgsql:host=$host;port=5433;dbname=$dbname;";
 try{
     $conn = new PDO ($dsn, $username, $password);
     if($conn){
-       //echo 'connexion ok';
+       //echo 'connexion ok';//
     }
 }catch (PDOException $e){
-    echo 'message erreur de connexion' .$e->getMessage();
+    echo 'message erreur de connexion' .$e->getMessage();die;
 }
-?>
- 
+

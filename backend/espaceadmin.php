@@ -1,13 +1,11 @@
 <?php 
-//demarage session // 
+//demarage session //
 session_start();
 
 require 'connexion.php';
 
     if(array_key_exists('connexion',$_POST)){
-        
                 //vérification des champs s'ils existent et sont renseignés ou pas 
-
             if(isset($_POST['email']) && empty($_POST['email'])){
             header("location:?email=1");
             exit();
@@ -23,7 +21,7 @@ require 'connexion.php';
             $reqExec = $conn -> prepare($reqSelect);
             $reqExec -> bindvalue('email', $email);
             $reqExec-> execute ([
-                ":email"  => $_POST['email'],                 
+                ":email"  => $_POST['email'],
                 ]);
             $user = $reqExec ->fetch(PDO::FETCH_ASSOC);
              // verification email base données  //
@@ -40,13 +38,12 @@ require 'connexion.php';
                 else{
                     //client trouvé Mot de pass incorrect//
                     header("location:?erreurpassword=1");
-                }                        
+                }
             }else{
                 //l'adresse email ne figure pas en base de données//
                 header("location:?emailintrouvable=1");
             }
-
-    }      
+    }
 
 ?>
 <!DOCTYPE html>
@@ -76,10 +73,9 @@ require 'connexion.php';
 
         <section>
 
-            <form class="form" method="POST" action="">  
+            <form class="form" method="POST" action="">
                 <fieldset>
-                    <legend>Identification !</legend> 
-
+                    <legend>Identification !</legend>
                             <div class="input-row">
                             <label class="form-label" for="name"><b> Email : *</b></label>
                             <input class="form-control form-control" type="email" name="email" id="email" maxlength="25">
@@ -106,21 +102,20 @@ require 'connexion.php';
                                         if(isset($_GET['emailintrouvable']) && ($_GET['emailintrouvable']==1)){
                                             echo "<strong>Vous n'êtes pas un membre d'administration!</strong>";
                                             }
-                            ?>                   
+                            ?>
                             </div>
                             <br>
                             <button class="btn btn-primary" name="connexion" type="submit" id="connexion">Connexion</button>
-                            <b>Inscription?</b> <a href="inscription.php"><b>Je m'inscris ! </b></a>
+                            <b>Nouveau?</b> <a href="inscription.php"><b>Inscrire un membre! </b></a>
                             <p style = color:red; id="erreur">
-
                 </fieldset>
-            </form> 
-        <section>      
+            </form>
+        <section>
      </main>
 
 <!--footer-->
 <?php
-include 'include/footer.php';
+require 'include/footer.php';
 
 ?>
 

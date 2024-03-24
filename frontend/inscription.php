@@ -148,7 +148,7 @@ if(array_key_exists('envoyer',$_POST)){
                         <select class="form-control" name="age" id="age">
                                 <option value="">--Votre age--</option>
                                 <?php 
-                                    for($i = 19; $i <= 60; $i++) {
+                                    for($i = 18; $i <= 60; $i++) {
                                     ?>
                                         <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                     <?php

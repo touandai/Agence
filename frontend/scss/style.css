@@ -193,7 +193,6 @@ footer a {
 
 .titre {
   text-align: center;
-  color: #0C273D;
 }
 
 .ancre {
@@ -230,7 +229,11 @@ div > button, .lien {
 }
 
 .succes {
-  color: #54D0ED;
+  color: #2C5E2E;
+}
+
+.warning {
+  color: darkgoldenrod;
 }
 
 /*page circuits*/
@@ -332,8 +335,9 @@ section, .avis {
   text-decoration: none;
 }
 
-.confirmation {
+#confirmation {
   color: #2C5E2E;
+  font-weight: bolder;
 }
 
 .btn-deconnexion {

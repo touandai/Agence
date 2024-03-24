@@ -95,6 +95,6 @@ require 'connexion.php';
     <?php endif; ?>
 
 <?php
-include 'include-frontend/footer.php';
+require 'include-frontend/footer.php';
 
 ?>

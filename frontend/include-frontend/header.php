@@ -16,6 +16,7 @@
         </div>
         <div id="logo">
             <em class="titre">Offres limitées !</em>
+            <img src="icons/airplane-fill.svg"/>
         </div>  
 </div>    
 <header>        
