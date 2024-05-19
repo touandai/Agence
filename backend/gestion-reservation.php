@@ -79,7 +79,7 @@ if(isset($_POST['supprimer'])){
     ?>
    
     <section class="container circuit">
-        <table class="table table-striped table-bordered">
+        <table class="table table-sm table-striped table-bordered">
           
             <caption>Gestion des Réservations</caption>
                 <thead>
@@ -98,11 +98,25 @@ if(isset($_POST['supprimer'])){
                 <tbody>
                   
                     <?php
-                        $reqselect = "SELECT * FROM agence.reservations ORDER BY statut DESC LIMIT 6";
-                        $reqselect = $conn -> query ($reqselect);
-                        $resultat = $reqselect-> fetchAll();
-                        foreach($resultat as $key => $value) {
+                    
+                        /* Nombre de circuit à afficher par page */
+                        $pagelimit = 8;
+                        /* Nombre total des circuits en base de données */
+                        $ReservaTotal = "SELECT COUNT(id) AS nb FROM agence.reservations";
+                        $reqResevaTotal = $conn -> query($ReservaTotal);
+                        $reqResevaTotal -> execute();
+                        $resultatTotalReserva = $reqResevaTotal -> fetch();
+                        $nbTotalReservat = $resultatTotalReserva['nb'];
+                        $totalPage = ceil($nbTotalReservat / $pagelimit);
+                        /* Récupération du numéro de la page sélectionnée par l'utilisateur */
+                        $numeroPage = (isset($_GET['page'])) ? $_GET['page'] : 1;
+                        $debut = ($numeroPage - 1) * $pagelimit;
+                        $fin = $pagelimit;
 
+                        $reqselect = "SELECT * FROM agence.reservations ORDER BY statut DESC LIMIT $fin OFFSET $debut";
+                        $reqsel = $conn -> query ($reqselect);
+                        $resultat = $reqsel-> fetchAll();
+                        foreach($resultat as $key => $value) {
                     ?>
                    <tr>
                       <td class="text-centre"><?php echo $value['id'];?></td>
@@ -125,10 +139,7 @@ if(isset($_POST['supprimer'])){
                                 <option value="Annulée">Annulée</option>
                             </select>
                             <button class="btn btn-success btn-sm" type="submit" name="valider">Valider</button>
-                            
-                            <div>
-                                <button class="btn btn-danger btn-sm" type="submit" name="supprimer" onclick="return confirm('Confirmez-vous cette suppression?')">Supprimer</button>
-                            </div>
+                            <button class="btn btn-danger btn-sm" type="submit" name="supprimer" onclick="return confirm('Confirmez-vous cette suppression?')">Supprimer</button>
                         </form>
                       </td>
                     </tr>
@@ -138,6 +149,30 @@ if(isset($_POST['supprimer'])){
             </tbody>
         </table>
     </section>
+    <aside class="container">
+        <br>
+        <nav aria-label="navigation">
+            <ul class="pagination justify-content-center">
+                 <!-- Lien page précédente désactivé si on se trouve sur la page de début-->
+                <li class="page-item <?= ($numeroPage == 1) ? "disabled" : "" ?>">
+                    <a href="gestion-reservation.php?<?= $numeroPage - 1 ?>" class="page-link text-primary2">Précédant</a>
+                </li>
+                <?php for($i = 1; $i <= $totalPage; $i++)
+                {
+                ?>
+                 <li class="page-item"></li>
+                    <a href="gestion-reservation.php?page=<?php echo $i; ?>" class="page-link text-primary2"><?php echo $i; ?></a>
+                </li>
+                <?php
+                 }
+                ?>
+                 <!-- Lien page suivante désactivé si on se trouve sur la page de fin-->
+                <li class="page-item <?= ($numeroPage ==  $totalPage ) ? "disabled" : "" ?>">
+                    <a href="gestion-reservation.php? <?= $numeroPage + 1 ?>" class="page-link text-primary2">Suivant</a>
+                </li>
+            </ul>
+        </nav>
+        </aside>
 
 </main>
 

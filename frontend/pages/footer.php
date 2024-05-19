@@ -12,10 +12,14 @@ require '../connexion.php';
         <hr>
         <p>
         
-        <?php  
-         $reqselect = "SELECT * FROM agence.avis ORDER BY date_avis DESC LIMIT 2";
+        <?php
+         $statut ='Confirmée';
+         $reqselect = "SELECT * FROM agence.avis
+         WHERE statut =:statut ORDER BY date_avis DESC LIMIT 2";
          
-         $reqselect = $conn -> query ($reqselect);
+         $reqselect = $conn -> prepare ($reqselect);
+         $reqselect -> BindValue(':statut', $statut,PDO::PARAM_STR);
+         $reqselect ->execute();
          $resultat = $reqselect-> fetchAll();
 
          foreach($resultat as $key => $value) {

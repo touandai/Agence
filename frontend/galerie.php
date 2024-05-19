@@ -398,9 +398,10 @@ require 'include-frontend/header.php';
                 </button>
         </div>
     </section>
-</main>   
+</main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <?php
 require 'include-frontend/footer.php';
 

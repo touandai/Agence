@@ -1,5 +1,5 @@
 
-document.getElementById('pseudo').addEventListener('input', function(e){
+document.querySelector('#pseudo').addEventListener('input', function(e){
     let nomformat = /^[a-zA-Z-\s]+$/;
     
     if(nomformat.test(pseudo.value) == false){

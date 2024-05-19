@@ -36,7 +36,7 @@ if(array_key_exists('valider',$_POST))  {
     }
     ?>
     <section class="container circuit">
-        <table class="table table-striped table-bordered">
+        <table class="table table-sm table-striped table-bordered">
             <caption>Gestion clients</caption>
                 <thead>
                         <tr>

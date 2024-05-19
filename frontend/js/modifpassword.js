@@ -1,6 +1,6 @@
 
 
-document.getElementById('email').addEventListener('input', function (e){
+document.querySelector('#email').addEventListener('input', function (e){
     let mailformat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,3}$/
     
     if (mailformat.test(email.value) == false){

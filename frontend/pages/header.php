@@ -17,10 +17,10 @@
         </div>
         <div id="logo">
             <em class="titre">Offres limitées !</em>
-        </div>  
-</div>    
+        </div>
+</div>
 
-<header>        
+<header>
         <nav class="navbar navbar-expand-md bg-light" data-bs-theme="white">
             <div class="container-fluid">
                     <img class="navbar-brand" src="../images/imgmenu.png" alt="logo"/>
@@ -38,5 +38,5 @@
                     <li class="nav-item"><a class="nav-link" href="../espaceclient.php">Mon compte</a></li>
                 </ul>
             </div>
-        </nav>    
+        </nav>
 </header>

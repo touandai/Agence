@@ -7,30 +7,30 @@ require 'connexion.php';
         <div class="col" >
             <p class="text-centre"><b>Les derniers avis de nos clients</b></p>
         <hr>
-        
         <?php
-
-            //$statut ='Confirmée';  WHERE statut =:statut//
-            $reqselect = 'SELECT nom, message, note, date_avis FROM agence.avis ORDER BY date_avis DESC LIMIT 2';
-            $reqsel= $conn -> query ($reqselect);
-            //$reqsel -> BindValue(':statut',$statut);
-            $resultat = $reqsel -> fetchAll();
+            $statut ='Confirmée';
+            $reqselect = 'SELECT nom, message, note, date_avis
+            FROM agence.avis WHERE statut =:statut ORDER BY date_avis DESC LIMIT 2';
+           
+           
+            $pdoStatement = $conn -> prepare ($reqselect);
+            $pdoStatement -> BindValue(':statut', $statut,PDO::PARAM_STR);
+            $pdoStatement ->execute();
+            $resultat = $pdoStatement -> fetchAll();
             
                 foreach($resultat as $key => $value) {
                 ?>
                     <p><b>Posté par</b> : <?php echo $value['nom']; ?> <br><b>Note : </b>
-                    <?php echo $value['note']; ?> <b> Message : </b> <?php echo $value['message'];?> <b> Date : </b> 
-                    
+                    <?php echo $value['note']; ?> <b> Message : </b> <?php echo $value['message'];?> <b> Date : </b>
+     
                     <?php
                     //transformation date en format local//
                     setlocale(LC_TIME,'fr');
                     $datefr = strftime('%d/%m/%Y',strtotime($value['date_avis']));
                     echo $datefr ?></p>
-
                 <?php
                 }
-                ?>  
-
+                ?>
         </div>
     <div class="col reseaux-sociaux">
         <div>
@@ -40,9 +40,9 @@ require 'connexion.php';
             <a href="#"><img src="images/fb.png" alt="facebook"/></a> 
             <a href="#"><img src="images/whatapps.png" alt="whatapps"/></a>
             <a href="#"><img src="images/twiter.png" alt="twiter" /></a>
-            <a href="#"><img src="images/tiktok.png" alt="tiktok"/></a>       
-           </p> 
-        </div>   
+            <a href="#"><img src="images/tiktok.png" alt="tiktok"/></a>
+           </p>
+        </div>
     </div>
 </aside>
 
@@ -83,13 +83,12 @@ require 'connexion.php';
 
 </div>
     <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/application.js"></script>
-    <script type="text/javascript" src="js/contact.js"></script>
-    <script type="text/javascript" src="js/inscription.js"></script>
-    <script type="text/javascript" src="js/modifpassword.js"></script>
-    <script type="text/javascript" src="js/reservation.js"></script>
-    <script type="text/javascript" src="js/avis.js"></script>
-    <link rel="stylesheet" href="assets/bootstrap.bundle.min.js">
+    <script src="js/application.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/inscription.js"></script>
+    <script src="js/modifpassword.js"></script>
+    <script src="js/reservation.js"></script>
+    <script src="js/avis.js"></script>
 </body>
 </html>
 

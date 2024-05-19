@@ -1,18 +1,21 @@
-
 <nav class="nav-bar menu">
     <b><a href="tableau-de-bord.php">Tableau de bord</a></b>
-    <?php 
+    <?php
         /* statut 1 = Admin*/
-       //if(in_array([2], $_SESSION['donnees_user']['statut'])) {
-        if ($_SESSION['donnees_user']['statut']==1){
+      // if(in_array([2], $userconnecte)) {
+       if ($_SESSION['donnees_user']['statut']==1){
     ?>
     <b><a href="gestion-client.php">Gérer les Clients</a></b>
     <?php
     }
     ?>
-    <?php  
+    <?php 
+    if ($_SESSION['donnees_user']['statut']==1){
+            echo "<b><a href='gestion-circuit.php'>Gérer les circuits</a></b>";
+       }elseif($_SESSION['donnees_user']['statut']==2){
+            echo "<b><a href='gestion-circuit.php'>Gérer les circuits</a></b>";
+    }
     ?>
-    <b><a href="gestion-circuit.php">Gérer les circuits</a></b>
     <?php 
     if ($_SESSION['donnees_user']['statut']==1){
     ?>

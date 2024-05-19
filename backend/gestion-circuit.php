@@ -84,7 +84,7 @@ require 'connexion.php';
     ?>
    
     <section class="container circuit">
-        <table class="table table-striped table-bordered">
+        <table class="table table-sm table-striped table-bordered">
             <caption>Gestion Circuits</caption>
                 <thead>
                         <tr>

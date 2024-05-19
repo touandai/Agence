@@ -1,4 +1,4 @@
-<?php
+ <?php
 //demarrage session//
 require 'tableau-de-bord-menu.php';
 
@@ -59,7 +59,7 @@ require '../connexion.php';
 
 
 
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-sm table-bordered">
     <thead>
             <tr>
                 <th  class="text-center">Date</th>

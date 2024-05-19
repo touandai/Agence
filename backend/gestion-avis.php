@@ -44,7 +44,7 @@ if(array_key_exists('valider',$_POST)){
     <?php
     }
     ?>
-        <table class="table table-striped table-bordered">
+        <table class="table table-sm table-striped table-bordered">
         <caption>Moderation des avis</caption>
             <thead>
                     <tr>
@@ -84,7 +84,7 @@ if(array_key_exists('valider',$_POST)){
                                 <button class="btn btn-success  sous-titre text-center btn-sm" type="submit" name="valider">Valider</button> 
                             </form>
                         </td>
-                    </tr>   
+                    </tr>
                <?php
                }
                ?>
